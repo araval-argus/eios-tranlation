@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eios-translation.api", "eios-tranlation.api\eios-translation.api.csproj", "{01A476BA-D1C3-4D39-8C79-D83ED4D18E03}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "eios-translation.database", "eios-translation.database\eios-translation.database.sqlproj", "{63455CBF-3278-46A6-9598-2C31A3932333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eios-translation.businesslogic", "eios-tranlation.businesslogic\eios-translation.businesslogic.csproj", "{0824409A-58E7-43D7-96BE-4500310CC29B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eios-translation.infrastructure", "eios-tranlation.infrastructure\eios-translation.infrastructure.csproj", "{F89D9BD3-6AA9-4EA7-8398-EC02EEB8E3E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eios-translation.core", "eios-tranlation.core\eios-translation.core.csproj", "{3049434E-876B-4A5C-B9E6-8BDC823F7A22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01A476BA-D1C3-4D39-8C79-D83ED4D18E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A476BA-D1C3-4D39-8C79-D83ED4D18E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A476BA-D1C3-4D39-8C79-D83ED4D18E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A476BA-D1C3-4D39-8C79-D83ED4D18E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63455CBF-3278-46A6-9598-2C31A3932333}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0824409A-58E7-43D7-96BE-4500310CC29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0824409A-58E7-43D7-96BE-4500310CC29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0824409A-58E7-43D7-96BE-4500310CC29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0824409A-58E7-43D7-96BE-4500310CC29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89D9BD3-6AA9-4EA7-8398-EC02EEB8E3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89D9BD3-6AA9-4EA7-8398-EC02EEB8E3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89D9BD3-6AA9-4EA7-8398-EC02EEB8E3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F89D9BD3-6AA9-4EA7-8398-EC02EEB8E3E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3049434E-876B-4A5C-B9E6-8BDC823F7A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3049434E-876B-4A5C-B9E6-8BDC823F7A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3049434E-876B-4A5C-B9E6-8BDC823F7A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3049434E-876B-4A5C-B9E6-8BDC823F7A22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {554B1E9D-B74B-46DB-B1ED-00FA23377DEA}
+	EndGlobalSection
+EndGlobal

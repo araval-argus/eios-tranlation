@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Labels] (
+    [LabelId]               INT             IDENTITY (1, 1) NOT NULL,
+    [ResourceId]            NVARCHAR (1000) NOT NULL,
+    [FK_LabelGroupId]       INT             NOT NULL,
+    [FK_LanguageId]         INT             NOT NULL,
+    [LabelValue]            NVARCHAR (1000) NOT NULL,
+    [LabelType]             INT             NOT NULL,
+    [LabelDescription]      NVARCHAR (MAX)  NOT NULL,
+    [LabelSnapshotPath]     NVARCHAR (MAX)  NOT NULL,
+    [MachineTranslation]    NVARCHAR (1000) NULL,
+    [Scope]                 NVARCHAR (50)   NOT NULL,
+    [TranslationStatus]     INT             NOT NULL,
+    [Version]               INT             NOT NULL,
+    [IsActive]              BIT             NOT NULL,
+    [FK_PrevVersionLabelId] INT             NULL,
+    [CreatedAt]             DATETIME2 (7)   NOT NULL,
+    [UpdatedAt]             DATETIME2 (7)   NULL,
+    [CreatedBy]             INT             NOT NULL,
+    [UpdatedBy]             INT             NOT NULL,
+    CONSTRAINT [PK_Labels] PRIMARY KEY CLUSTERED ([LabelId] ASC),
+    CONSTRAINT [FK_Labels_LabelGroups] FOREIGN KEY ([FK_LabelGroupId]) REFERENCES [dbo].[LabelGroups] ([LabelGroupId]),
+    CONSTRAINT [FK_Labels_Labels] FOREIGN KEY ([FK_PrevVersionLabelId]) REFERENCES [dbo].[Labels] ([LabelId]),
+    CONSTRAINT [FK_Labels_Languages] FOREIGN KEY ([FK_LanguageId]) REFERENCES [dbo].[Languages] ([LanguageId])
+);
+
