@@ -5,9 +5,11 @@ using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using System.Net;
 using static System.Collections.Specialized.BitVector32;
 
 
@@ -42,22 +44,35 @@ namespace eios_tranlation.api.Controllers
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetSelectedLabelGroup")]
-        [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<LanguageViewModel>), 200)]
         public IActionResult GetSelectedLabelGroup(int LabelGroupId)
         {
             return this.Ok(this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId));
         }
         [HttpPost("InsertLabelGroup")]
-        public void InsertLabelGroup(LabelGroupViewModel labelgroup)
+        public IActionResult InsertLabelGroup(LabelGroupViewModel labelgroup)
         {
-            this.LabelGroupService.InsertLabelGroup(labelgroup);
+            if (this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
+            {
+                return this.Ok(labelgroup);
+            }
+            else
+            {
+                return this.NotFound();
+            }
         }
 
         [HttpGet("UpdateLabelGroup")]
-        public void UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        public IActionResult UpdateLabelGroup(LabelGroupViewModel labelgroup)
         {
-            //return (1);
-            this.LabelGroupService.UpdateLabelGroup(labelgroup);
+            if (this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
+            {
+                return this.Ok(labelgroup);
+            }
+            else
+            {
+                return this.NotFound();
+            }
         }
     }
 }

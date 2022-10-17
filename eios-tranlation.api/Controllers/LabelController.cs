@@ -33,5 +33,37 @@ namespace eios_translation.api.Controllers
         {
             return this.Ok(await this.labelService.GetAllLabels(languageId));
         }
+        [HttpGet("GetSelectedLabel")]
+        [ProducesResponseType(typeof(LabelViewModel), 200)]
+        public IActionResult GetSelectedLabel(int LabelId)
+        {
+            return this.Ok(this.labelService.GetSelectedLabel(LabelId));
+        }
+
+        [HttpPost("InsertLabel")]
+        public IActionResult InsertLabel(LabelViewModel label)
+        {
+            if (this.labelService.InsertLabel(label) == 1)
+            {
+                return this.Ok(label);
+            }
+            else
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet("UpdateLabel")]
+        public IActionResult UpdateLabel(LabelViewModel label)
+        {
+            if (this.labelService.UpdateLabel(label) == 1)
+            {
+                return this.Ok(label);
+            }
+            else
+            {
+                return this.NotFound();
+            }
+        }
     }
 }

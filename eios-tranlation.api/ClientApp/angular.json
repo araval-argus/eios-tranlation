@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "eios_translation.api"
+  "defaultProject": "eios_translation.api",
+  "cli": {
+    "analytics": false
+  }
 }

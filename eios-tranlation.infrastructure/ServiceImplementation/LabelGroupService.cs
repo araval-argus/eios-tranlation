@@ -34,14 +34,30 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return this.mapper.Map<LabelGroupViewModel>(result);
         }
 
-        public void InsertLabelGroup(LabelGroupViewModel labelgroup)
+        public int InsertLabelGroup(LabelGroupViewModel labelgroup)
         {
-            this.context.LabelGroups.Add(this.mapper.Map<LabelGroup>(labelgroup));
+            try
+            {
+                this.context.LabelGroups.Add(this.mapper.Map<LabelGroup>(labelgroup));
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
-        public void UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        public int UpdateLabelGroup(LabelGroupViewModel labelgroup)
         {
-            this.context.LabelGroups.Update(this.mapper.Map<LabelGroup>(labelgroup));
+            try
+            {
+                this.context.LabelGroups.Update(this.mapper.Map<LabelGroup>(labelgroup));
+                return 1;
+            }
+            catch
+            { 
+                return 0;
+            }
         }
     }
 }

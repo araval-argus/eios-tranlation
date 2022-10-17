@@ -33,18 +33,34 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
 
         public LanguageViewModel GetSelectedLanguage(int languageId)
         {
-            var result =  this.context.Languages.First(a => a.LanguageId == languageId);
+            var result = this.context.Languages.First(a => a.LanguageId == languageId);
             return this.mapper.Map<LanguageViewModel>(result);
         }
 
-        public void InsertLanguage(LanguageViewModel language)
+        public int InsertLanguage(LanguageViewModel language)
         {
-             this.context.Languages.Add(this.mapper.Map<Language>(language));
+            try
+            {
+                this.context.Languages.Add(this.mapper.Map<Language>(language));
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
-        public void UpdateLanguage(LanguageViewModel language)
+        public int UpdateLanguage(LanguageViewModel language)
         {
-            this.context.Languages.Update(this.mapper.Map<Language>(language));
+            try
+            {
+                this.context.Languages.Update(this.mapper.Map<Language>(language));
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

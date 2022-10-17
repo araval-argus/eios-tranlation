@@ -45,16 +45,29 @@ namespace eios_translation.api.Controllers
             return this.Ok(this.languageService.GetSelectedLanguage(languageId));
         }
         [HttpPost("InsertLanguage")]
-        public  void InsertLanguage(LanguageViewModel language)
+        public IActionResult InsertLanguage(LanguageViewModel language)
         {
-             this.languageService.InsertLanguage(language);
-        }
-        
-        [HttpGet("UpdateLanguage")]
-        public void UpdateLanguage(LanguageViewModel language)
-        {
-            this.languageService.UpdateLanguage(language);
+            if (this.languageService.InsertLanguage(language) == 1)
+            {
+                return this.Ok(language);
+            }
+            else
+            {
+                return this.NotFound();
+            }
         }
 
+        [HttpGet("UpdateLanguage")]
+        public IActionResult UpdateLanguage(LanguageViewModel language)
+        {
+            if (this.languageService.UpdateLanguage(language) == 1)
+            {
+                return this.Ok(language);
+            }
+            else
+            {
+                return this.NotFound();
+            }
+        }
     }
 }

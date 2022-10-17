@@ -25,6 +25,6 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public int Version { get; set; }
         public bool IsActive { get; set; }
         public int? FK_PrevVersionLabelId { get; set; }
-       
+
     }
 }
