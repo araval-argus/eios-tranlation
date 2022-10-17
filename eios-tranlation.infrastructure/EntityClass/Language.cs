@@ -15,6 +15,7 @@ namespace eios_translation.infrastructure.EntityClass
         public string LanguageCode { get; protected set; }
         public double? ToleranceRelative { get; protected set; }
         public int? ToleranceAbsolute { get; protected set; }
+        public string? Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int CreatedBy { get; set; }
