@@ -19,6 +19,9 @@ namespace eios_translation.infrastructure
             this.CreateMap<Label, LabelViewModel>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+            this.CreateMap<LabelViewModel, Label>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
             this.CreateMap<Language, LanguageViewModel>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 

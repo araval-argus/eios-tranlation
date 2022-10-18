@@ -17,14 +17,17 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public int FK_LanguageId { get; set; }
         public string LabelValue { get; set; }
         public LabelType LabelType { get; set; }
-        public string LabelDescription { get; set; }
-        public string LabelSnapshotPath { get; set; }
-        public string MachineTranslation { get; set; }
-        public string Scope { get; set; }
+        public string? LabelDescription { get; set; }
+        public string? LabelSnapshotPath { get; set; }
+        public string? MachineTranslation { get; set; }
         public TranslationStatus TranslationStatus { get; set; }
+        public string? Scope { get; set; }
         public int Version { get; set; }
         public bool IsActive { get; set; }
         public int? FK_PrevVersionLabelId { get; set; }
-
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
     }
 }

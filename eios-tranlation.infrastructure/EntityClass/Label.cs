@@ -24,6 +24,7 @@ namespace eios_translation.infrastructure.EntityClass
         public string? LabelSnapshotPath { get; protected set; }
         public string? MachineTranslation { get; protected set; }
         public int TranslationStatus { get; protected set; }
+        public string? Scope { get; set; }
         public int Version { get; protected set; }
         public bool IsActive { get; protected set; }
         public int? FK_PrevVersionLabelId { get; protected set; }
