@@ -39,6 +39,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             try
             {
                 this.context.LabelGroups.Add(this.mapper.Map<LabelGroup>(labelgroup));
+                context.SaveChanges();
                 return 1;
             }
             catch
@@ -52,6 +53,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             try
             {
                 this.context.LabelGroups.Update(this.mapper.Map<LabelGroup>(labelgroup));
+                context.SaveChanges();
                 return 1;
             }
             catch

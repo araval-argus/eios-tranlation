@@ -42,6 +42,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             try
             {
                 this.context.Languages.Add(this.mapper.Map<Language>(language));
+                context.SaveChanges();
                 return 1;
             }
             catch
@@ -55,6 +56,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             try
             {
                 this.context.Languages.Update(this.mapper.Map<Language>(language));
+                context.SaveChanges();
                 return 1;
             }
             catch
