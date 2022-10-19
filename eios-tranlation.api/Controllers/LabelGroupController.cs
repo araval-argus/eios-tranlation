@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using System.Net;
 using static System.Collections.Specialized.BitVector32;
 
-
 namespace eios_tranlation.api.Controllers
 {
     [Route("api/[controller]")]
@@ -50,9 +49,9 @@ namespace eios_tranlation.api.Controllers
             return this.Ok(this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId));
         }
         [HttpPost("InsertLabelGroup")]
-        public IActionResult InsertLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<IActionResult> InsertLabelGroup(LabelGroupViewModel labelgroup)
         {
-            if (this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
+            if (await this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
             {
                 return this.Ok(labelgroup);
             }
@@ -63,9 +62,9 @@ namespace eios_tranlation.api.Controllers
         }
 
         [HttpGet("UpdateLabelGroup")]
-        public IActionResult UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<IActionResult> UpdateLabelGroup(LabelGroupViewModel labelgroup)
         {
-            if (this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
+            if (await this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
             {
                 return this.Ok(labelgroup);
             }

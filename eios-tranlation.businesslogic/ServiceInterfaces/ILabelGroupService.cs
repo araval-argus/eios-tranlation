@@ -1,4 +1,5 @@
 ﻿using eios_translation.businesslogic.Features.Label.ViewModels;
+using eios_translation.businesslogic.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace eios_tranlation.businesslogic.ServiceInterfaces
 {
-    public interface ILabelGroupService
+    public interface ILabelGroupService : IBaseService
     {
         Task<List<LabelGroupViewModel>> GetAllLabelGroups();
-        LabelGroupViewModel GetSelectedLabelGroup(int LabelGroupId);
-        int UpdateLabelGroup(LabelGroupViewModel labelgroup);
-        int InsertLabelGroup(LabelGroupViewModel labelgroup);
+        Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId);
+        Task<int> UpdateLabelGroup(LabelGroupViewModel labelgroup);
+        Task<int> InsertLabelGroup(LabelGroupViewModel labelgroup);
     }
 }

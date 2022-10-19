@@ -28,18 +28,18 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return this.mapper.Map<List<LabelGroupViewModel>>(labelGroups);
         }
 
-        public LabelGroupViewModel GetSelectedLabelGroup(int LabelGroupId)
+        public async Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId)
         {
-            var result = this.context.LabelGroups.First(a => a.LabelGroupId == LabelGroupId);
+            var result = await this.context.LabelGroups.FirstAsync(a => a.LabelGroupId == LabelGroupId);
             return this.mapper.Map<LabelGroupViewModel>(result);
         }
 
-        public int InsertLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<int> InsertLabelGroup(LabelGroupViewModel labelgroup)
         {
             try
             {
                 this.context.LabelGroups.Add(this.mapper.Map<LabelGroup>(labelgroup));
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch
@@ -48,12 +48,12 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public int UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<int> UpdateLabelGroup(LabelGroupViewModel labelgroup)
         {
             try
             {
                 this.context.LabelGroups.Update(this.mapper.Map<LabelGroup>(labelgroup));
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch

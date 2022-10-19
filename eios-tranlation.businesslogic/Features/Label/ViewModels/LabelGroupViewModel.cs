@@ -13,9 +13,5 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public int LabelGroupId { get; set; }
         public string GroupName { get; set; }
         public int? FK_ParentLableGroupId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }
     }
 }

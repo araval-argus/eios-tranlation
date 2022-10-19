@@ -30,18 +30,18 @@ namespace eios_translation.infrastructure.ServiceImplementation
             return this.mapper.Map<List<LabelViewModel>>(labels);
         }
 
-        public LabelViewModel GetSelectedLabel(int LabelId)
+        public async Task<LabelViewModel> GetSelectedLabel(int LabelId)
         {
-            var result = this.context.Labels.First(a => a.LabelId == LabelId);
+            var result = await this.context.Labels.FirstAsync(a => a.LabelId == LabelId);
             return this.mapper.Map<LabelViewModel>(result);
         }
 
-        public int InsertLabel(LabelViewModel label)
+        public async Task<int> InsertLabel(LabelViewModel label)
         {
             try
             {
-                this.context.Labels.Add(this.mapper.Map<Label>(label));
-                context.SaveChanges();
+                var result =  context.Labels.Add(this.mapper.Map<Label>(label));
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch
@@ -50,12 +50,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
             }
         }
 
-        public int UpdateLabel(LabelViewModel label)
+        public async Task<int> UpdateLabel(LabelViewModel label)
         {
             try
             {
-                this.context.Labels.Update(this.mapper.Map<Label>(label));
-                context.SaveChanges();
+                var result = context.Labels.Update(this.mapper.Map<Label>(label));
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch

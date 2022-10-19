@@ -40,14 +40,14 @@ namespace eios_translation.api.Controllers
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetSelectedLanguages")]
         [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
-        public IActionResult GetSelectedLanguage(int languageId)
+        public async Task<IActionResult> GetSelectedLanguage(int languageId)
         {
-            return this.Ok(this.languageService.GetSelectedLanguage(languageId));
+            return this.Ok(await this.languageService.GetSelectedLanguage(languageId));
         }
         [HttpPost("InsertLanguage")]
-        public IActionResult InsertLanguage(LanguageViewModel language)
+        public async Task<IActionResult> InsertLanguage(LanguageViewModel language)
         {
-            if (this.languageService.InsertLanguage(language) == 1)
+            if (await this.languageService.InsertLanguage(language) == 1)
             {
                 return this.Ok(language);
             }
@@ -58,9 +58,9 @@ namespace eios_translation.api.Controllers
         }
 
         [HttpGet("UpdateLanguage")]
-        public IActionResult UpdateLanguage(LanguageViewModel language)
+        public async Task<IActionResult> UpdateLanguage(LanguageViewModel language)
         {
-            if (this.languageService.UpdateLanguage(language) == 1)
+            if (await this.languageService.UpdateLanguage(language) == 1)
             {
                 return this.Ok(language);
             }

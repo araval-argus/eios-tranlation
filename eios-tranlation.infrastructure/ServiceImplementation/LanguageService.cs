@@ -31,18 +31,18 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return this.mapper.Map<List<LanguageViewModel>>(Languages);
         }
 
-        public LanguageViewModel GetSelectedLanguage(int languageId)
+        public async Task<LanguageViewModel> GetSelectedLanguage(int languageId)
         {
-            var result = this.context.Languages.First(a => a.LanguageId == languageId);
+            var result = await this.context.Languages.FirstAsync(a => a.LanguageId == languageId);
             return this.mapper.Map<LanguageViewModel>(result);
         }
 
-        public int InsertLanguage(LanguageViewModel language)
+        public async Task<int> InsertLanguage(LanguageViewModel language)
         {
             try
             {
                 this.context.Languages.Add(this.mapper.Map<Language>(language));
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch
@@ -51,12 +51,12 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public int UpdateLanguage(LanguageViewModel language)
+        public async Task<int> UpdateLanguage(LanguageViewModel language)
         {
             try
             {
                 this.context.Languages.Update(this.mapper.Map<Language>(language));
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return 1;
             }
             catch

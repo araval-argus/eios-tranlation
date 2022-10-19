@@ -6,8 +6,8 @@ namespace eios_tranlation.businesslogic.ServiceInterfaces
     public interface ILanguageService : IBaseService
     {
         Task<List<LanguageViewModel>> GetAllLanguages();
-        LanguageViewModel GetSelectedLanguage(int languageId);
-        int UpdateLanguage(LanguageViewModel language);
-        int InsertLanguage(LanguageViewModel language);
+        Task<LanguageViewModel> GetSelectedLanguage(int languageId);
+        Task<int> UpdateLanguage(LanguageViewModel language);
+        Task<int> InsertLanguage(LanguageViewModel language);
     }
 }

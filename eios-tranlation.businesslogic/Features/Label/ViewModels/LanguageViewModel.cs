@@ -14,9 +14,5 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public float ToleranceRelative { get; set; }
         public int ToleranceAbsolute { get; set; }
         public string? Description { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }
     }
 }

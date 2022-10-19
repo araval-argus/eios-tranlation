@@ -1,5 +1,6 @@
 ﻿using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.ServiceInterfaces;
+using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using Microsoft.AspNetCore.Http;
@@ -33,30 +34,43 @@ namespace eios_translation.api.Controllers
         {
             return this.Ok(await this.labelService.GetAllLabels(languageId));
         }
+        /// <summary>
+        /// API to get Selected Label
+        /// </summary>
+        /// <param name="LabelId"></param>
+        /// <returns></returns>
         [HttpGet("GetSelectedLabel")]
         [ProducesResponseType(typeof(LabelViewModel), 200)]
-        public IActionResult GetSelectedLabel(int LabelId)
+        public async Task<IActionResult> GetSelectedLabel(int LabelId)
         {
-            return this.Ok(this.labelService.GetSelectedLabel(LabelId));
+            return (this.Ok(await this.labelService.GetSelectedLabel(LabelId)));
         }
 
         [HttpPost("InsertLabel")]
-        public IActionResult InsertLabel(LabelViewModel label)
+        public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
         {
-            if (this.labelService.InsertLabel(label) == 1)
+            try
             {
-                return this.Ok(label);
+                if (await this.labelService.InsertLabel(label) == 1)
+                {
+                    return this.Ok(label);
+                }
+                else
+                {
+                    return this.NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return this.NotFound();
+                throw(ex);
             }
         }
 
-        [HttpGet("UpdateLabel")]
-        public IActionResult UpdateLabel(LabelViewModel label)
+        [HttpPost("UpdateLabel")]
+        [ProducesResponseType(typeof(LabelViewModel), 200)]
+        public async Task<IActionResult> UpdateLabel(LabelViewModel label)
         {
-            if (this.labelService.UpdateLabel(label) == 1)
+            if (await this.labelService.UpdateLabel(label) == 1)
             {
                 return this.Ok(label);
             }

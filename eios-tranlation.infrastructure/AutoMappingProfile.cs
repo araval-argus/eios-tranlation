@@ -25,8 +25,14 @@ namespace eios_translation.infrastructure
             this.CreateMap<Language, LanguageViewModel>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+            this.CreateMap<LanguageViewModel, Language>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
             this.CreateMap<LabelGroup, LabelGroupViewModel>()
            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            this.CreateMap<LabelGroupViewModel, LabelGroup>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         }
     }
