@@ -33,6 +33,18 @@ namespace eios_translation.api.Controllers
         {
             return this.Ok(await this.languageService.GetAllLanguages());
         }
+        /// <summary>
+        /// Translate Source text from Source language to target language
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <param name="sourceLanguage"></param>
+        /// <param name="targetLanguage"></param>
+        /// <returns></returns>
+        [HttpGet("TranslateText")]
+        public string Translate(string Source, string sourceLanguage, string targetLanguage)
+        {
+            return languageService.Translate(Source, sourceLanguage, targetLanguage);
+        }
 
         /// <summary>
         /// Api to Get selected Language.
@@ -44,6 +56,7 @@ namespace eios_translation.api.Controllers
         {
             return this.Ok(await this.languageService.GetSelectedLanguage(languageId));
         }
+
         [HttpPost("InsertLanguage")]
         public async Task<IActionResult> InsertLanguage(LanguageViewModel language)
         {
@@ -57,7 +70,9 @@ namespace eios_translation.api.Controllers
             }
         }
 
-        [HttpGet("UpdateLanguage")]
+
+        [HttpPost("UpdateLanguage")]
+        [ProducesResponseType(typeof(LanguageViewModel), 200)]
         public async Task<IActionResult> UpdateLanguage(LanguageViewModel language)
         {
             if (await this.languageService.UpdateLanguage(language) == 1)

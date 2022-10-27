@@ -1,16 +1,7 @@
 ﻿using eios_tranlation.businesslogic.ServiceInterfaces;
-using eios_translation.api.Controllers;
 using eios_translation.businesslogic.Features.Label.ViewModels;
-using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Wrappers;
-using eios_translation.infrastructure.DbContext;
-using eios_translation.infrastructure.EntityClass;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using System.Net;
-using static System.Collections.Specialized.BitVector32;
 
 namespace eios_tranlation.api.Controllers
 {
@@ -61,7 +52,7 @@ namespace eios_tranlation.api.Controllers
             }
         }
 
-        [HttpGet("UpdateLabelGroup")]
+        [HttpPost("UpdateLabelGroup")]
         public async Task<IActionResult> UpdateLabelGroup(LabelGroupViewModel labelgroup)
         {
             if (await this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)

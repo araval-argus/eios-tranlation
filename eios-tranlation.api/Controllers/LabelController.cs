@@ -13,7 +13,7 @@ namespace eios_translation.api.Controllers
     [ApiController]
     public class LabelController : ControllerBase
     {
-        
+
         private readonly ILogger<LabelController> logger;
         private readonly ILabelService labelService;
         public LabelController(ILogger<LabelController> logger, ILabelService labelService)
@@ -30,7 +30,7 @@ namespace eios_translation.api.Controllers
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetAllLabels")]
         [ProducesResponseType(typeof(ApiResponse<List<LabelViewModel>>), 200)]
-        public async Task<IActionResult> GetAllLabels(int languageId) 
+        public async Task<IActionResult> GetAllLabels(int languageId)
         {
             return this.Ok(await this.labelService.GetAllLabels(languageId));
         }
@@ -49,20 +49,13 @@ namespace eios_translation.api.Controllers
         [HttpPost("InsertLabel")]
         public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
         {
-            try
+            if (await this.labelService.InsertLabel(label) == 1)
             {
-                if (await this.labelService.InsertLabel(label) == 1)
-                {
-                    return this.Ok(label);
-                }
-                else
-                {
-                    return this.NotFound();
-                }
+                return this.Ok(label);
             }
-            catch (Exception ex)
+            else
             {
-                throw(ex);
+                return this.NotFound();
             }
         }
 

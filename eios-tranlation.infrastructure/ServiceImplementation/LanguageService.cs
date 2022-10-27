@@ -64,5 +64,15 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 return 0;
             }
         }
+
+        public string Translate(string Source, string sourceLanguage, string targetLanguage)
+        {
+            if (string.IsNullOrEmpty(Source))
+                return "";
+
+            var client = Google.Cloud.Translation.V2.TranslationClient.Create();
+            var response = client.TranslateHtml(Source, targetLanguage, sourceLanguage);
+            return response.TranslatedText;
+        }
     }
 }

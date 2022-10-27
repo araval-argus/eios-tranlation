@@ -9,5 +9,6 @@ namespace eios_tranlation.businesslogic.ServiceInterfaces
         Task<LanguageViewModel> GetSelectedLanguage(int languageId);
         Task<int> UpdateLanguage(LanguageViewModel language);
         Task<int> InsertLanguage(LanguageViewModel language);
+        string Translate(string Source, string sourceLanguage, string targetLanguage);
     }
 }
