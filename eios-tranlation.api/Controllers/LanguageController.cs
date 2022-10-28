@@ -34,18 +34,29 @@ namespace eios_translation.api.Controllers
             return this.Ok(await this.languageService.GetAllLanguages());
         }
         /// <summary>
-        /// Translate Source text from Source language to target language
+        /// Translate Source text from Source language to target language using Google API
         /// </summary>
         /// <param name="Source"></param>
         /// <param name="sourceLanguage"></param>
         /// <param name="targetLanguage"></param>
         /// <returns></returns>
-        [HttpGet("TranslateText")]
-        public string Translate(string Source, string sourceLanguage, string targetLanguage)
+        [HttpGet("GoogleTranslateText")]
+        public string GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            return languageService.Translate(Source, sourceLanguage, targetLanguage);
+            return languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage);
         }
-
+        /// <summary>
+        /// Translate Source text from Source language to target language using Azure API
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <param name="sourceLanguage"></param>
+        /// <param name="targetLanguage"></param>
+        /// <returns></returns>
+        [HttpGet("AzureTranslateText")]
+        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
+        {
+            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage));
+        }
         /// <summary>
         /// Api to Get selected Language.
         /// </summary>
