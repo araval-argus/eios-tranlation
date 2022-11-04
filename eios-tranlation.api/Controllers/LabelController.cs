@@ -1,11 +1,11 @@
-﻿using eios_translation.businesslogic.Features.Label.ViewModels;
+﻿using eios_tranlation.businesslogic.ServiceInterfaces;
+using eios_tranlation.infrastructure.ServiceImplementation;
+using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
-using eios_translation.infrastructure.DbContext;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static System.Collections.Specialized.BitVector32;
+using Microsoft.Extensions.Configuration;
 
 namespace eios_translation.api.Controllers
 {
@@ -16,10 +16,13 @@ namespace eios_translation.api.Controllers
 
         private readonly ILogger<LabelController> logger;
         private readonly ILabelService labelService;
-        public LabelController(ILogger<LabelController> logger, ILabelService labelService)
+        private readonly IConfiguration configuration;
+
+        public LabelController(ILogger<LabelController> logger, ILabelService labelService, IConfiguration _configuration)
         {
             this.logger = logger;
             this.labelService = labelService;
+            this.configuration = _configuration;
         }
 
         /// <summary>
@@ -43,21 +46,63 @@ namespace eios_translation.api.Controllers
         [ProducesResponseType(typeof(LabelViewModel), 200)]
         public async Task<IActionResult> GetSelectedLabel(int LabelId)
         {
-            return (this.Ok(await this.labelService.GetSelectedLabel(LabelId)));
+            return this.Ok(await this.labelService.GetSelectedLabel(LabelId));
         }
-
         [HttpPost("InsertLabel")]
-        public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
+        public async Task<IActionResult> InsertLabelAsync()
         {
-            if (await this.labelService.InsertLabel(label) == 1)
+            try
             {
-                return this.Ok(label);
+                LabelViewModel label = new LabelViewModel();
+                //label.LabelId = 10;
+                label.ResourceId = "2";
+                label.FK_LabelGroupId = 3;
+                label.FK_LanguageId = 4;
+                label.LabelValue = "How are you";
+                label.LabelType = LabelType.PreLabel;
+                label.LabelDescription = "New Label2";
+                label.LabelSnapshotPath = "TestPath";
+                label.MachineTranslation = "Test";
+                label.Scope = "1";
+                label.TranslationStatus = TranslationStatus.Published;
+                label.Version = 1;
+                label.IsActive = true;
+                label.FK_PrevVersionLabelId = 0;
+                string key = configuration.GetValue<string>("key");
+                string endpoint = configuration.GetValue<string>("endpoint");
+                string location = configuration.GetValue<string>("location");
+                if (await this.labelService.InsertLabel(label, endpoint, key, location) == 1)
+                {
+                    return this.Ok(label);
+                }
+                else
+                {
+                    return this.NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return this.NotFound();
+                throw (ex);
             }
+
         }
+        //[HttpPost("InsertLabel")]
+        //public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
+        //{
+        //    List<LanguageViewModel> AllLanguages = await this.languageService.GetAllLanguages();
+        //    foreach(LanguageViewModel language in AllLanguages)
+        //    {
+
+        //    }
+        //    if (await this.labelService.InsertLabel(label) == 1)
+        //    {
+        //        return this.Ok(label);
+        //    }
+        //    else
+        //    {
+        //        return this.NotFound();
+        //    }
+        //}
 
         [HttpPost("UpdateLabel")]
         [ProducesResponseType(typeof(LabelViewModel), 200)]

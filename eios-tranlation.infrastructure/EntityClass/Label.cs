@@ -17,12 +17,12 @@ namespace eios_translation.infrastructure.EntityClass
         public int LabelId { get; protected set; }
         public string ResourceId { get; protected set; } = string.Empty;
         public int FK_LabelGroupId { get; protected set; }
-        public int FK_LanguageId { get; protected set; }
+        public int FK_LanguageId { get;  set; }
         public string LabelValue { get; protected set; } = string.Empty;
         public int LabelType { get; protected set; }
         public string? LabelDescription { get; protected set; }
         public string? LabelSnapshotPath { get; protected set; }
-        public string? MachineTranslation { get; protected set; }
+        public string? MachineTranslation { get; set; }
         public int TranslationStatus { get; protected set; }
         public string? Scope { get; set; }
         public int Version { get; protected set; }

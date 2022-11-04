@@ -12,6 +12,6 @@ namespace eios_translation.businesslogic.ServiceInterfaces
         Task<List<LabelViewModel>> GetAllLabels(int languageId);
         Task<LabelViewModel> GetSelectedLabel(int LabelId);
         Task<int> UpdateLabel(LabelViewModel labelgroup);
-        Task<int> InsertLabel(LabelViewModel labelgroup);
+        Task<int> InsertLabel(LabelViewModel labelgroup, string endpoint, string key, string location);
     }
 }

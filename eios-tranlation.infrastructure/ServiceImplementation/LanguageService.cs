@@ -14,7 +14,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
     {
         private readonly EIOSTranslationContext context;
         private readonly IMapper mapper;
-
+       
         public LanguageService(EIOSTranslationContext context, IMapper mapper)
         {
             this.context = context;
@@ -61,25 +61,21 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public string GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
+        public async Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
             if (string.IsNullOrEmpty(Source))
                 return "";
 
             var client = Google.Cloud.Translation.V2.TranslationClient.Create();
-            var response = client.TranslateHtml(Source, targetLanguage, sourceLanguage);
+            
+            var response = await client.TranslateTextAsync(Source, targetLanguage, sourceLanguage);
             return response.TranslatedText;
         }
 
-        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
+        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage,string key, string endpoint, string location)
         {
-            
-            string key = "7418130dd58b46d1a08bd087bff49acd";
-            string endpoint = "https://api.cognitive.microsofttranslator.com";
-            string location = "westeurope";
-
             string route = "/translate?api-version=3.0&from=" + sourceLanguage + "&to=" + targetLanguage;
-            string textToTranslate = Source;// "I would really like to drive your car around the block a few times!";
+            string textToTranslate = Source;
             object[] body = new object[] { new { Text = textToTranslate } };
             var requestBody = JsonConvert.SerializeObject(body);
 
@@ -96,8 +92,10 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
 
                 // Send the request and get response.
                 HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+
                 // Read response as a string.
                 string result = await response.Content.ReadAsStringAsync();
+           
                 return (result);
             }
         }

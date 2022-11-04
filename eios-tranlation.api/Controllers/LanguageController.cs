@@ -6,7 +6,7 @@ using eios_translation.infrastructure.DbContext;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static System.Collections.Specialized.BitVector32;
-
+using Microsoft.Extensions.Configuration;
 
 namespace eios_translation.api.Controllers
 {
@@ -17,10 +17,12 @@ namespace eios_translation.api.Controllers
 
         private readonly ILogger<LanguageController> logger;
         private readonly ILanguageService languageService;
-        public LanguageController(ILogger<LanguageController> logger, ILanguageService languageService)
+        private readonly IConfiguration configuration;
+        public LanguageController(ILogger<LanguageController> logger, ILanguageService languageService, IConfiguration _configuration)
         {
             this.logger = logger;
             this.languageService = languageService;
+            this.configuration = _configuration;
         }
 
         /// <summary>
@@ -41,9 +43,9 @@ namespace eios_translation.api.Controllers
         /// <param name="targetLanguage"></param>
         /// <returns></returns>
         [HttpGet("GoogleTranslateText")]
-        public string GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
+        public async Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            return languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage);
+            return (await languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage));
         }
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
@@ -55,7 +57,10 @@ namespace eios_translation.api.Controllers
         [HttpGet("AzureTranslateText")]
         public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage));
+            string key = configuration.GetValue<string>("key");
+            string endpoint = configuration.GetValue<string>("endpoint");
+            string location = configuration.GetValue<string>("location");
+            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage,key,endpoint, location));
         }
         /// <summary>
         /// Api to Get selected Language.
