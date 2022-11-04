@@ -49,25 +49,10 @@ namespace eios_translation.api.Controllers
             return this.Ok(await this.labelService.GetSelectedLabel(LabelId));
         }
         [HttpPost("InsertLabel")]
-        public async Task<IActionResult> InsertLabelAsync()
+        public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
         {
             try
-            {
-                LabelViewModel label = new LabelViewModel();
-                //label.LabelId = 10;
-                label.ResourceId = "2";
-                label.FK_LabelGroupId = 3;
-                label.FK_LanguageId = 4;
-                label.LabelValue = "How are you";
-                label.LabelType = LabelType.PreLabel;
-                label.LabelDescription = "New Label2";
-                label.LabelSnapshotPath = "TestPath";
-                label.MachineTranslation = "Test";
-                label.Scope = "1";
-                label.TranslationStatus = TranslationStatus.Published;
-                label.Version = 1;
-                label.IsActive = true;
-                label.FK_PrevVersionLabelId = 0;
+            {                
                 string key = configuration.GetValue<string>("key");
                 string endpoint = configuration.GetValue<string>("endpoint");
                 string location = configuration.GetValue<string>("location");
@@ -89,11 +74,6 @@ namespace eios_translation.api.Controllers
         //[HttpPost("InsertLabel")]
         //public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
         //{
-        //    List<LanguageViewModel> AllLanguages = await this.languageService.GetAllLanguages();
-        //    foreach(LanguageViewModel language in AllLanguages)
-        //    {
-
-        //    }
         //    if (await this.labelService.InsertLabel(label) == 1)
         //    {
         //        return this.Ok(label);

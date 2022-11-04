@@ -13,8 +13,8 @@ namespace eios_translation.infrastructure.EntityClass
         public int LanguageId { get; protected set; }
         public string Name { get; protected set; }
         public string LanguageCode { get; protected set; }
-        public double? ToleranceRelative { get; protected set; }
-        public int? ToleranceAbsolute { get; protected set; }
+        public double? Tolerance { get; protected set; }
+        public int? ToleranceType { get; protected set; }
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

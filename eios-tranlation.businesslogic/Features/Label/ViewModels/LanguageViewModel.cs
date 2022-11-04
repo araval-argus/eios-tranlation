@@ -11,8 +11,8 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public int LanguageId { get; set; }
         public string Name { get; set; }
         public string LanguageCode { get; set; }
-        public float ToleranceRelative { get; set; }
-        public int ToleranceAbsolute { get; set; }
+        public float Tolerance { get; set; }
+        public int ToleranceType { get; set; }
         public string? Description { get; set; }
     }
 }
