@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace eios_translation.core.Wrappers
 {
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// A class representing <see cref="ValidationError"/>.
+    /// </summary>
     public class ValidationError
     {
         /// <summary>

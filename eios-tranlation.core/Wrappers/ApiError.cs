@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.ModelBinding;
+﻿
 
 namespace eios_translation.core.Wrappers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Http.ModelBinding;
+
+    /// <summary>
+    /// A class representing  <see cref="ApiError"/>.
+    /// </summary>
     public class ApiError
     {
         /// <summary>

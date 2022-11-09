@@ -1,16 +1,31 @@
-using eios_translation.businesslogic.Helpers;
+using eios_tranlation.businesslogic.Features.Label;
+using eios_tranlation.businesslogic.Features.Language;
+using eios_tranlation.businesslogic.Helpers;
+using eios_tranlation.core.ResponseMiddleware;
+using eios_tranlation.infrastructure.ServiceImplementation;
 using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.infrastructure;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.ServiceImplementation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<EIOSTranslationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
+builder.Services.AddMediatR(typeof(GetAllLanguagesCommand));
 
-builder.Services.RegisterAllTypesWithBaseInterface<IBaseService>(new[] { typeof(LabelService).Assembly }, ServiceLifetime.Scoped);
+
+
+// Add MediatR Authorization Pipeline Handlers
+builder.Services.RegisterAuthorizationHandlers(new[] { typeof(GetAllLanguagesCommand).Assembly }, ServiceLifetime.Scoped);
+
+// Register IHttpContextAccessor for services to get access to the HttpContext.
+builder.Services.AddHttpContextAccessor();
+
+// Register All Services
+builder.Services.RegisterAllTypesWithBaseInterface<IBaseService>(new[] { typeof(LanguageService).Assembly }, ServiceLifetime.Scoped);
 
 // Add services to the container.
 
@@ -47,6 +62,8 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EIOS Translation API", Version = "v1" });
 });
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
+// Add MediatR Pipelines.
+builder.Services.AddMediatRPipelines();
 
 var app = builder.Build();
 
@@ -66,7 +83,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseApiResponseWrapperMiddleware();
 app.UseCors(policy => policy.AllowAnyHeader()
                             .AllowAnyMethod()
                             .SetIsOriginAllowed(origin => true)

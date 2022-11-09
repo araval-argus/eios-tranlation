@@ -1,5 +1,4 @@
 ﻿using eios_tranlation.businesslogic.ServiceInterfaces;
-using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
@@ -7,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static System.Collections.Specialized.BitVector32;
 using Microsoft.Extensions.Configuration;
+using MediatR;
+using eios_tranlation.businesslogic.Features.Language;
+using eios_translation.businesslogic.Features.Label.ViewModels;
 
 namespace eios_translation.api.Controllers
 {
@@ -18,11 +20,14 @@ namespace eios_translation.api.Controllers
         private readonly ILogger<LanguageController> logger;
         private readonly ILanguageService languageService;
         private readonly IConfiguration configuration;
-        public LanguageController(ILogger<LanguageController> logger, ILanguageService languageService, IConfiguration _configuration)
+        private readonly IMediator mediator;
+
+        public LanguageController(ILogger<LanguageController> logger, ILanguageService languageService, IConfiguration _configuration, IMediator mediator)
         {
             this.logger = logger;
             this.languageService = languageService;
             this.configuration = _configuration;
+            this.mediator = mediator;
         }
 
         /// <summary>
@@ -32,9 +37,7 @@ namespace eios_translation.api.Controllers
         [HttpGet("GetAllLanguages")]
         [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
         public async Task<IActionResult> GetAllLanguages()
-        {
-            return this.Ok(await this.languageService.GetAllLanguages());
-        }
+            => this.Ok(await this.mediator.Send(new GetAllLanguagesCommand()));
         /// <summary>
         /// Translate Source text from Source language to target language using Google API
         /// </summary>

@@ -1,5 +1,4 @@
-﻿
-namespace eios_translation.core.Wrappers
+﻿namespace eios_translation.core.Wrappers
 {
     using System;
     using System.Collections.Generic;

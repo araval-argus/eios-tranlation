@@ -8,11 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\eios-tranlation.core\eios-translation.core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MediatRPiplelineBehavior\" />
   </ItemGroup>
 
 </Project>
