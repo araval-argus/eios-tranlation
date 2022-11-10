@@ -38,6 +38,7 @@ namespace eios_translation.api.Controllers
         [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
         public async Task<IActionResult> GetAllLanguages()
             => this.Ok(await this.mediator.Send(new GetAllLanguagesCommand()));
+
         /// <summary>
         /// Translate Source text from Source language to target language using Google API
         /// </summary>
@@ -50,6 +51,7 @@ namespace eios_translation.api.Controllers
         {
             return (await languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage));
         }
+        
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
         /// </summary>
@@ -65,6 +67,7 @@ namespace eios_translation.api.Controllers
             string location = configuration.GetValue<string>("location");
             return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage,key,endpoint, location));
         }
+ 
         /// <summary>
         /// Api to Get selected Language.
         /// </summary>
