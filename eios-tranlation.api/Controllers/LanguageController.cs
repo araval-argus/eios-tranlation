@@ -47,11 +47,9 @@ namespace eios_translation.api.Controllers
         /// <param name="targetLanguage"></param>
         /// <returns></returns>
         [HttpGet("GoogleTranslateText")]
-        public async Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
-        {
-            return (await languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage));
-        }
-
+        public async Task<IActionResult> GoogleTranslate(string source, string sourceLanguage, string targetLanguage)
+         => this.Ok(await this.mediator.Send(new GoogleTranslateTextCommand { Source = source, TargetLanguage = targetLanguage, SourceLanguage = sourceLanguage}));
+         
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using eios_tranlation.businesslogic.Features.LabelGroup;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.MediatRPiplelineBehavior;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eios_tranlation.businesslogic.Features.LabelGroup
 {
-    public class GetSelectedLabelGroupCommand
+    public class GetSelectedLabelGroupCommand : Request<LabelGroupViewModel>, IGetEntityCommand<LabelGroupViewModel>
     {
         public int LabelGroupId { get; set; }
     }
