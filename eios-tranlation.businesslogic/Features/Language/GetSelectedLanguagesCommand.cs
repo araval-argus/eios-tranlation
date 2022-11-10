@@ -24,6 +24,7 @@ namespace eios_tranlation.businesslogic.Features.Language
         /// </summary>
         public GetSelectedLanguagesCommandValidator()
         {
+            this.RuleFor(x => x.LanguageId).GreaterThan(0);
         }
     }
     /// <summary>
@@ -32,7 +33,7 @@ namespace eios_tranlation.businesslogic.Features.Language
     public class GetSelectedLanguagesCommandAuthorization : IAuthorize<GetSelectedLanguagesCommand, LanguageViewModel>
     {
         /// <inheritdoc/>
-        async Task<bool> IAuthorize<GetSelectedLanguagesCommand, <LanguageViewModel>.Authorize(GetSelectedLanguagesCommand request)
+        async Task<bool> IAuthorize<GetSelectedLanguagesCommand, LanguageViewModel>.Authorize(GetSelectedLanguagesCommand request)
         {
             bool authorized = true;
             return await Task.FromResult(authorized);
@@ -42,7 +43,7 @@ namespace eios_tranlation.businesslogic.Features.Language
     /// <summary>
     /// Handler class for the MediatR <see cref="GetAllQuestionTypesCommand"/> command.
     /// </summary>
-    public class GetSelectLanguagesCommandHandler : IGetEntityCommandHandler<GetSelectLanguagesCommand, <LanguageViewModel>>
+    public class GetSelectLanguagesCommandHandler : IGetEntityCommandHandler<GetSelectedLanguagesCommand, LanguageViewModel>
     {
         private readonly ILanguageService service;
 
