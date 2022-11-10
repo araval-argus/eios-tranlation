@@ -51,7 +51,7 @@ namespace eios_translation.api.Controllers
         {
             return (await languageService.GoogleTranslate(Source, sourceLanguage, targetLanguage));
         }
-        
+
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
         /// </summary>
@@ -65,9 +65,9 @@ namespace eios_translation.api.Controllers
             string key = configuration.GetValue<string>("key");
             string endpoint = configuration.GetValue<string>("endpoint");
             string location = configuration.GetValue<string>("location");
-            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage,key,endpoint, location));
+            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage, key, endpoint, location));
         }
- 
+
         /// <summary>
         /// Api to Get selected Language.
         /// </summary>
@@ -75,9 +75,8 @@ namespace eios_translation.api.Controllers
         [HttpGet("GetSelectedLanguages")]
         [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
         public async Task<IActionResult> GetSelectedLanguage(int languageId)
-        {
-            return this.Ok(await this.languageService.GetSelectedLanguage(languageId));
-        }
+                   => this.Ok(await this.mediator.Send(new GetSelectedLanguagesCommand { LanguageId = languageId }));
+
 
         [HttpPost("InsertLanguage")]
         public async Task<IActionResult> InsertLanguage(LanguageViewModel language)
