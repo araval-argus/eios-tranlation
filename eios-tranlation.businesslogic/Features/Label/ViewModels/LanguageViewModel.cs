@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eios_translation.core.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public string Name { get; set; }
         public string LanguageCode { get; set; }
         public float Tolerance { get; set; }
-        public int ToleranceType { get; set; }
+        public ToleranceType ToleranceType { get; set; }
         public string? Description { get; set; }
     }
 }

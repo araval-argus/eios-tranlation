@@ -77,17 +77,19 @@ namespace eios_translation.api.Controllers
 
 
         [HttpPost("InsertLanguage")]
-        public async Task<IActionResult> InsertLanguage(LanguageViewModel language)
-        {
-            if (await this.languageService.InsertLanguage(language) == 1)
-            {
-                return this.Ok(language);
-            }
-            else
-            {
-                return this.NotFound();
-            }
-        }
+        public async Task<IActionResult> InsertLanguage(InsertLanguageCommand request)
+                 => this.Ok(await this.mediator.Send(request));
+
+        //{
+        //    if (await this.languageService.InsertLanguage(language) == 1)
+        //    {
+        //        return this.Ok(language);
+        //    }
+        //    else
+        //    {
+        //        return this.NotFound();
+        //    }
+        //}
 
 
         [HttpPost("UpdateLanguage")]

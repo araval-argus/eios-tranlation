@@ -20,4 +20,10 @@ namespace eios_translation.core.Common
         PreLabel = 1,
         PostLabel = 2
     }
+
+    public enum ToleranceType
+    {
+        Absolute = 0,
+        Relative = 1
+    }
 }

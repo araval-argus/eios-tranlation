@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
+using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
 using Microsoft.EntityFrameworkCore;
@@ -33,17 +35,17 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return this.mapper.Map<LanguageViewModel>(result);
         }
 
-        public async Task<int> InsertLanguage(LanguageViewModel language)
+        public async Task<int> InsertLanguage(InsertLanguageCommand request)
         {
             try
             {
-                this.context.Languages.Add(this.mapper.Map<Language>(language));
-                await context.SaveChangesAsync();
-                return 1;
+                Language language = new Language(name: request.Name, languageCode: request.LanguageCode, tolerance: request.Tolerance, toleranceType: request.ToleranceType, description: request.Description);
+                this.context.Languages.Add(language);
+                return await context.SaveChangesAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+                throw new ApiException($"Something went wrong while creating the language: {ex.Message}");
             }
         }
 
