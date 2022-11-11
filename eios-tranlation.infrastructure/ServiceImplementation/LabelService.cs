@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
+using eios_tranlation.businesslogic.Features.Label;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
+using eios_tranlation.core.Constants;
 using eios_tranlation.infrastructure.ServiceImplementation;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.ServiceInterfaces;
+using eios_translation.core.Common;
+using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
 using Google.Cloud.Translation.V2;
@@ -15,6 +20,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Label = eios_translation.infrastructure.EntityClass.Label;
@@ -23,8 +29,13 @@ namespace eios_translation.infrastructure.ServiceImplementation
 {
     public class LabelService : ILabelService
     {
+
         private readonly EIOSTranslationContext context;
         private readonly IMapper mapper;
+        private readonly string key = CommonSettings.AzureTranslationSettings.Key;
+        private readonly string endpoint = CommonSettings.AzureTranslationSettings.Endpoint;
+        private readonly string location = CommonSettings.AzureTranslationSettings.Location;
+
 
         public LabelService(EIOSTranslationContext context, IMapper mapper)
         {
@@ -34,7 +45,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
         public async Task<List<LabelViewModel>> GetAllLabels(int languageId)
         {
-            var labels = await this.context.Labels.AsNoTracking().ToListAsync();
+            var labels = await this.context.Labels.FirstAsync(a => a.FK_LanguageId == languageId);
             return this.mapper.Map<List<LabelViewModel>>(labels);
         }
 
@@ -44,15 +55,18 @@ namespace eios_translation.infrastructure.ServiceImplementation
             return this.mapper.Map<LabelViewModel>(result);
         }
 
-        public async Task<int> InsertLabel(LabelViewModel label, string endpoint, string key, string location)
+        public async Task<int> InsertLabel(InsertLabelCommand label)
         {
             try
-            {
-                
+            {                
                 var languages = await this.context.Languages.AsNoTracking().ToListAsync();
                 foreach (var language in languages)
                 {
-                    Label label1 = this.mapper.Map<Label>(label);
+                    Label label1 = new Label(resourceid : label.ResourceId, fk_labelgroupid:label.FK_LabelGroupId, fk_languageid: label.FK_LanguageId, labelvalue: label.LabelValue,
+                                        labeltype: label.LabelType, labeldescription:label.LabelDescription, labelsnapshotpath:label.LabelSnapshotPath,
+                                        machinetranslation: label.MachineTranslation, translationstatus: label.TranslationStatus, scope:label.Scope,
+                                        version: label.Version, isactive: label.IsActive, fk_prevversionlabelid:label.FK_PrevVersionLabelId);
+
                     string translation = await GetTranslatedStringAsync(label1.LabelValue, "en", language.LanguageCode, key, endpoint, location);
                     label1.MachineTranslation = translation;
                     label1.FK_LanguageId = language.LanguageId;
@@ -67,11 +81,18 @@ namespace eios_translation.infrastructure.ServiceImplementation
             }
         }
 
-        public async Task<int> UpdateLabel(LabelViewModel label)
+        public async Task<int> UpdateLabel(UpdateLabelCommand request)
         {
             try
             {
-                var result = context.Labels.Update(this.mapper.Map<Label>(label));
+                var dbLabel = await this.context.Labels.FirstOrDefaultAsync(x => x.LabelId == request.LabelId);
+                if (dbLabel == null)
+                {
+                    throw new ApiException($"No Label found with Id:  {request.LabelId}");
+                }
+                
+
+                var result = context.Labels.Update(dbLabel);
                 await context.SaveChangesAsync();
                 return 1;
             }

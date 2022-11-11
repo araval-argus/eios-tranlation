@@ -39,7 +39,7 @@
         /// <inheritdoc/>
         async Task<bool> IAuthorize<GetAllLabelsCommand, List<LabelViewModel>>.Authorize(GetAllLabelsCommand request)
         {
-            bool authorized = false;
+            bool authorized = true;
 
             if (request.User != null)
             {

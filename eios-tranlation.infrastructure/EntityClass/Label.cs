@@ -13,17 +13,37 @@ namespace eios_translation.infrastructure.EntityClass
 {
     public class Label
     {
+        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
+            string? labeldescription, string? labelsnapshotpath, string? machinetranslation, TranslationStatus translationstatus, string? scope,
+            int version, bool isactive, int? fk_prevversionlabelid)
+        {
+            
+            ResourceId = resourceid;
+            FK_LabelGroupId = fk_labelgroupid;
+            FK_LanguageId = fk_languageid;
+            LabelValue = labelvalue;
+            LabelType = labeltype;
+            LabelDescription = labeldescription;
+            LabelSnapshotPath = labelsnapshotpath;
+            MachineTranslation = machinetranslation;
+            TranslationStatus = translationstatus;
+            Scope = scope;
+            Version = version;
+            IsActive = isactive;
+            FK_PrevVersionLabelId = fk_prevversionlabelid;
+        }
+
         [Key]
         public int LabelId { get; protected set; }
         public string ResourceId { get; protected set; } = string.Empty;
         public int FK_LabelGroupId { get; protected set; }
-        public int FK_LanguageId { get;  set; }
+        public int FK_LanguageId { get; set; }
         public string LabelValue { get; protected set; } = string.Empty;
-        public int LabelType { get; protected set; }
+        public LabelType LabelType { get; protected set; }
         public string? LabelDescription { get; protected set; }
         public string? LabelSnapshotPath { get; protected set; }
         public string? MachineTranslation { get; set; }
-        public int TranslationStatus { get; protected set; }
+        public TranslationStatus TranslationStatus { get; protected set; }
         public string? Scope { get; set; }
         public int Version { get; protected set; }
         public bool IsActive { get; protected set; }
@@ -39,5 +59,24 @@ namespace eios_translation.infrastructure.EntityClass
         //[ForeignKey(nameof(FK_LanguageId))]
         //public virtual Language Language { get; protected set; }
 
+        public void UpdateLabelGroup(int labelId, string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
+            string? labeldescription, string? labelsnapshotpath, string? machinetranslation, TranslationStatus translationstatus, string? scope,
+            int version, bool isactive, int? fk_prevversionlabelid)
+        {
+            LabelId = labelId;
+            ResourceId = resourceid;
+            FK_LabelGroupId = fk_labelgroupid;
+            FK_LanguageId = fk_languageid;
+            LabelValue = labelvalue;
+            LabelType = labeltype;
+            LabelDescription = labeldescription;
+            LabelSnapshotPath = labelsnapshotpath;
+            MachineTranslation = machinetranslation;
+            TranslationStatus = translationstatus;
+            Scope = scope;
+            Version = version;
+            IsActive = isactive;
+            FK_PrevVersionLabelId = fk_prevversionlabelid;
+        }
     }
 }
