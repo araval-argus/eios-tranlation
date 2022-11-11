@@ -10,6 +10,7 @@ using MediatR;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
+using eios_tranlation.core.Constants;
 
 namespace eios_translation.api.Controllers
 {
@@ -61,9 +62,9 @@ namespace eios_translation.api.Controllers
         [HttpGet("AzureTranslateText")]
         public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            string key = configuration.GetValue<string>("key");
-            string endpoint = configuration.GetValue<string>("endpoint");
-            string location = configuration.GetValue<string>("location");
+            string key = CommonSettings.AzureTranslationSettings.Key;
+            string endpoint = CommonSettings.AzureTranslationSettings.Endpoint;
+            string location = CommonSettings.AzureTranslationSettings.Location;
             return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage, key, endpoint, location));
         }
 

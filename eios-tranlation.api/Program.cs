@@ -1,6 +1,7 @@
 using eios_tranlation.businesslogic.Features.Label;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.Helpers;
+using eios_tranlation.core.Constants;
 using eios_tranlation.core.ResponseMiddleware;
 using eios_tranlation.infrastructure.ServiceImplementation;
 using eios_translation.businesslogic.ServiceInterfaces;
@@ -12,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+CommonSettings.AppSettings = builder.Configuration.GetSection("AppSettings").Get<ApplicationSettings>();
+CommonSettings.AzureTranslationSettings = builder.Configuration.GetSection("AzureTranslationSettings").Get<AzureTranslationSettings>();
 
 builder.Services.AddDbContext<EIOSTranslationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
 builder.Services.AddMediatR(typeof(GetAllLanguagesCommand));
