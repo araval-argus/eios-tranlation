@@ -49,27 +49,28 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public async Task<int> UpdateLanguage(LanguageViewModel language)
+        public async Task<LanguageViewModel> UpdateLanguage(UpdateLanguageCommand request)
         {
             try
             {
-                this.context.Languages.Update(this.mapper.Map<Language>(language));
+                var dbLanguage = await this.context.Languages.FirstOrDefaultAsync(x => x.LanguageId == request.LanguageId);
+                if (dbLanguage == null)
+                {
+                    throw new ApiException($"No Language found with Id:  {request.LanguageId}");
+                }
+                dbLanguage.UpdateLanguage(name: request.Name, languageCode: request.LanguageCode, tolerance: request.Tolerance, toleranceType: request.ToleranceType, description: request.Description);
                 await context.SaveChangesAsync();
-                return 1;
+                return this.mapper.Map<LanguageViewModel>(dbLanguage);
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+                throw new ApiException($"Something went wrong while updating the language: {ex.Message}");
             }
         }
 
         public async Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            if (string.IsNullOrEmpty(Source))
-                return "";
-
             var client = Google.Cloud.Translation.V2.TranslationClient.Create();
-            
             var response = await client.TranslateTextAsync(Source, targetLanguage, sourceLanguage);
             return response.TranslatedText;
         }

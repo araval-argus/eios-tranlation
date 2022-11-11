@@ -37,9 +37,7 @@
         }
     }
 
-    /// <summary>
-    /// Authorization for MediatR <see cref="GoogleTranslateTextCommand"/> Query.
-    /// </summary>
+    
     public class GoogleTranslateTextCommandAuthorization : IAuthorize<GoogleTranslateTextCommand, string>
     {
         /// <inheritdoc/>
@@ -50,9 +48,6 @@
         }
     }
 
-    /// <summary>
-    /// Handler class for the MediatR <see cref="GetAllQuestionTypesCommand"/> command.
-    /// </summary>
     public class GoogleTranslateTextCommandHandler : IGetEntityCommandHandler<GoogleTranslateTextCommand, string>
     {
         private readonly ILanguageService service;

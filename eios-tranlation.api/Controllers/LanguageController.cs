@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using MediatR;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_translation.businesslogic.Features.Label.ViewModels;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 
 namespace eios_translation.api.Controllers
 {
@@ -48,8 +49,8 @@ namespace eios_translation.api.Controllers
         /// <returns></returns>
         [HttpGet("GoogleTranslateText")]
         public async Task<IActionResult> GoogleTranslate(string source, string sourceLanguage, string targetLanguage)
-         => this.Ok(await this.mediator.Send(new GoogleTranslateTextCommand { Source = source, TargetLanguage = targetLanguage, SourceLanguage = sourceLanguage}));
-         
+         => this.Ok(await this.mediator.Send(new GoogleTranslateTextCommand { Source = source, TargetLanguage = targetLanguage, SourceLanguage = sourceLanguage }));
+
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
         /// </summary>
@@ -80,30 +81,10 @@ namespace eios_translation.api.Controllers
         public async Task<IActionResult> InsertLanguage(InsertLanguageCommand request)
                  => this.Ok(await this.mediator.Send(request));
 
-        //{
-        //    if (await this.languageService.InsertLanguage(language) == 1)
-        //    {
-        //        return this.Ok(language);
-        //    }
-        //    else
-        //    {
-        //        return this.NotFound();
-        //    }
-        //}
-
-
         [HttpPost("UpdateLanguage")]
         [ProducesResponseType(typeof(LanguageViewModel), 200)]
-        public async Task<IActionResult> UpdateLanguage(LanguageViewModel language)
-        {
-            if (await this.languageService.UpdateLanguage(language) == 1)
-            {
-                return this.Ok(language);
-            }
-            else
-            {
-                return this.NotFound();
-            }
-        }
+        public async Task<IActionResult> UpdateLanguage(UpdateLanguageCommand request)
+                         => this.Ok(await this.mediator.Send(request));
+
     }
 }

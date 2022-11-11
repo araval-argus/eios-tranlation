@@ -32,5 +32,15 @@ namespace eios_translation.infrastructure.EntityClass
         public DateTime? UpdatedAt { get; set; }
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
+
+        public void UpdateLanguage(string name, string languageCode, double? tolerance, ToleranceType toleranceType, string? description)
+        {
+            Name = name;
+            LanguageCode = languageCode;
+            Tolerance = tolerance;
+            ToleranceType = toleranceType;
+            Description = description;
+
+        }
     }
 }
