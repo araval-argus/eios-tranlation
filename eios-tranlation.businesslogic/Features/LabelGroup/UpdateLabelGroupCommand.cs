@@ -1,5 +1,4 @@
-﻿using eios_tranlation.businesslogic.Features.Language;
-using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
+﻿using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.MediatRPiplelineBehavior;
@@ -41,16 +40,16 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         }
 
     }
-    public class CreateChallengeCommandHandler : IGetEntityCommandHandler<UpdateLabelGroupCommand, LabelGroupViewModel>
+    public class UpdateLabelGroupCommandHandler : IGetEntityCommandHandler<UpdateLabelGroupCommand, int>
     {
         private readonly ILabelGroupService service;
-        public CreateChallengeCommandHandler(ILabelGroupService service)
+        public UpdateLabelGroupCommandHandler(ILabelGroupService service)
         {
             this.service = service;
         }
 
         /// <inheritdoc/>
-        public async Task<LanguageViewModel> Handle(UpdateLabelGroupCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateLabelGroupCommand request, CancellationToken cancellationToken)
         {
             return await this.service.UpdateLabelGroup(request);
         }

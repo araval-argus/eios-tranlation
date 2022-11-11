@@ -54,16 +54,16 @@ namespace eios_tranlation.businesslogic.Features.Label
     }
 
 
-    public class CreateChallengeCommandHandler : IGetEntityCommandHandler<UpdateLabelCommand, int>
+    public class UpdateLabelCommandHandler : IGetEntityCommandHandler<UpdateLabelCommand, int>
     {
         private readonly ILabelService service;
-        public CreateChallengeCommandHandler(ILabelService service)
+        public UpdateLabelCommandHandler(ILabelService service)
         {
             this.service = service;
         }
 
         /// <inheritdoc/>
-        public async Task<LanguageViewModel> Handle(UpdateLabelCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateLabelCommand request, CancellationToken cancellationToken)
         {
             return await this.service.UpdateLabel(request);
         }
