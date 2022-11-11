@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eios_tranlation.businesslogic.Features.LabelGroup;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,12 @@ namespace eios_translation.infrastructure.EntityClass
 {
     public class LabelGroup
     {
+        public LabelGroup(string groupname, int? parentgroupid)
+        {
+            GroupName = groupname;
+            FK_ParentLableGroupId = parentgroupid;
+        }
+
         [Key]
         public int LabelGroupId { get; protected set; }
         public string GroupName { get; protected set; }
@@ -22,6 +29,13 @@ namespace eios_translation.infrastructure.EntityClass
         // Referential Properties.
 
         [ForeignKey(nameof(FK_ParentLableGroupId))]
-        public virtual LabelGroup ParentGroup { get; protected set; }
+        public virtual LabelGroup? ParentGroup { get; protected set; }
+
+        public void UpdateLabelGroup(int labelGroupId, string groupName, int? parentLableGroupId)
+        {
+            LabelGroupId = labelGroupId;
+            GroupName = groupName;
+            FK_ParentLableGroupId = parentLableGroupId;
+        }
     }
 }

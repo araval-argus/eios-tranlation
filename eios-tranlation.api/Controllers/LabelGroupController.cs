@@ -20,7 +20,7 @@ namespace eios_tranlation.api.Controllers
         {
             this.logger = logger;
             this.LabelGroupService = labelGroupService;
-            this.mediator= mediator;
+            this.mediator = mediator;
         }
 
         /// <summary>
@@ -33,42 +33,60 @@ namespace eios_tranlation.api.Controllers
             => this.Ok(await this.mediator.Send(new GetAllLabelGroupsCommand()));
 
 
+        ///// <summary>
+        ///// Api to Get selected LabelGroup.
+        ///// </summary>
+        ///// <exception cref="ApiException">Invalid fields values.</exception>
+        //[HttpGet("GetSelectedLabelGroup")]
+        //[ProducesResponseType(typeof(ApiResponse<LabelGroupViewModel>), 200)]
+        //public async Task<IActionResult> GetSelectedLabelGroup(int LabelGroupId)
+        //{
+        //    //LabelGroupViewModel lgm = await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId);
+        //    return this.Ok(await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId));
+        //}
+
         /// <summary>
         /// Api to Get selected LabelGroup.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetSelectedLabelGroup")]
         [ProducesResponseType(typeof(ApiResponse<LabelGroupViewModel>), 200)]
-        public async Task<IActionResult> GetSelectedLabelGroup(int LabelGroupId)
-        {
-            //LabelGroupViewModel lgm = await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId);
-            return this.Ok(await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId));
-        }
+        public async Task<IActionResult> GetSelectedLabelGroup(int labelgroupId)
+                   => this.Ok(await this.mediator.Send(new GetSelectedLabelGroupCommand { LabelGroupId = labelgroupId }));
 
-        [HttpPost("InsertLabelGroup")]
-        public async Task<IActionResult> InsertLabelGroup(LabelGroupViewModel labelgroup)
-        {
-            if (await this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
-            {
-                return this.Ok(labelgroup);
-            }
-            else
-            {
-                return this.NotFound();
-            }
-        }
+        [HttpPost("InsertLanguage")]
+        public async Task<IActionResult> InsertLabelGroup(InsertLabelGroupCommand request)
+                 => this.Ok(await this.mediator.Send(request));
 
-        [HttpPost("UpdateLabelGroup")]
-        public async Task<IActionResult> UpdateLabelGroup(LabelGroupViewModel labelgroup)
-        {
-            if (await this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
-            {
-                return this.Ok(labelgroup);
-            }
-            else
-            {
-                return this.NotFound();
-            }
-        }
+        [HttpPost("UpdateLanguage")]
+        [ProducesResponseType(typeof(LanguageViewModel), 200)]
+        public async Task<IActionResult> UpdateLabelGroup(UpdateLabelGroupCommand request)
+                         => this.Ok(await this.mediator.Send(request));
+
+        //[HttpPost("InsertLabelGroup")]
+        //public async Task<IActionResult> InsertLabelGroup(LabelGroupViewModel labelgroup)
+        //{
+        //    if (await this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
+        //    {
+        //        return this.Ok(labelgroup);
+        //    }
+        //    else
+        //    {
+        //        return this.NotFound();
+        //    }
+        //}
+
+        //[HttpPost("UpdateLabelGroup")]
+        //public async Task<IActionResult> UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        //{
+        //    if (await this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
+        //    {
+        //        return this.Ok(labelgroup);
+        //    }
+        //    else
+        //    {
+        //        return this.NotFound();
+        //    }
+        //}
     }
 }

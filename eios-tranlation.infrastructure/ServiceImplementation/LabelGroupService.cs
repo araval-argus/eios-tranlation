@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using eios_tranlation.businesslogic.Features.LabelGroup;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.core.Wrappers;
@@ -44,11 +46,12 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return this.mapper.Map<LabelGroupViewModel>(result);
         }
 
-        public async Task<int> InsertLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<int> InsertLabelGroup(InsertLabelGroupCommand labelgroup)
         {
             try
             {
-                this.context.LabelGroups.Add(this.mapper.Map<LabelGroup>(labelgroup));
+                LabelGroup group = new LabelGroup(labelgroup.GroupName, labelgroup.FK_ParentLableGroupId);
+                this.context.LabelGroups.Add(group);
                 await context.SaveChangesAsync();
                 return 1;
             }
@@ -58,11 +61,16 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public async Task<int> UpdateLabelGroup(LabelGroupViewModel labelgroup)
+        public async Task<int> UpdateLabelGroup(UpdateLabelGroupCommand labelgroup)
         {
             try
             {
-                this.context.LabelGroups.Update(this.mapper.Map<LabelGroup>(labelgroup));
+                var dbLabelGroup = await this.context.LabelGroups.FirstOrDefaultAsync(x => x.LabelGroupId == labelgroup.LabelGroupId);
+                if (dbLabelGroup == null)
+                {
+                    throw new ApiException($"No Label Group found with Id:  {labelgroup.LabelGroupId}");
+                }
+                dbLabelGroup.UpdateLabelGroup(labelGroupId: labelgroup.LabelGroupId,groupName: labelgroup.GroupName, parentLableGroupId: labelgroup.FK_ParentLableGroupId);
                 await context.SaveChangesAsync();
                 return 1;
             }
