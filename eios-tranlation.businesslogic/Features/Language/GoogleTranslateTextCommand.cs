@@ -13,7 +13,7 @@
     /// <summary>
     /// GoogleTranslateText MediatR Command.
     /// </summary>
-    public class GoogleTranslateTextCommand : Request<List<LanguageViewModel>>, IGetEntityCommand<string>
+    public class GoogleTranslateTextCommand : Request<string>, IGetEntityCommand<string>
     {
         public string Source { get; set; }
         public string SourceLanguage { get; set; }
@@ -40,10 +40,10 @@
     /// <summary>
     /// Authorization for MediatR <see cref="GoogleTranslateTextCommand"/> Query.
     /// </summary>
-    public class GoogleTranslateTextCommandAuthorization : IAuthorize<GoogleTranslateTextCommand, List<LanguageViewModel>>
+    public class GoogleTranslateTextCommandAuthorization : IAuthorize<GoogleTranslateTextCommand, string>
     {
         /// <inheritdoc/>
-        async Task<bool> IAuthorize<GoogleTranslateTextCommand, List<LanguageViewModel>>.Authorize(GoogleTranslateTextCommand request)
+        async Task<bool> IAuthorize<GoogleTranslateTextCommand, string>.Authorize(GoogleTranslateTextCommand request)
         {
             bool authorized = true;
             return await Task.FromResult(authorized);
