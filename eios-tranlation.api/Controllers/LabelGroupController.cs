@@ -54,12 +54,12 @@ namespace eios_tranlation.api.Controllers
         public async Task<IActionResult> GetSelectedLabelGroup(int labelgroupId)
                    => this.Ok(await this.mediator.Send(new GetSelectedLabelGroupCommand { LabelGroupId = labelgroupId }));
 
-        [HttpPost("InsertLanguage")]
+        [HttpPost("InsertLabelGroup")]
         public async Task<IActionResult> InsertLabelGroup(InsertLabelGroupCommand request)
                  => this.Ok(await this.mediator.Send(request));
 
-        [HttpPost("UpdateLanguage")]
-        [ProducesResponseType(typeof(LanguageViewModel), 200)]
+        [HttpPost("UpdateLabelGroup")]
+        [ProducesResponseType(typeof(LabelGroupViewModel), 200)]
         public async Task<IActionResult> UpdateLabelGroup(UpdateLabelGroupCommand request)
                          => this.Ok(await this.mediator.Send(request));
 
