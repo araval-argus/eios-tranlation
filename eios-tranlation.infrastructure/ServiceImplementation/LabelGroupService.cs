@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
+using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
 using Microsoft.EntityFrameworkCore;
@@ -24,13 +25,22 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
         }
         public async Task<List<LabelGroupViewModel>> GetAllLabelGroups()
         {
-            var labelGroups = await context.LabelGroups.AsNoTracking().ToListAsync();
+            var labelGroups = await context.LabelGroups
+                .Include(x => x.ParentGroup)
+                .AsNoTracking().ToListAsync();
             return this.mapper.Map<List<LabelGroupViewModel>>(labelGroups);
         }
 
         public async Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId)
         {
-            var result = await this.context.LabelGroups.FirstAsync(a => a.LabelGroupId == LabelGroupId);
+            var result = await this.context.LabelGroups
+                .Include(x => x.ParentGroup)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.LabelGroupId == LabelGroupId);
+            if (result == null)
+            {
+                throw new ApiException($"No Group Found with the Id: {LabelGroupId}");
+            }
             return this.mapper.Map<LabelGroupViewModel>(result);
         }
 

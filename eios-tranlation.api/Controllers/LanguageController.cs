@@ -43,7 +43,7 @@ namespace eios_translation.api.Controllers
         /// <summary>
         /// Translate Source text from Source language to target language using Google API
         /// </summary>
-        /// <param name="Source"></param>
+        /// <param name="source"></param>
         /// <param name="sourceLanguage"></param>
         /// <param name="targetLanguage"></param>
         /// <returns></returns>

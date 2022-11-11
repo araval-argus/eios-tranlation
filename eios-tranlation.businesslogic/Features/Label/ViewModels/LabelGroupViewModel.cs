@@ -13,5 +13,6 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public int LabelGroupId { get; set; }
         public string GroupName { get; set; }
         public int? FK_ParentLableGroupId { get; set; }
+        public LabelGroupViewModel ParentGroup { get; set; }
     }
 }
