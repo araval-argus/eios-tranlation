@@ -8,6 +8,7 @@ using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.infrastructure;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.ServiceImplementation;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -33,12 +34,12 @@ builder.Services.RegisterAllTypesWithBaseInterface<IBaseService>(new[] { typeof(
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews().AddFluentValidation(cfg =>
-{
-    cfg.RegisterValidatorsFromAssemblyContaining(typeof(InsertLanguageCommand));
-    cfg.ImplicitlyValidateChildProperties = true;
-    cfg.DisableDataAnnotationsValidation = true;
-});
+builder.Services.AddControllersWithViews();
+builder.Services.AddValidatorsFromAssemblyContaining<InsertLanguageCommand>();
+
+
+// Add MediatR Pipelines.
+builder.Services.AddMediatRPipelines();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -71,9 +72,6 @@ builder.Services.AddSwaggerGen(c =>
 
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EIOS Translation API", Version = "v1" });
 });
-
-// Add MediatR Pipelines.
-builder.Services.AddMediatRPipelines();
 
 // Add MediatR Authorization Pipeline Handlers
 builder.Services.RegisterAuthorizationHandlers(new[] { typeof(InsertLanguageCommand).Assembly }, ServiceLifetime.Scoped);

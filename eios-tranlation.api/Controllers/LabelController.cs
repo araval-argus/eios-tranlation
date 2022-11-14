@@ -51,8 +51,8 @@ namespace eios_translation.api.Controllers
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetAllLabels")]
         [ProducesResponseType(typeof(ApiResponse<List<LabelViewModel>>), 200)]
-        public async Task<IActionResult> GetAllLabels(int languageId)
-            => this.Ok(await this.mediator.Send(new GetAllLabelsCommand { LanguageId = languageId }));
+        public async Task<IActionResult> GetAllLabels()
+            => this.Ok(await this.mediator.Send(new GetAllLabelsCommand()));
   
         /// <summary>
         /// Api to Get selected Language.

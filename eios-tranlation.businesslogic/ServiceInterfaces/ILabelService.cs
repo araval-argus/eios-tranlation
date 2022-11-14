@@ -10,7 +10,7 @@ namespace eios_translation.businesslogic.ServiceInterfaces
 {
     public interface ILabelService: IBaseService
     {
-        Task<List<LabelViewModel>> GetAllLabels(int languageId);
+        Task<List<LabelViewModel>> GetAllLabels();
         Task<LabelViewModel> GetSelectedLabel(int LabelId);
         Task<LabelViewModel> UpdateLabel(UpdateLabelCommand labelgroup);
         Task<int> InsertLabel(InsertLabelCommand labelgroup);

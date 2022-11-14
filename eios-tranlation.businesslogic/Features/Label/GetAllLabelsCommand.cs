@@ -70,7 +70,7 @@
         /// <inheritdoc/>
         public async Task<List<LabelViewModel>> Handle(GetAllLabelsCommand request, CancellationToken cancellationToken)
         {
-            return await this.service.GetAllLabels(request.LanguageId);
+            return await this.service.GetAllLabels();
         }
     }
 }

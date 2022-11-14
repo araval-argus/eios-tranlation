@@ -43,9 +43,9 @@ namespace eios_translation.infrastructure.ServiceImplementation
             this.mapper = mapper;
         }
 
-        public async Task<List<LabelViewModel>> GetAllLabels(int languageId)
+        public async Task<List<LabelViewModel>> GetAllLabels()
         {
-            var labels = await this.context.Labels.FirstAsync(a => a.FK_LanguageId == languageId);
+            var labels = await this.context.Labels.ToListAsync();
             return this.mapper.Map<List<LabelViewModel>>(labels);
         }
 

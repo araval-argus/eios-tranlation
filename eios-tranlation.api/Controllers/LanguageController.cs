@@ -2,7 +2,6 @@
 using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static System.Collections.Specialized.BitVector32;
 using Microsoft.Extensions.Configuration;
@@ -83,9 +82,9 @@ namespace eios_translation.api.Controllers
         public async Task<IActionResult> InsertLanguage(InsertLanguageCommand request)
                  => this.Ok(await this.mediator.Send(request));
 
-        [HttpPost("UpdateLanguage")]
+        [HttpPost("UpdateLanguage/{languageId:int}")]
         [ProducesResponseType(typeof(LanguageViewModel), 200)]
-        public async Task<IActionResult> UpdateLanguage([FromQuery] int languageId,[FromBody] UpdateLanguageCommand request)
+        public async Task<IActionResult> UpdateLanguage([FromRoute] int languageId,[FromBody] UpdateLanguageCommand request)
         {
             request.LanguageId = languageId;
             return this.Ok(await this.mediator.Send(request));
