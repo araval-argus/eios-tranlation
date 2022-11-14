@@ -3,7 +3,7 @@
     [ResourceId]            NVARCHAR (1000) NOT NULL,
     [FK_LabelGroupId]       INT             NOT NULL,
     [FK_LanguageId]         INT             NOT NULL,
-    [LabelValue]            NVARCHAR (1000) NOT NULL,
+    [LabelValue]            NVARCHAR (1000) NULL,
     [LabelType]             INT             NOT NULL,
     [LabelDescription]      NVARCHAR (MAX)  NULL,
     [LabelSnapshotPath]     NVARCHAR (MAX)  NULL,

@@ -18,7 +18,7 @@ namespace eios_translation.infrastructure.EntityClass
 
         }
 
-        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
+        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string? labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath)
         {
             ResourceId = resourceid;
@@ -35,7 +35,7 @@ namespace eios_translation.infrastructure.EntityClass
         public string ResourceId { get; protected set; } = string.Empty;
         public int FK_LabelGroupId { get; protected set; }
         public int FK_LanguageId { get; protected set; }
-        public string LabelValue { get; protected set; } = string.Empty;
+        public string? LabelValue { get; protected set; } = string.Empty;
         public LabelType LabelType { get; protected set; }
         public string? LabelDescription { get; protected set; }
         public string? LabelSnapshotPath { get; protected set; }

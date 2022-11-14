@@ -11,7 +11,7 @@ namespace eios_tranlation.businesslogic.ServiceInterfaces
 {
     public interface ILabelGroupService : IBaseService
     {
-        Task<List<LabelGroupViewModel>> GetAllLabelGroups();
+        Task<List<LabelGroupViewModel>> GetAllLabelGroups(bool onlyParent = false);
         Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId);
         Task<LabelGroupViewModel> UpdateLabelGroup(UpdateLabelGroupCommand labelgroup);
         Task<int> InsertLabelGroup(InsertLabelGroupCommand labelgroup);

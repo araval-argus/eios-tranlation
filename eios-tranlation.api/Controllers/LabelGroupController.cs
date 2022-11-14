@@ -27,6 +27,15 @@ namespace eios_tranlation.api.Controllers
         /// Api to Get All Label Groups.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
+        [HttpGet("GetParentLabelGroups")]
+        [ProducesResponseType(typeof(ApiResponse<List<LabelGroupViewModel>>), 200)]
+        public async Task<IActionResult> GetParentLabelGroupsCommand()
+            => this.Ok(await this.mediator.Send(new GetParentLabelGroupsCommand()));
+
+        /// <summary>
+        /// Api to Get All Label Groups.
+        /// </summary>
+        /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetAllLabelGroups")]
         [ProducesResponseType(typeof(ApiResponse<List<LabelGroupViewModel>>), 200)]
         public async Task<IActionResult> GetAllLabelGroups()

@@ -94,7 +94,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     resourceid: request.ResourceId,
                     fk_labelgroupid: request.FK_LabelGroupId,
                     fk_languageid: language.LanguageId,
-                    labelvalue: request.LabelValue,
+                    labelvalue: null,
                     labeltype: LabelType.Normal,
                     labeldescription: null,
                     labelsnapshotpath: null);

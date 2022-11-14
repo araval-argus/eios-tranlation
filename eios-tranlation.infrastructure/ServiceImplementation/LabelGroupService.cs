@@ -26,11 +26,24 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             this.context = context;
             this.mapper = mapper;
         }
-        public async Task<List<LabelGroupViewModel>> GetAllLabelGroups()
+        public async Task<List<LabelGroupViewModel>> GetAllLabelGroups(bool onlyParent = false)
         {
-            var labelGroups = await context.LabelGroups
-                .Include(x => x.ParentGroup)
-                .AsNoTracking().ToListAsync();
+
+            var labelGroups = new List<LabelGroup>();
+            if (!onlyParent)
+            {
+                labelGroups = await context.LabelGroups
+                    .Include(x => x.ParentGroup)
+                    .AsNoTracking()
+                    .ToListAsync();
+            }
+            else
+            {
+                labelGroups = await context.LabelGroups
+                    .Where(x=>x.FK_ParentLableGroupId == null)
+                    .AsNoTracking()
+                    .ToListAsync();
+            }
             return this.mapper.Map<List<LabelGroupViewModel>>(labelGroups);
         }
 
