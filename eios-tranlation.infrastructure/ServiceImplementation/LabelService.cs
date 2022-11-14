@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.Features.Label;
+using eios_tranlation.businesslogic.Features.Label.ViewModels;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_tranlation.core.Constants;
@@ -34,12 +35,13 @@ namespace eios_translation.infrastructure.ServiceImplementation
         private readonly string key = CommonSettings.AzureTranslationSettings.Key;
         private readonly string endpoint = CommonSettings.AzureTranslationSettings.Endpoint;
         private readonly string location = CommonSettings.AzureTranslationSettings.Location;
+        private readonly ILanguageService languageService;
 
-
-        public LabelService(EIOSTranslationContext context, IMapper mapper)
+        public LabelService(EIOSTranslationContext context, IMapper mapper, ILanguageService langService)
         {
             this.context = context;
             this.mapper = mapper;
+            this.languageService = langService;
         }
 
         public async Task<List<LabelViewModel>> GetAllLabels()
@@ -85,27 +87,31 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 context.Labels.Add(baseLabel);
                 await context.SaveChangesAsync();
 
-                //var languages = await this.context.Languages.AsNoTracking().Where(x=>!x.IsDefault).ToListAsync();
-                //foreach (var language in languages)
-                //{
-                //    Label tranlatedLabel = new Label(
-                //    resourceid: request.ResourceId,
-                //    fk_labelgroupid: request.FK_LabelGroupId,
-                //    fk_languageid: baseLanguage.LanguageId,
-                //    labelvalue: request.LabelValue,
-                //    labeltype: LabelType.Normal,
-                //    labeldescription: null,
-                //    labelsnapshotpath: null);
+                var languages = await this.context.Languages.AsNoTracking().Where(x => !x.IsDefault).ToListAsync();
+                foreach (var language in languages)
+                {
+                    Label tranlatedLabel = new Label(
+                    resourceid: request.ResourceId,
+                    fk_labelgroupid: request.FK_LabelGroupId,
+                    fk_languageid: language.LanguageId,
+                    labelvalue: request.LabelValue,
+                    labeltype: LabelType.Normal,
+                    labeldescription: null,
+                    labelsnapshotpath: null);
 
-                //    string translation = await GetTranslatedStringAsync(tranlatedLabel.LabelValue, "en", language.LanguageCode, key, endpoint, location);
-                //    tranlatedLabel.SetMachineTranslation (language.LanguageId, translation);
-                //    context.Labels.Add(tranlatedLabel);
-                //    await context.SaveChangesAsync();
+                    string autoTranslation = await this.languageService.AzureTranslate(baseLabel.LabelValue, baseLanguage.LanguageCode, language.LanguageCode);
+                    if (!string.IsNullOrEmpty(autoTranslation))
+                    {
+                        tranlatedLabel.SetMachineTranslation(language.LanguageId, autoTranslation);
+                    }
+                    context.Labels.Add(tranlatedLabel);
+                    await context.SaveChangesAsync();
 
-                //}
+                    //}
+                }
                 return 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApiException($"Something went wrong while adding the label: {ex.Message}");
             }
@@ -120,21 +126,21 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 {
                     throw new ApiException($"No Label found with Id:  {request.LabelId}");
                 }
-                
+
 
                 var result = context.Labels.Update(dbLabel);
                 await context.SaveChangesAsync();
                 return this.mapper.Map<LabelViewModel>(dbLabel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApiException($"Something went wrong while updating the label: {ex.Message}");
             }
         }
-        
-        public async Task<string> GetTranslatedStringAsync(string LabelValue,string SourceLanguage,string TargetLanguage,string key,string endpoint,string location)
+
+        public async Task<string> GetTranslatedStringAsync(string LabelValue, string SourceLanguage, string TargetLanguage, string key, string endpoint, string location)
         {
-            LanguageService languageService = new LanguageService(context, mapper);
+            //LanguageService languageService = new LanguageService(context, mapper);
             string translation = await languageService.AzureTranslate(LabelValue, SourceLanguage, TargetLanguage);
             JArray a = JArray.Parse(translation);
             foreach (JObject o in a.Children<JObject>())

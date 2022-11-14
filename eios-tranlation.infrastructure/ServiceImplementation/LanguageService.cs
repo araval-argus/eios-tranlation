@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eios_tranlation.businesslogic.Features.Label.ViewModels;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
@@ -11,6 +12,8 @@ using Google.Cloud.Translation.V2;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using RestSharp;
+using System.Net;
 using System.Text;
 using Language = eios_translation.infrastructure.EntityClass.Language;
 
@@ -20,7 +23,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
     {
         private readonly EIOSTranslationContext context;
         private readonly IMapper mapper;
-       
+
         public LanguageService(EIOSTranslationContext context, IMapper mapper)
         {
             this.context = context;
@@ -85,30 +88,37 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
 
         public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
-            string route = "/translate?api-version=3.0&from=" + sourceLanguage + "&to=" + targetLanguage;
-            string textToTranslate = Source;
-            object[] body = new object[] { new { Text = textToTranslate } };
-            var requestBody = JsonConvert.SerializeObject(body);
-
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
+            string translatedResult = string.Empty;
+            try
             {
-                // Build the request.
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(CommonSettings.AzureTranslationSettings.Endpoint + route);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", CommonSettings.AzureTranslationSettings.Key);
+                string url = $"{CommonSettings.AzureTranslationSettings.Endpoint}/translate?api-version=3.0&from={sourceLanguage}&to={targetLanguage}";
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                request.AddHeader("Ocp-Apim-Subscription-Key", CommonSettings.AzureTranslationSettings.Key);
+                request.AddHeader("Ocp-Apim-Subscription-Region", CommonSettings.AzureTranslationSettings.Location);
+                var body = new object[] { new { Text = Source } };
+                var requestBody = JsonConvert.SerializeObject(body);
+                request.AddJsonBody(requestBody);
+                request.Method = Method.Post;
+                RestResponse response = await client.ExecuteAsync(request);
 
-                request.Headers.Add("Ocp-Apim-Subscription-Region", CommonSettings.AzureTranslationSettings.Location);
-
-                // Send the request and get response.
-                HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
-
-                // Read response as a string.
-                string result = await response.Content.ReadAsStringAsync();
-           
-                return (result);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    List<AzureTranslationResponse> azureResponse = JsonConvert.DeserializeObject<List<AzureTranslationResponse>>(response.Content);
+                    if (azureResponse != null && azureResponse.Count > 0)
+                    {
+                        var firstRespose = azureResponse[0];
+                        if (firstRespose != null && firstRespose.Translations.Count > 0)
+                        {
+                            translatedResult = firstRespose.Translations[0].Text;
+                        }
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+            }
+            return translatedResult;
         }
     }
 }
