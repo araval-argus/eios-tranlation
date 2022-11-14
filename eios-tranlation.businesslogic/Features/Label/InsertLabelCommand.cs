@@ -17,11 +17,7 @@ namespace eios_tranlation.businesslogic.Features.Label
     {
         public string ResourceId { get; set; }
         public int FK_LabelGroupId { get; set; }
-        public int FK_LanguageId { get; set; }
         public string LabelValue { get; set; }
-        public LabelType LabelType { get; set; }
-        public string? LabelDescription { get; set; }
-        public string? LabelSnapshotPath { get; set; }
     }
 
     public class InsertLabelCommandAuthorization : IAuthorize<InsertLabelCommand, int>
@@ -40,7 +36,7 @@ namespace eios_tranlation.businesslogic.Features.Label
         /// </summary>
         public InsertLabelCommandValidator()
         {
-            this.RuleFor(x => x.LabelValue).NotEmpty().NotNull().MaximumLength(100);
+            this.RuleFor(x => x.LabelValue).NotEmpty().NotNull().MaximumLength(1000);
         }
     }
 

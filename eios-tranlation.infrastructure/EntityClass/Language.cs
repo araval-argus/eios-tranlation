@@ -11,14 +11,14 @@ namespace eios_translation.infrastructure.EntityClass
 {
     public class Language
     {
-        public Language(string name, string languageCode, double? tolerance, ToleranceType toleranceType, string? description)
+        public Language(string name, string languageCode, double? tolerance, ToleranceType toleranceType, string? description, bool isDefault)
         {
             Name = name;
             LanguageCode = languageCode;
             Tolerance = tolerance;
             ToleranceType = toleranceType;
             Description = description;
-
+            IsDefault = isDefault;
         }
 
         [Key]
@@ -27,7 +27,8 @@ namespace eios_translation.infrastructure.EntityClass
         public string LanguageCode { get; protected set; }
         public double? Tolerance { get; protected set; }
         public ToleranceType ToleranceType { get; protected set; }
-        public string? Description { get; set; }
+        public string? Description { get; protected set; }
+        public bool IsDefault { get; protected set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int CreatedBy { get; set; }

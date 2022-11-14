@@ -17,6 +17,7 @@ namespace eios_translation.infrastructure.EntityClass
         {
 
         }
+
         public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath)
         {
@@ -33,14 +34,14 @@ namespace eios_translation.infrastructure.EntityClass
         public int LabelId { get; protected set; }
         public string ResourceId { get; protected set; } = string.Empty;
         public int FK_LabelGroupId { get; protected set; }
-        public int FK_LanguageId { get; set; }
+        public int FK_LanguageId { get; protected set; }
         public string LabelValue { get; protected set; } = string.Empty;
         public LabelType LabelType { get; protected set; }
         public string? LabelDescription { get; protected set; }
         public string? LabelSnapshotPath { get; protected set; }
-        public string? MachineTranslation { get; set; }
+        public string? MachineTranslation { get; protected set; }
         public TranslationStatus TranslationStatus { get; protected set; }
-        public string? Scope { get; set; }
+        public string? Scope { get; protected set; }
         public int Version { get; protected set; }
         public bool IsActive { get; protected set; }
         public int? FK_PrevVersionLabelId { get; protected set; }
@@ -74,5 +75,12 @@ namespace eios_translation.infrastructure.EntityClass
             IsActive = isactive;
             FK_PrevVersionLabelId = fk_prevversionlabelid;
         }
+
+        public void SetMachineTranslation(int fk_languageId, string machineTranslation)
+        {
+            this.FK_LanguageId = fk_languageId;
+            this.MachineTranslation = machineTranslation;
+        }
+
     }
 }

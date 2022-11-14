@@ -5,6 +5,7 @@
     [Tolerance] FLOAT (53)    NULL,
     [ToleranceType] INT           NULL,
     [Description] varchar(1000) null,
+    [IsDefault]  BIT            NOT NULL DEFAULT 0,
     [CreatedAt]         DATETIME2 (7) NOT NULL,
     [UpdatedAt]         DATETIME2 (7) NULL,
     [CreatedBy]         INT           NOT NULL,

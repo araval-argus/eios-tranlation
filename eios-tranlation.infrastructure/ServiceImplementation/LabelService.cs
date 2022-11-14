@@ -10,7 +10,6 @@ using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
-using Google.Cloud.Translation.V2;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -51,31 +50,64 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
         public async Task<LabelViewModel> GetSelectedLabel(int LabelId)
         {
-            var result = await this.context.Labels.FirstAsync(a => a.LabelId == LabelId);
+            var result = await this.context.Labels.FirstOrDefaultAsync(a => a.LabelId == LabelId);
+            if (result == null)
+            {
+                throw new ApiException($"No label found with Id : {LabelId}");
+            }
             return this.mapper.Map<LabelViewModel>(result);
         }
 
-        public async Task<int> InsertLabel(InsertLabelCommand label)
+        public async Task<int> InsertLabel(InsertLabelCommand request)
         {
             try
-            {                
-                var languages = await this.context.Languages.AsNoTracking().ToListAsync();
-                foreach (var language in languages)
-                {
-                    Label label1 = new Label(resourceid : label.ResourceId, fk_labelgroupid:label.FK_LabelGroupId, fk_languageid: label.FK_LanguageId, labelvalue: label.LabelValue,
-                                        labeltype: label.LabelType, labeldescription:label.LabelDescription, labelsnapshotpath:label.LabelSnapshotPath);
+            {
+                // Get Default Language.
+                Language baseLanguage = await this.context.Languages
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.IsDefault);
 
-                    string translation = await GetTranslatedStringAsync(label1.LabelValue, "en", language.LanguageCode, key, endpoint, location);
-                    label1.MachineTranslation = translation;
-                    label1.FK_LanguageId = language.LanguageId;
-                    var result = context.Labels.Add(label1);
-                    await context.SaveChangesAsync();
+                if (baseLanguage == null)
+                {
+                    throw new ApiException($"Please add default english language first");
                 }
+
+                Label baseLabel = new Label(
+                    resourceid: request.ResourceId,
+                    fk_labelgroupid: request.FK_LabelGroupId,
+                    fk_languageid: baseLanguage.LanguageId,
+                    labelvalue: request.LabelValue,
+                    labeltype: LabelType.Normal,
+                    labeldescription: null,
+                    labelsnapshotpath: null);
+
+                // Get Non-Default Language.
+                context.Labels.Add(baseLabel);
+                await context.SaveChangesAsync();
+
+                //var languages = await this.context.Languages.AsNoTracking().Where(x=>!x.IsDefault).ToListAsync();
+                //foreach (var language in languages)
+                //{
+                //    Label tranlatedLabel = new Label(
+                //    resourceid: request.ResourceId,
+                //    fk_labelgroupid: request.FK_LabelGroupId,
+                //    fk_languageid: baseLanguage.LanguageId,
+                //    labelvalue: request.LabelValue,
+                //    labeltype: LabelType.Normal,
+                //    labeldescription: null,
+                //    labelsnapshotpath: null);
+
+                //    string translation = await GetTranslatedStringAsync(tranlatedLabel.LabelValue, "en", language.LanguageCode, key, endpoint, location);
+                //    tranlatedLabel.SetMachineTranslation (language.LanguageId, translation);
+                //    context.Labels.Add(tranlatedLabel);
+                //    await context.SaveChangesAsync();
+
+                //}
                 return 1;
             }
-            catch
+            catch(Exception ex)
             {
-                return 0;
+                throw new ApiException($"Something went wrong while adding the label: {ex.Message}");
             }
         }
 

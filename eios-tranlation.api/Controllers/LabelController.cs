@@ -58,9 +58,9 @@ namespace eios_translation.api.Controllers
         /// Api to Get selected Language.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
-        [HttpGet("GetSelectedLabel")]
+        [HttpGet("GetSelectedLabel/{labelId:int}")]
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> GetSelectedLabel(int labelId)
+        public async Task<IActionResult> GetSelectedLabel([FromRoute] int labelId)
                    => this.Ok(await this.mediator.Send(new GetSelectedLabelCommand { LabelId = labelId }));
 
         [HttpPost("InsertLabel")]
@@ -74,52 +74,5 @@ namespace eios_translation.api.Controllers
             request.LabelId = labelId;
             return this.Ok(await this.mediator.Send(request));
         }
-
-        //[HttpPost("InsertLabel")]
-        //public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
-        //{
-        //    try
-        //    {
-        //        if (await this.labelService.InsertLabel(label) == 1)
-        //        {
-        //            return this.Ok(label);
-        //        }
-        //        else
-        //        {
-        //            return this.NotFound();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw (ex);
-        //    }
-
-        //}
-        ////[HttpPost("InsertLabel")]
-        ////public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)
-        ////{
-        ////    if (await this.labelService.InsertLabel(label) == 1)
-        ////    {
-        ////        return this.Ok(label);
-        ////    }
-        ////    else
-        ////    {
-        ////        return this.NotFound();
-        ////    }
-        ////}
-
-        //[HttpPost("UpdateLabel")]
-        //[ProducesResponseType(typeof(LabelViewModel), 200)]
-        //public async Task<IActionResult> UpdateLabel(LabelViewModel label)
-        //{
-        //    if (await this.labelService.UpdateLabel(label) == 1)
-        //    {
-        //        return this.Ok(label);
-        //    }
-        //    else
-        //    {
-        //        return this.NotFound();
-        //    }
-        //}
     }
 }

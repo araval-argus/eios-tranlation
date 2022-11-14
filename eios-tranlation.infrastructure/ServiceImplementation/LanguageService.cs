@@ -47,7 +47,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
         {
             try
             {
-                Language language = new Language(name: request.Name, languageCode: request.LanguageCode, tolerance: request.Tolerance, toleranceType: request.ToleranceType, description: request.Description);
+                Language language = new Language(name: request.Name, languageCode: request.LanguageCode, tolerance: request.Tolerance, toleranceType: request.ToleranceType, description: request.Description, isDefault: false);
                 this.context.Languages.Add(language);
                 return await context.SaveChangesAsync();
             }
