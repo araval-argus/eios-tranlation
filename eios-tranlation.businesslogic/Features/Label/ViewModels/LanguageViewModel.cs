@@ -15,5 +15,6 @@ namespace eios_translation.businesslogic.Features.Label.ViewModels
         public float Tolerance { get; set; }
         public ToleranceType ToleranceType { get; set; }
         public string? Description { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

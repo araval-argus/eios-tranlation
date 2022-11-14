@@ -69,6 +69,10 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 {
                     throw new ApiException($"No Language found with Id:  {request.LanguageId}");
                 }
+                else if(dbLanguage.IsDefault)
+                {
+                    throw new ApiException($"Default language can not be changed. You can only change non default language.");
+                }
                 dbLanguage.UpdateLanguage(name: request.Name, languageCode: request.LanguageCode, tolerance: request.Tolerance, toleranceType: request.ToleranceType, description: request.Description);
                 await context.SaveChangesAsync();
                 return this.mapper.Map<LanguageViewModel>(dbLanguage);
