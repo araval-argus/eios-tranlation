@@ -14,8 +14,7 @@ namespace eios_translation.infrastructure.EntityClass
     public class Label
     {
         public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
-            string? labeldescription, string? labelsnapshotpath, string? machinetranslation, TranslationStatus translationstatus, string? scope,
-            int version, bool isactive, int? fk_prevversionlabelid)
+            string? labeldescription, string? labelsnapshotpath)
         {
             
             ResourceId = resourceid;
@@ -25,12 +24,6 @@ namespace eios_translation.infrastructure.EntityClass
             LabelType = labeltype;
             LabelDescription = labeldescription;
             LabelSnapshotPath = labelsnapshotpath;
-            MachineTranslation = machinetranslation;
-            TranslationStatus = translationstatus;
-            Scope = scope;
-            Version = version;
-            IsActive = isactive;
-            FK_PrevVersionLabelId = fk_prevversionlabelid;
         }
 
         [Key]

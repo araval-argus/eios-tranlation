@@ -63,9 +63,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 foreach (var language in languages)
                 {
                     Label label1 = new Label(resourceid : label.ResourceId, fk_labelgroupid:label.FK_LabelGroupId, fk_languageid: label.FK_LanguageId, labelvalue: label.LabelValue,
-                                        labeltype: label.LabelType, labeldescription:label.LabelDescription, labelsnapshotpath:label.LabelSnapshotPath,
-                                        machinetranslation: label.MachineTranslation, translationstatus: label.TranslationStatus, scope:label.Scope,
-                                        version: label.Version, isactive: label.IsActive, fk_prevversionlabelid:label.FK_PrevVersionLabelId);
+                                        labeltype: label.LabelType, labeldescription:label.LabelDescription, labelsnapshotpath:label.LabelSnapshotPath);
 
                     string translation = await GetTranslatedStringAsync(label1.LabelValue, "en", language.LanguageCode, key, endpoint, location);
                     label1.MachineTranslation = translation;

@@ -22,12 +22,6 @@ namespace eios_tranlation.businesslogic.Features.Label
         public LabelType LabelType { get; set; }
         public string? LabelDescription { get; set; }
         public string? LabelSnapshotPath { get; set; }
-        public string? MachineTranslation { get; set; }
-        public TranslationStatus TranslationStatus { get; set; }
-        public string? Scope { get; set; }
-        public int Version { get; set; }
-        public bool IsActive { get; set; }
-        public int? FK_PrevVersionLabelId { get; set; }
     }
 
     public class InsertLabelCommandAuthorization : IAuthorize<InsertLabelCommand, int>
@@ -47,10 +41,6 @@ namespace eios_tranlation.businesslogic.Features.Label
         public InsertLabelCommandValidator()
         {
             this.RuleFor(x => x.LabelValue).NotEmpty().NotNull().MaximumLength(100);
-        }
-        private bool CheckToleranceType(ToleranceType tolType)
-        {
-            return tolType == ToleranceType.Absolute || tolType == ToleranceType.Relative;
         }
     }
 

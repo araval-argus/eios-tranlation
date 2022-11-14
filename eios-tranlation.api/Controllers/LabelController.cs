@@ -82,8 +82,11 @@ namespace eios_translation.api.Controllers
 
         [HttpPost("UpdateLabel")]
         [ProducesResponseType(typeof(LabelViewModel), 200)]
-        public async Task<IActionResult> UpdateLabel(UpdateLabelCommand request)
-                         => this.Ok(await this.mediator.Send(request));
+        public async Task<IActionResult> UpdateLabel([FromQuery] int labelId, [FromBody]UpdateLabelCommand request)
+        {
+            request.LabelId = labelId;
+            return this.Ok(await this.mediator.Send(request));
+        }
 
         //[HttpPost("InsertLabel")]
         //public async Task<IActionResult> InsertLabelAsync(LabelViewModel label)

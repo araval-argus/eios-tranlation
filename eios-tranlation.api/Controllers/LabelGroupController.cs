@@ -60,33 +60,10 @@ namespace eios_tranlation.api.Controllers
 
         [HttpPost("UpdateLabelGroup")]
         [ProducesResponseType(typeof(LabelGroupViewModel), 200)]
-        public async Task<IActionResult> UpdateLabelGroup(UpdateLabelGroupCommand request)
-                         => this.Ok(await this.mediator.Send(request));
-
-        //[HttpPost("InsertLabelGroup")]
-        //public async Task<IActionResult> InsertLabelGroup(LabelGroupViewModel labelgroup)
-        //{
-        //    if (await this.LabelGroupService.InsertLabelGroup(labelgroup) == 1)
-        //    {
-        //        return this.Ok(labelgroup);
-        //    }
-        //    else
-        //    {
-        //        return this.NotFound();
-        //    }
-        //}
-
-        //[HttpPost("UpdateLabelGroup")]
-        //public async Task<IActionResult> UpdateLabelGroup(LabelGroupViewModel labelgroup)
-        //{
-        //    if (await this.LabelGroupService.UpdateLabelGroup(labelgroup) == 1)
-        //    {
-        //        return this.Ok(labelgroup);
-        //    }
-        //    else
-        //    {
-        //        return this.NotFound();
-        //    }
-        //}
+        public async Task<IActionResult> UpdateLabelGroup([FromQuery] int labelGroupId, [FromBody] UpdateLabelGroupCommand request)
+        {
+            request.LabelGroupId = labelGroupId;
+            return this.Ok(await this.mediator.Send(request));
+        } 
     }
 }

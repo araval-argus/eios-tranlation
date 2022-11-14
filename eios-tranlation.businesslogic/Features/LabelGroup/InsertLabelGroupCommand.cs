@@ -18,7 +18,6 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
     {
         public string GroupName { get; set; }
         public int? FK_ParentLableGroupId { get; set; }
-        public LabelGroupViewModel? ParentGroup { get; set; }
     }
 
     public class InsertLabelGroupCommandAuthorization : IAuthorize<InsertLabelGroupCommand, int>
