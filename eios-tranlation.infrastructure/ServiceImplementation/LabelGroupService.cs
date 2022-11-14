@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.Features.LabelGroup;
+using eios_tranlation.businesslogic.Features.LabelGroup.ViewModels;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
@@ -45,6 +46,69 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                     .ToListAsync();
             }
             return this.mapper.Map<List<LabelGroupViewModel>>(labelGroups);
+        }
+        public async Task<LabelGroupDetailViewModel> GetLabelGroupDetailsById(int labelGroupId)
+        {
+            LabelGroupDetailViewModel response = new LabelGroupDetailViewModel();
+            var dbGroup = await this.context.LabelGroups
+               .AsNoTracking()
+               .Include(x => x.ParentGroup)
+               .FirstOrDefaultAsync(a => a.LabelGroupId == labelGroupId);
+            if (dbGroup == null)
+            {
+                throw new ApiException($"No Group Found with the Id: {labelGroupId}");
+            }
+
+            // Fill Basic Details.
+            response.LabelGroupId = dbGroup.LabelGroupId;
+            response.FK_ParentLableGroupId = dbGroup.FK_ParentLableGroupId;
+            response.GroupName = dbGroup.GroupName;
+
+            // Fill Parent Group Details.
+            if (dbGroup.ParentGroup != null)
+            {
+                response.ParentGroup = this.mapper.Map<LabelGroupViewModel>(dbGroup.ParentGroup);
+            }
+
+            // Fill Child Group Details.
+            var dbChildGroups = await this.context.LabelGroups
+               .AsNoTracking()
+               .Where(a => a.FK_ParentLableGroupId == dbGroup.LabelGroupId)
+               .ToListAsync();
+
+            if (dbChildGroups.Count > 0)
+            {
+                response.ChildGroups = this.mapper.Map<List<LabelGroupViewModel>>(dbChildGroups);
+            }
+
+            // Fill all languages with Labels.
+            var dbLanguages = await this.context.Languages
+               .AsNoTracking()
+               .ToListAsync();
+
+            var dbLabels = await this.context.Labels
+               .AsNoTracking()
+               .Where(x => x.FK_LabelGroupId == dbGroup.LabelGroupId)
+               .ToListAsync();
+
+            foreach (var lang in dbLanguages)
+            {
+                LanguageAndLabelDetails languageWithLabels = new LanguageAndLabelDetails
+                {
+                    LanguageId = lang.LanguageId,
+                    Name = lang.Name,
+                    IsDefault = lang.IsDefault,
+                    LanguageCode = lang.LanguageCode,
+                    Tolerance = lang.Tolerance,
+                    ToleranceType = lang.ToleranceType
+                };
+                var langSpecificLables = dbLabels.Where(x => x.FK_LabelGroupId == dbGroup.LabelGroupId && x.FK_LanguageId == lang.LanguageId);
+                languageWithLabels.Labels = this.mapper.Map<List<LabelDetails>>(langSpecificLables);
+                response.LanguageLabels.Add(languageWithLabels);
+                
+            }
+            return response;
+
         }
 
         public async Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId)

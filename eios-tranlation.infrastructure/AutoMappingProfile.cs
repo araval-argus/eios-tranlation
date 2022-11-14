@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eios_tranlation.businesslogic.Features.LabelGroup.ViewModels;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.infrastructure.EntityClass;
 using System;
@@ -17,6 +18,9 @@ namespace eios_translation.infrastructure
         public AutoMappingProfile()
         {
             this.CreateMap<Label, LabelViewModel>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            this.CreateMap<Label, LabelDetails>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
             this.CreateMap<LabelViewModel, Label>()

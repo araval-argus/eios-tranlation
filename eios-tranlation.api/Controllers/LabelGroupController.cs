@@ -1,4 +1,5 @@
 ﻿using eios_tranlation.businesslogic.Features.LabelGroup;
+using eios_tranlation.businesslogic.Features.LabelGroup.ViewModels;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
@@ -24,13 +25,22 @@ namespace eios_tranlation.api.Controllers
         }
 
         /// <summary>
-        /// Api to Get All Label Groups.
+        /// Api to Get All Parent Groups.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetParentLabelGroups")]
         [ProducesResponseType(typeof(ApiResponse<List<LabelGroupViewModel>>), 200)]
         public async Task<IActionResult> GetParentLabelGroupsCommand()
             => this.Ok(await this.mediator.Send(new GetParentLabelGroupsCommand()));
+
+        /// <summary>
+        /// Api to Get Group Details.
+        /// </summary>
+        /// <exception cref="ApiException">Invalid fields values.</exception>
+        [HttpGet("GetLabelGroupDetailsById/{labelGroupId:int}")]
+        [ProducesResponseType(typeof(ApiResponse<LabelGroupDetailViewModel>), 200)]
+        public async Task<IActionResult> GetLabelGroupDetailsByIdCommand([FromRoute] int labelGroupId)
+            => this.Ok(await this.mediator.Send(new GetLabelGroupDetailsByIdCommand { LabelGroupId = labelGroupId }));
 
         /// <summary>
         /// Api to Get All Label Groups.
