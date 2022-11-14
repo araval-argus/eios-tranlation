@@ -46,7 +46,7 @@ namespace eios_tranlation.businesslogic.Features.Language
         {
             this.RuleFor(x => x.Name).NotEmpty().NotNull().MaximumLength(100);
             this.RuleFor(x => x.LanguageCode).NotEmpty().NotNull().MaximumLength(10);
-            this.RuleFor(x => x.ToleranceType).Must(this.CheckToleranceType).WithMessage("Invalid tolerance type is passed.");
+            //this.RuleFor(x => x.ToleranceType).Must(this.CheckToleranceType).WithMessage("Invalid tolerance type is passed.");
         }
         private bool CheckToleranceType(ToleranceType tolType)
         {

@@ -13,10 +13,13 @@ namespace eios_translation.infrastructure.EntityClass
 {
     public class Label
     {
+        public Label()
+        {
+
+        }
         public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath)
         {
-            
             ResourceId = resourceid;
             FK_LabelGroupId = fk_labelgroupid;
             FK_LanguageId = fk_languageid;

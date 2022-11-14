@@ -11,6 +11,10 @@ namespace eios_translation.infrastructure.EntityClass
 {
     public class LabelGroup
     {
+        public LabelGroup()
+        {
+
+        }
         public LabelGroup(string groupname, int? parentgroupid)
         {
             GroupName = groupname;

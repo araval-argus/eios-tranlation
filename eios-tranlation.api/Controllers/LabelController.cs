@@ -53,20 +53,7 @@ namespace eios_translation.api.Controllers
         [ProducesResponseType(typeof(ApiResponse<List<LabelViewModel>>), 200)]
         public async Task<IActionResult> GetAllLabels(int languageId)
             => this.Ok(await this.mediator.Send(new GetAllLabelsCommand { LanguageId = languageId }));
-
-        ///// <summary>
-        ///// API to get Selected Label
-        ///// </summary>
-        ///// <param name="LabelId"></param>
-        ///// <returns></returns>
-        
-        //[HttpGet("GetSelectedLabel")]
-        //[ProducesResponseType(typeof(LabelViewModel), 200)]
-        //public async Task<IActionResult> GetSelectedLabel(int LabelId)
-        //{
-        //    return this.Ok(await this.labelService.GetSelectedLabel(LabelId));
-        //}
-        
+  
         /// <summary>
         /// Api to Get selected Language.
         /// </summary>

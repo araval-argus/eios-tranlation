@@ -8,6 +8,7 @@ using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.infrastructure;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.ServiceImplementation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -32,7 +33,13 @@ builder.Services.RegisterAllTypesWithBaseInterface<IBaseService>(new[] { typeof(
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(cfg =>
+{
+    cfg.RegisterValidatorsFromAssemblyContaining(typeof(InsertLanguageCommand));
+    cfg.ImplicitlyValidateChildProperties = true;
+    cfg.DisableDataAnnotationsValidation = true;
+});
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityRequirement(new OpenApiSecurityRequirement()
@@ -64,9 +71,18 @@ builder.Services.AddSwaggerGen(c =>
 
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EIOS Translation API", Version = "v1" });
 });
-builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
+
 // Add MediatR Pipelines.
 builder.Services.AddMediatRPipelines();
+
+// Add MediatR Authorization Pipeline Handlers
+builder.Services.RegisterAuthorizationHandlers(new[] { typeof(InsertLanguageCommand).Assembly }, ServiceLifetime.Scoped);
+
+// Register IHttpContextAccessor for services to get access to the HttpContext.
+builder.Services.AddHttpContextAccessor();
+
+// Add AutoMapper Profile
+builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
 
 var app = builder.Build();
 

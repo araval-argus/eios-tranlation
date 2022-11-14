@@ -1,15 +1,18 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.Features.Language;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_tranlation.core.Constants;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using Google.Cloud.Translation.V2;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Text;
+using Language = eios_translation.infrastructure.EntityClass.Language;
 
 namespace eios_tranlation.infrastructure.ServiceImplementation
 {
@@ -32,7 +35,11 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
 
         public async Task<LanguageViewModel> GetSelectedLanguage(int languageId)
         {
-            var result = await this.context.Languages.FirstAsync(a => a.LanguageId == languageId);
+            var result = await this.context.Languages.FirstOrDefaultAsync(a => a.LanguageId == languageId);
+            if (result == null)
+            {
+                throw new ApiException($"No Language found with Id:  {languageId}.");
+            }
             return this.mapper.Map<LanguageViewModel>(result);
         }
 
