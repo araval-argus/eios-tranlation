@@ -81,7 +81,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
             }
         }
 
-        public async Task<int> UpdateLabel(UpdateLabelCommand request)
+        public async Task<LabelViewModel> UpdateLabel(UpdateLabelCommand request)
         {
             try
             {
@@ -94,18 +94,18 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
                 var result = context.Labels.Update(dbLabel);
                 await context.SaveChangesAsync();
-                return 1;
+                return this.mapper.Map<LabelViewModel>(dbLabel);
             }
-            catch
+            catch(Exception ex)
             {
-                return 0;
+                throw new ApiException($"Something went wrong while updating the label: {ex.Message}");
             }
         }
         
         public async Task<string> GetTranslatedStringAsync(string LabelValue,string SourceLanguage,string TargetLanguage,string key,string endpoint,string location)
         {
             LanguageService languageService = new LanguageService(context, mapper);
-            string translation = await languageService.AzureTranslate(LabelValue, SourceLanguage, TargetLanguage, key, endpoint, location);
+            string translation = await languageService.AzureTranslate(LabelValue, SourceLanguage, TargetLanguage);
             JArray a = JArray.Parse(translation);
             foreach (JObject o in a.Children<JObject>())
             {

@@ -40,7 +40,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         }
 
     }
-    public class UpdateLabelGroupCommandHandler : IGetEntityCommandHandler<UpdateLabelGroupCommand, int>
+    public class UpdateLabelGroupCommandHandler : IGetEntityCommandHandler<UpdateLabelGroupCommand, LabelGroupViewModel>
     {
         private readonly ILabelGroupService service;
         public UpdateLabelGroupCommandHandler(ILabelGroupService service)
@@ -49,7 +49,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         }
 
         /// <inheritdoc/>
-        public async Task<int> Handle(UpdateLabelGroupCommand request, CancellationToken cancellationToken)
+        public async Task<LabelGroupViewModel> Handle(UpdateLabelGroupCommand request, CancellationToken cancellationToken)
         {
             return await this.service.UpdateLabelGroup(request);
         }

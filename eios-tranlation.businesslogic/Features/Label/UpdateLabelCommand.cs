@@ -54,7 +54,7 @@ namespace eios_tranlation.businesslogic.Features.Label
     }
 
 
-    public class UpdateLabelCommandHandler : IGetEntityCommandHandler<UpdateLabelCommand, int>
+    public class UpdateLabelCommandHandler : IGetEntityCommandHandler<UpdateLabelCommand, LabelViewModel>
     {
         private readonly ILabelService service;
         public UpdateLabelCommandHandler(ILabelService service)
@@ -63,7 +63,7 @@ namespace eios_tranlation.businesslogic.Features.Label
         }
 
         /// <inheritdoc/>
-        public async Task<int> Handle(UpdateLabelCommand request, CancellationToken cancellationToken)
+        public async Task<LabelViewModel> Handle(UpdateLabelCommand request, CancellationToken cancellationToken)
         {
             return await this.service.UpdateLabel(request);
         }

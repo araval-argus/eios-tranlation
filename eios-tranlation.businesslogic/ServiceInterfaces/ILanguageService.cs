@@ -11,6 +11,6 @@ namespace eios_tranlation.businesslogic.ServiceInterfaces
         Task<LanguageViewModel> UpdateLanguage(UpdateLanguageCommand language);
         Task<int> InsertLanguage(InsertLanguageCommand insertLanguageCommand);
         Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage);
-        Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage,string key,string endpoint,string location);
+        Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage);
     }
 }

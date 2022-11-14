@@ -55,18 +55,19 @@ namespace eios_translation.api.Controllers
         /// <summary>
         /// Translate Source text from Source language to target language using Azure API
         /// </summary>
-        /// <param name="Source"></param>
+        /// <param name="source"></param>
         /// <param name="sourceLanguage"></param>
         /// <param name="targetLanguage"></param>
         /// <returns></returns>
         [HttpGet("AzureTranslateText")]
-        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
-        {
-            string key = CommonSettings.AzureTranslationSettings.Key;
-            string endpoint = CommonSettings.AzureTranslationSettings.Endpoint;
-            string location = CommonSettings.AzureTranslationSettings.Location;
-            return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage, key, endpoint, location));
-        }
+        public async Task<IActionResult> AzureTranslate(string source, string sourceLanguage, string targetLanguage)
+            => this.Ok(await this.mediator.Send(new AzureTranslateTextCommand { Source = source, TargetLanguage = targetLanguage, SourceLanguage = sourceLanguage }));
+        //{
+        //    string key = CommonSettings.AzureTranslationSettings.Key;
+        //    string endpoint = CommonSettings.AzureTranslationSettings.Endpoint;
+        //    string location = CommonSettings.AzureTranslationSettings.Location;
+        //    return (await languageService.AzureTranslate(Source, sourceLanguage, targetLanguage, key, endpoint, location));
+        //}
 
         /// <summary>
         /// Api to Get selected Language.

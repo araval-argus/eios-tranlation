@@ -6,6 +6,7 @@ using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using Google.Cloud.Translation.V2;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             }
         }
 
-        public async Task<int> UpdateLabelGroup(UpdateLabelGroupCommand labelgroup)
+        public async Task<LabelGroupViewModel> UpdateLabelGroup(UpdateLabelGroupCommand labelgroup)
         {
             try
             {
@@ -72,11 +73,11 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 }
                 dbLabelGroup.UpdateLabelGroup(labelGroupId: labelgroup.LabelGroupId,groupName: labelgroup.GroupName, parentLableGroupId: labelgroup.FK_ParentLableGroupId);
                 await context.SaveChangesAsync();
-                return 1;
+                return this.mapper.Map<LabelGroupViewModel>(dbLabelGroup);
             }
-            catch
-            { 
-                return 0;
+            catch(Exception ex)
+            {
+                throw new ApiException($"Something went wrong while updating the label group: {ex.Message}");
             }
         }
     }

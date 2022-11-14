@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.ServiceInterfaces;
+using eios_tranlation.core.Constants;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
@@ -75,7 +76,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             return response.TranslatedText;
         }
 
-        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage,string key, string endpoint, string location)
+        public async Task<string> AzureTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
             string route = "/translate?api-version=3.0&from=" + sourceLanguage + "&to=" + targetLanguage;
             string textToTranslate = Source;
@@ -87,11 +88,11 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             {
                 // Build the request.
                 request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(endpoint + route);
+                request.RequestUri = new Uri(CommonSettings.AzureTranslationSettings.Endpoint + route);
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+                request.Headers.Add("Ocp-Apim-Subscription-Key", CommonSettings.AzureTranslationSettings.Key);
 
-                request.Headers.Add("Ocp-Apim-Subscription-Region", location);
+                request.Headers.Add("Ocp-Apim-Subscription-Region", CommonSettings.AzureTranslationSettings.Location);
 
                 // Send the request and get response.
                 HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
