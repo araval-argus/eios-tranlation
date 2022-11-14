@@ -32,35 +32,22 @@ namespace eios_tranlation.api.Controllers
         public async Task<IActionResult> GetAllLabelGroups()
             => this.Ok(await this.mediator.Send(new GetAllLabelGroupsCommand()));
 
-
-        ///// <summary>
-        ///// Api to Get selected LabelGroup.
-        ///// </summary>
-        ///// <exception cref="ApiException">Invalid fields values.</exception>
-        //[HttpGet("GetSelectedLabelGroup")]
-        //[ProducesResponseType(typeof(ApiResponse<LabelGroupViewModel>), 200)]
-        //public async Task<IActionResult> GetSelectedLabelGroup(int LabelGroupId)
-        //{
-        //    //LabelGroupViewModel lgm = await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId);
-        //    return this.Ok(await this.LabelGroupService.GetSelectedLabelGroup(LabelGroupId));
-        //}
-
         /// <summary>
         /// Api to Get selected LabelGroup.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
-        [HttpGet("GetSelectedLabelGroup")]
+        [HttpGet("GetSelectedLabelGroup/{labelGroupId:int}")]
         [ProducesResponseType(typeof(ApiResponse<LabelGroupViewModel>), 200)]
-        public async Task<IActionResult> GetSelectedLabelGroup(int labelgroupId)
-                   => this.Ok(await this.mediator.Send(new GetSelectedLabelGroupCommand { LabelGroupId = labelgroupId }));
+        public async Task<IActionResult> GetSelectedLabelGroup([FromRoute] int labelGroupId)
+                   => this.Ok(await this.mediator.Send(new GetSelectedLabelGroupCommand { LabelGroupId = labelGroupId }));
 
         [HttpPost("InsertLabelGroup")]
         public async Task<IActionResult> InsertLabelGroup(InsertLabelGroupCommand request)
                  => this.Ok(await this.mediator.Send(request));
 
-        [HttpPost("UpdateLabelGroup")]
+        [HttpPost("UpdateLabelGroup/{labelGroupId:int}")]
         [ProducesResponseType(typeof(LabelGroupViewModel), 200)]
-        public async Task<IActionResult> UpdateLabelGroup([FromQuery] int labelGroupId, [FromBody] UpdateLabelGroupCommand request)
+        public async Task<IActionResult> UpdateLabelGroup([FromRoute] int labelGroupId, [FromBody] UpdateLabelGroupCommand request)
         {
             request.LabelGroupId = labelGroupId;
             return this.Ok(await this.mediator.Send(request));

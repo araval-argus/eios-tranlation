@@ -72,9 +72,9 @@ namespace eios_translation.api.Controllers
         /// Api to Get selected Language.
         /// </summary>
         /// <exception cref="ApiException">Invalid fields values.</exception>
-        [HttpGet("GetSelectedLanguage")]
+        [HttpGet("GetSelectedLanguage/{languageId:int}")]
         [ProducesResponseType(typeof(ApiResponse<List<LanguageViewModel>>), 200)]
-        public async Task<IActionResult> GetSelectedLanguage([FromQuery] int languageId)
+        public async Task<IActionResult> GetSelectedLanguage([FromRoute] int languageId)
                    => this.Ok(await this.mediator.Send(new GetSelectedLanguagesCommand { LanguageId = languageId }));
 
 

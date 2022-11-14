@@ -37,6 +37,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         {
             this.RuleFor(x => x.LabelGroupId).GreaterThan(0);
             this.RuleFor(x => x.GroupName).NotEmpty().NotNull().MaximumLength(100);
+            this.RuleFor(x => x.FK_ParentLableGroupId).GreaterThan(0).When(x => x.FK_ParentLableGroupId != null);
         }
 
     }

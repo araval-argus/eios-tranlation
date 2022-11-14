@@ -37,6 +37,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         public InsertLabelGroupCommandValidator()
         {
             this.RuleFor(x => x.GroupName).NotEmpty().NotNull().MaximumLength(100);
+            this.RuleFor(x => x.FK_ParentLableGroupId).GreaterThan(0).When(x=>x.FK_ParentLableGroupId != null);
         }
     }
 
