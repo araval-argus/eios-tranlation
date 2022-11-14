@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 CommonSettings.AppSettings = builder.Configuration.GetSection("AppSettings").Get<ApplicationSettings>();
 CommonSettings.AzureTranslationSettings = builder.Configuration.GetSection("AzureTranslationSettings").Get<AzureTranslationSettings>();
+CommonSettings.GoogleTranslateSettings = builder.Configuration.GetSection("GoogleTranslateSettings").Get<GoogleTranslateSettings>();
 
 builder.Services.AddDbContext<EIOSTranslationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
 builder.Services.AddMediatR(typeof(GetAllLanguagesCommand));

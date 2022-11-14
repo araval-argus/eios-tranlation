@@ -17,5 +17,7 @@ namespace eios_tranlation.core.Constants
         public static ApplicationSettings AppSettings { get; set; }
 
         public static AzureTranslationSettings AzureTranslationSettings { get; set; }
+
+        public static GoogleTranslateSettings GoogleTranslateSettings { get; set; }
     }
 }

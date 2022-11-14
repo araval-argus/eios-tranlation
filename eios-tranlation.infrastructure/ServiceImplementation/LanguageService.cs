@@ -69,7 +69,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 {
                     throw new ApiException($"No Language found with Id:  {request.LanguageId}");
                 }
-                else if(dbLanguage.IsDefault)
+                else if (dbLanguage.IsDefault)
                 {
                     throw new ApiException($"Default language can not be changed. You can only change non default language.");
                 }
@@ -85,6 +85,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
 
         public async Task<string> GoogleTranslate(string Source, string sourceLanguage, string targetLanguage)
         {
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", CommonSettings.GoogleTranslateSettings.GOOGLE_APPLICATION_CREDENTIALS);
             var client = Google.Cloud.Translation.V2.TranslationClient.Create();
             var response = await client.TranslateTextAsync(Source, targetLanguage, sourceLanguage);
             return response.TranslatedText;

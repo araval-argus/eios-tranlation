@@ -5,8 +5,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy",
-        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\Nikunj\\source\\repos\\TranslatorForm\\Key\\translatorservice-c035ba33948e.json"
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
       },
       "applicationUrl": "https://localhost:7124;http://localhost:5124"
     },
