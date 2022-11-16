@@ -39,7 +39,7 @@ namespace eios_tranlation.api.Controllers
         /// <exception cref="ApiException">Invalid fields values.</exception>
         [HttpGet("GetLabelGroupDetailsById/{labelGroupId:int}")]
         [ProducesResponseType(typeof(ApiResponse<LabelGroupDetailViewModel>), 200)]
-        public async Task<IActionResult> GetLabelGroupDetailsByIdCommand([FromRoute] int labelGroupId)
+        public async Task<IActionResult> GetLabelGroupDetailsById([FromRoute] int labelGroupId)
             => this.Ok(await this.mediator.Send(new GetLabelGroupDetailsByIdCommand { LabelGroupId = labelGroupId }));
 
         /// <summary>
