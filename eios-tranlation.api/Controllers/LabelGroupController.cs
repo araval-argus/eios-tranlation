@@ -4,6 +4,7 @@ using eios_tranlation.businesslogic.Features.Language;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.core.Wrappers;
+using eios_translation.infrastructure.EntityClass;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,16 @@ namespace eios_tranlation.api.Controllers
         [ProducesResponseType(typeof(ApiResponse<LabelGroupDetailViewModel>), 200)]
         public async Task<IActionResult> GetLabelGroupDetailsById([FromRoute] int labelGroupId)
             => this.Ok(await this.mediator.Send(new GetLabelGroupDetailsByIdCommand { LabelGroupId = labelGroupId }));
+
+        /// <summary>
+        /// Api to Save Group Details.
+        /// </summary>
+        /// <exception cref="ApiException">Invalid fields values.</exception>
+        [HttpPost("SaveLabelGroupDetailsById")]
+        [ProducesResponseType(typeof(ApiResponse<LabelGroupDetailViewModel>), 200)]
+        public async Task<IActionResult> SaveLabelGroupDetailsById([FromBody] SaveLabelGroupDetailsByIdCommand request)
+        => this.Ok(await this.mediator.Send(request));
+        
 
         /// <summary>
         /// Api to Get All Label Groups.

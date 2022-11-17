@@ -56,7 +56,7 @@ namespace eios_translation.infrastructure.EntityClass
         //[ForeignKey(nameof(FK_LanguageId))]
         //public virtual Language Language { get; protected set; }
 
-        public void UpdateLabelGroup(int labelId, string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
+        public void UpdateLabel(int labelId, string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath, string? machinetranslation, TranslationStatus translationstatus, string? scope,
             int version, bool isactive, int? fk_prevversionlabelid)
         {
@@ -80,6 +80,10 @@ namespace eios_translation.infrastructure.EntityClass
         {
             this.FK_LanguageId = fk_languageId;
             this.MachineTranslation = machineTranslation;
+        }
+        public void UpdateLabelValue(string labelValue)
+        {
+            this.LabelValue = labelValue;
         }
 
     }

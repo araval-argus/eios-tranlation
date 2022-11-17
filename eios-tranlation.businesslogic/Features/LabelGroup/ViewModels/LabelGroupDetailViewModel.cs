@@ -36,7 +36,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup.ViewModels
         public string ResourceId { get; set; }
         public int FK_LabelGroupId { get; set; }
         public int FK_LanguageId { get; set; }
-        public string LabelValue { get; set; }
+        public string? LabelValue { get; set; }
         public string? MachineTranslation { get; set; }
         public TranslationStatus TranslationStatus { get; set; }
     }

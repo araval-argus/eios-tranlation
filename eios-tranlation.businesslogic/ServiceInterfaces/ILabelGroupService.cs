@@ -17,5 +17,6 @@ namespace eios_tranlation.businesslogic.ServiceInterfaces
         Task<LabelGroupViewModel> UpdateLabelGroup(UpdateLabelGroupCommand labelgroup);
         Task<int> InsertLabelGroup(InsertLabelGroupCommand labelgroup);
         Task<LabelGroupDetailViewModel> GetLabelGroupDetailsById(int labelGroupId);
+        Task<LabelGroupDetailViewModel> SaveLabelGroupDetailsById(SaveLabelGroupDetailsByIdCommand request);
     }
 }

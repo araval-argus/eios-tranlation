@@ -36,7 +36,7 @@
         /// </summary>
         public virtual DbSet<Language> Languages { get; set; }
 
-       
+
         /// <summary>
         /// Gets or sets Labels.
         /// </summary>
@@ -84,33 +84,29 @@
         {
             // TO DO: After authentication mechanism is identified, logged in profileId should be fetched from user identity.
             var currentLoginId = -1;
-
-
-            if (currentLoginId != 0)
+            var entries = this.ChangeTracker.Entries();
+            foreach (var entry in entries)
             {
-                var entries = this.ChangeTracker.Entries();
-                foreach (var entry in entries)
+                if (entry.Entity is ITrackable trackable)
                 {
-                    if (entry.Entity is ITrackable trackable)
+                    var now = DateTime.UtcNow;
+                    switch (entry.State)
                     {
-                        var now = DateTime.UtcNow;
-                        switch (entry.State)
-                        {
-                            case EntityState.Modified:
-                                trackable.UpdatedAt = now;
-                                trackable.UpdatedBy = currentLoginId;
-                                break;
+                        case EntityState.Modified:
+                            trackable.UpdatedAt = now;
+                            trackable.UpdatedBy = currentLoginId;
+                            break;
 
-                            case EntityState.Added:
-                                trackable.CreatedAt = now;
-                                trackable.CreatedBy = currentLoginId;
-                                trackable.UpdatedAt = now;
-                                trackable.UpdatedBy = currentLoginId;
-                                break;
-                        }
+                        case EntityState.Added:
+                            trackable.CreatedAt = now;
+                            trackable.CreatedBy = currentLoginId;
+                            trackable.UpdatedAt = now;
+                            trackable.UpdatedBy = currentLoginId;
+                            break;
                     }
                 }
             }
         }
     }
+    
 }

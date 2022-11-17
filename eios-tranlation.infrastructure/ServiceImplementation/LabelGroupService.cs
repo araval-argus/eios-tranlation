@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace eios_tranlation.infrastructure.ServiceImplementation
@@ -41,7 +42,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             else
             {
                 labelGroups = await context.LabelGroups
-                    .Where(x=>x.FK_ParentLableGroupId == null)
+                    .Where(x => x.FK_ParentLableGroupId == null)
                     .AsNoTracking()
                     .ToListAsync();
             }
@@ -105,10 +106,40 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 var langSpecificLables = dbLabels.Where(x => x.FK_LabelGroupId == dbGroup.LabelGroupId && x.FK_LanguageId == lang.LanguageId);
                 languageWithLabels.Labels = this.mapper.Map<List<LabelDetails>>(langSpecificLables);
                 response.LanguageLabels.Add(languageWithLabels);
-                
+
             }
             return response;
 
+        }
+
+        public async Task<LabelGroupDetailViewModel> SaveLabelGroupDetailsById(SaveLabelGroupDetailsByIdCommand request)
+        {
+            LabelGroupDetailViewModel response = await GetLabelGroupDetailsById(request.LabelGroupId);
+
+            var dbLabels = await this.context.Labels
+              .Where(x => x.FK_LabelGroupId == request.LabelGroupId)
+              .ToListAsync();
+
+            // TODO: Allow Default Lang Update??
+            foreach (var reqLang in request.LanguageLabels.Where(x => !x.IsDefault))
+            {
+                foreach (var reqLabel in reqLang.Labels.Where(x => !string.IsNullOrWhiteSpace(x.LabelValue)))
+                {
+                    try
+                    {
+                        var findDbLabel = dbLabels.FirstOrDefault(x => x.LabelId == reqLabel.LabelId);
+                        if (findDbLabel != null)
+                        {
+                            findDbLabel.UpdateLabelValue(reqLabel.LabelValue);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            await context.SaveChangesAsync();
+            return response;
         }
 
         public async Task<LabelGroupViewModel> GetSelectedLabelGroup(int LabelGroupId)
@@ -148,11 +179,11 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                 {
                     throw new ApiException($"No Label Group found with Id:  {labelgroup.LabelGroupId}");
                 }
-                dbLabelGroup.UpdateLabelGroup(labelGroupId: labelgroup.LabelGroupId,groupName: labelgroup.GroupName, parentLableGroupId: labelgroup.FK_ParentLableGroupId);
+                dbLabelGroup.UpdateLabelGroup(labelGroupId: labelgroup.LabelGroupId, groupName: labelgroup.GroupName, parentLableGroupId: labelgroup.FK_ParentLableGroupId);
                 await context.SaveChangesAsync();
                 return this.mapper.Map<LabelGroupViewModel>(dbLabelGroup);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApiException($"Something went wrong while updating the label group: {ex.Message}");
             }
