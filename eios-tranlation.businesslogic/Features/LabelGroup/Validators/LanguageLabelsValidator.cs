@@ -15,7 +15,17 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup.Validators
             this.RuleFor(x => x.FK_LanguageId).GreaterThan(0);
             this.RuleFor(x => x.FK_LabelGroupId).GreaterThan(0);
             this.RuleFor(x => x.LabelId).GreaterThan(0);
-            this.RuleForEach(x => x.TranslatedLabels).SetValidator(new LanguageLabelsValidator());
+            this.RuleForEach(x => x.TranslatedLabels).SetValidator(new TranslatedLanguageLabelsValidator());
+            
+        }
+    }
+    public class TranslatedLanguageLabelsValidator : AbstractValidator<LabelWithLanguage>
+    {
+        public TranslatedLanguageLabelsValidator()
+        {
+            this.RuleFor(x => x.FK_LanguageId).GreaterThan(0);
+            this.RuleFor(x => x.FK_LabelGroupId).GreaterThan(0);
+            this.RuleFor(x => x.LabelId).GreaterThan(0);
 
         }
     }

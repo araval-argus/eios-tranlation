@@ -114,7 +114,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                         if (langLabel != null)
                         {
                             LabelWithLanguage translatedLabel = new LabelWithLanguage();
-                            label.LabelId = dbLabel.LabelId;
+                            translatedLabel.LabelId = langLabel.LabelId;
                             translatedLabel.FK_LabelGroupId = langLabel.FK_LabelGroupId;
                             translatedLabel.FK_LanguageId = langLabel.FK_LanguageId;
                             label.FK_BaseLabelId = dbLabel.FK_BaseLabelId;
