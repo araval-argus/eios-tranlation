@@ -3,6 +3,7 @@
     [ResourceId]            NVARCHAR (1000) NOT NULL,
     [FK_LabelGroupId]       INT             NOT NULL,
     [FK_LanguageId]         INT             NOT NULL,
+    [FK_BaseLabelId]        INT             NULL,
     [LabelValue]            NVARCHAR (1000) NULL,
     [LabelType]             INT             NOT NULL,
     [LabelDescription]      NVARCHAR (MAX)  NULL,
@@ -20,6 +21,7 @@
     CONSTRAINT [PK_Labels] PRIMARY KEY CLUSTERED ([LabelId] ASC),
     CONSTRAINT [FK_Labels_LabelGroups] FOREIGN KEY ([FK_LabelGroupId]) REFERENCES [dbo].[LabelGroups] ([LabelGroupId]),
     CONSTRAINT [FK_Labels_Labels] FOREIGN KEY ([FK_PrevVersionLabelId]) REFERENCES [dbo].[Labels] ([LabelId]),
-    CONSTRAINT [FK_Labels_Languages] FOREIGN KEY ([FK_LanguageId]) REFERENCES [dbo].[Languages] ([LanguageId])
+    CONSTRAINT [FK_Labels_Languages] FOREIGN KEY ([FK_LanguageId]) REFERENCES [dbo].[Languages] ([LanguageId]),
+    CONSTRAINT [FK_Labels_Labels2] FOREIGN KEY ([FK_BaseLabelId]) REFERENCES [dbo].[Labels] ([LabelId])
 );
 

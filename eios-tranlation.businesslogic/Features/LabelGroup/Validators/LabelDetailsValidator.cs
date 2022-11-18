@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace eios_tranlation.businesslogic.Features.LabelGroup.Validators
 {
-    public class LabelDetailsValidator : AbstractValidator<LabelDetails>
-    {
-        public LabelDetailsValidator()
-        {
-            this.RuleFor(x => x.LabelId).GreaterThan(0);
-            this.RuleFor(x => x.FK_LabelGroupId).GreaterThan(0);
-            this.RuleFor(x => x.FK_LanguageId).GreaterThan(0);
-        }
-    }
+    //public class LabelDetailsValidator : AbstractValidator<LabelDetails>
+    //{
+    //    public LabelDetailsValidator()
+    //    {
+    //        this.RuleFor(x => x.LabelId).GreaterThan(0);
+    //        this.RuleFor(x => x.FK_LabelGroupId).GreaterThan(0);
+    //        this.RuleFor(x => x.FK_LanguageId).GreaterThan(0);
+    //    }
+    //}
 
 }

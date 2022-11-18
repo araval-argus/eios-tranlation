@@ -17,7 +17,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
     public class SaveLabelGroupDetailsByIdCommand : Request<LabelGroupDetailViewModel>, IGetEntityCommand<LabelGroupDetailViewModel>
     {
         public int LabelGroupId { get; set; }
-        public List<LanguageAndLabelDetails> LanguageLabels { get; set; } = new List<LanguageAndLabelDetails>();
+        //public List<LanguageAndLabelDetails> LanguageLabels { get; set; } = new List<LanguageAndLabelDetails>();
     }
     /// <summary>
     /// Validation class for MediatR <see cref="SaveLabelGroupDetailsByIdCommand"/>.
@@ -30,7 +30,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup
         public SaveLabelGroupDetailsByIdCommandValidator()
         {
             this.RuleFor(x=>x.LabelGroupId).GreaterThan(0);
-            this.RuleForEach(x => x.LanguageLabels).SetValidator(new LanguageLabelsValidator());
+            //this.RuleForEach(x => x.LanguageLabels).SetValidator(new LanguageLabelsValidator());
 
         }
     }

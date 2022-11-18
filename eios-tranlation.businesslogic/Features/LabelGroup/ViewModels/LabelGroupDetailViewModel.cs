@@ -15,31 +15,22 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup.ViewModels
         public int? FK_ParentLableGroupId { get; set; }
         public LabelGroupViewModel? ParentGroup { get; set; }
         public List<LabelGroupViewModel> ChildGroups { get; set; } = new List<LabelGroupViewModel>();
-        public List<LanguageAndLabelDetails> LanguageLabels { get; set; } = new List<LanguageAndLabelDetails>();
+        public List<LabelWithLanguage> Labels { get; set; } = new List<LabelWithLanguage>();
         public string BreadCrumb { get; set; }
     }
 
-    public class LanguageAndLabelDetails
+    public class LabelWithLanguage
     {
         public int LanguageId { get; set; }
-        public string Name { get; set; }
-        public string LanguageCode { get; set; }
-        public double? Tolerance { get; set; }
-        public ToleranceType ToleranceType { get; set; }
-        public bool IsDefault { get; set; }
-        public List<LabelDetails> Labels { get; set; } = new List<LabelDetails>();
-    }
-
-    public class LabelDetails
-    {
+        public string LanguageName { get; set; }
         public int LabelId { get; set; }
-        public string ResourceId { get; set; }
+        public string LabelName { get; set; }
         public int FK_LabelGroupId { get; set; }
         public int FK_LanguageId { get; set; }
         public string? LabelValue { get; set; }
         public string? MachineTranslation { get; set; }
         public TranslationStatus TranslationStatus { get; set; }
+        public List<LabelWithLanguage> TranslatedLabels { get; set; } = new List<LabelWithLanguage>();
+
     }
-
-
 }

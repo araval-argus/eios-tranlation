@@ -92,53 +92,71 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                .Where(x => x.FK_LabelGroupId == dbGroup.LabelGroupId)
                .ToListAsync();
 
-            foreach (var lang in dbLanguages)
+            var defaultLang = dbLanguages.FirstOrDefault(x => x.IsDefault);
+            if (defaultLang?.LanguageId > 0)
+
             {
-                LanguageAndLabelDetails languageWithLabels = new LanguageAndLabelDetails
+                int defaultLangId = defaultLang.LanguageId;
+                foreach (var dbLabel in dbLabels.Where(x => x.FK_LanguageId == defaultLang.LanguageId))
                 {
-                    LanguageId = lang.LanguageId,
-                    Name = lang.Name,
-                    IsDefault = lang.IsDefault,
-                    LanguageCode = lang.LanguageCode,
-                    Tolerance = lang.Tolerance,
-                    ToleranceType = lang.ToleranceType
-                };
-                var langSpecificLables = dbLabels.Where(x => x.FK_LabelGroupId == dbGroup.LabelGroupId && x.FK_LanguageId == lang.LanguageId);
-                languageWithLabels.Labels = this.mapper.Map<List<LabelDetails>>(langSpecificLables);
-                response.LanguageLabels.Add(languageWithLabels);
+                    LabelWithLanguage label = new LabelWithLanguage { };
+                    label.FK_LabelGroupId = dbLabel.FK_LabelGroupId;
+                    label.LanguageId = dbLabel.FK_LanguageId;
+                    label.LanguageName = defaultLang.Name;
+                    label.LabelName = dbLabel.ResourceId;
+                    label.LabelValue = dbLabel.LabelValue;
+                    label.MachineTranslation = dbLabel.MachineTranslation;
 
+                    foreach (var lang in dbLanguages.Where(x => !x.IsDefault))
+                    {
+                        var langLabel = dbLabels.FirstOrDefault(x=>x.FK_LanguageId == lang.LanguageId && x.FK_BaseLabelId == dbLabel.LabelId);
+                        if (langLabel != null)
+                        {
+                            LabelWithLanguage translatedLabel = new LabelWithLanguage();
+                            translatedLabel.FK_LabelGroupId = langLabel.FK_LabelGroupId;
+                            translatedLabel.LanguageId = langLabel.FK_LanguageId;
+                            translatedLabel.LanguageName = lang.Name;
+                            translatedLabel.LabelName = langLabel.ResourceId;
+                            translatedLabel.LabelValue = langLabel.LabelValue;
+                            translatedLabel.MachineTranslation = langLabel.MachineTranslation;
+                            label.TranslatedLabels.Add(translatedLabel);
+                        }
+                    }
+                    response.Labels.Add(label);
+                }
             }
-            return response;
 
+            return response;
         }
 
         public async Task<LabelGroupDetailViewModel> SaveLabelGroupDetailsById(SaveLabelGroupDetailsByIdCommand request)
         {
             LabelGroupDetailViewModel response = await GetLabelGroupDetailsById(request.LabelGroupId);
 
-            var dbLabels = await this.context.Labels
-              .Where(x => x.FK_LabelGroupId == request.LabelGroupId)
-              .ToListAsync();
+            //var dbLabels = await this.context.Labels
+            //  .Where(x => x.FK_LabelGroupId == request.LabelGroupId)
+            //  .ToListAsync();
 
-            // TODO: Allow Default Lang Update??
-            foreach (var reqLang in request.LanguageLabels.Where(x => !x.IsDefault))
-            {
-                foreach (var reqLabel in reqLang.Labels.Where(x => !string.IsNullOrWhiteSpace(x.LabelValue)))
-                {
-                    try
-                    {
-                        var findDbLabel = dbLabels.FirstOrDefault(x => x.LabelId == reqLabel.LabelId);
-                        if (findDbLabel != null)
-                        {
-                            findDbLabel.UpdateLabelValue(reqLabel.LabelValue);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
-            }
-            await context.SaveChangesAsync();
+            //// TODO: Allow Default Lang Update??
+            //foreach (var reqLang in request.LanguageLabels.Where(x => !x.IsDefault))
+            //{
+            //
+            //    foreach (var reqLabel in reqLang.Labels.Where(x => !string.IsNullOrWhiteSpace(x.LabelValue)))
+            //    {
+            //        try
+            //        {
+            //            var findDbLabel = dbLabels.FirstOrDefault(x => x.LabelId == reqLabel.LabelId);
+            //            if (findDbLabel != null)
+            //            {
+            //                findDbLabel.UpdateLabelValue(reqLabel.LabelValue);
+            //            }
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //        }
+            //    }
+            //}
+            //await context.SaveChangesAsync();
             return response;
         }
 

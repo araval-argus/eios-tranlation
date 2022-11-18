@@ -18,12 +18,13 @@ namespace eios_translation.infrastructure.EntityClass
 
         }
 
-        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, string? labelvalue, LabelType labeltype,
+        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, int? fK_BaseLabelId, string? labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath)
         {
             ResourceId = resourceid;
             FK_LabelGroupId = fk_labelgroupid;
             FK_LanguageId = fk_languageid;
+            FK_BaseLabelId = fK_BaseLabelId;
             LabelValue = labelvalue;
             LabelType = labeltype;
             LabelDescription = labeldescription;
@@ -35,6 +36,7 @@ namespace eios_translation.infrastructure.EntityClass
         public string ResourceId { get; protected set; } = string.Empty;
         public int FK_LabelGroupId { get; protected set; }
         public int FK_LanguageId { get; protected set; }
+        public int? FK_BaseLabelId { get; protected set; }
         public string? LabelValue { get; protected set; } = string.Empty;
         public LabelType LabelType { get; protected set; }
         public string? LabelDescription { get; protected set; }
@@ -56,7 +58,7 @@ namespace eios_translation.infrastructure.EntityClass
         //[ForeignKey(nameof(FK_LanguageId))]
         //public virtual Language Language { get; protected set; }
 
-        public void UpdateLabel(int labelId, string resourceid, int fk_labelgroupid, int fk_languageid, string labelvalue, LabelType labeltype,
+        public void UpdateLabel(int labelId, string resourceid, int fk_labelgroupid, int fk_languageid, int? fK_BaseLabelId, string labelvalue, LabelType labeltype,
             string? labeldescription, string? labelsnapshotpath, string? machinetranslation, TranslationStatus translationstatus, string? scope,
             int version, bool isactive, int? fk_prevversionlabelid)
         {
@@ -64,6 +66,7 @@ namespace eios_translation.infrastructure.EntityClass
             ResourceId = resourceid;
             FK_LabelGroupId = fk_labelgroupid;
             FK_LanguageId = fk_languageid;
+            FK_BaseLabelId = fK_BaseLabelId;
             LabelValue = labelvalue;
             LabelType = labeltype;
             LabelDescription = labeldescription;
