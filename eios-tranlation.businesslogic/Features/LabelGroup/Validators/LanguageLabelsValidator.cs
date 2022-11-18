@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace eios_tranlation.businesslogic.Features.LabelGroup.Validators
 {
-    //public class LanguageLabelsValidator : AbstractValidator<LanguageAndLabelDetails>
-    //{
-    //    public LanguageLabelsValidator()
-    //    {
-    //        this.RuleFor(x => x.LanguageId).GreaterThan(0);
-    //        this.RuleForEach(x => x.Labels).SetValidator(new LabelDetailsValidator());
+    public class LanguageLabelsValidator : AbstractValidator<LabelWithLanguage>
+    {
+        public LanguageLabelsValidator()
+        {
+            this.RuleFor(x => x.FK_LanguageId).GreaterThan(0);
+            this.RuleFor(x => x.FK_LabelGroupId).GreaterThan(0);
+            this.RuleFor(x => x.LabelId).GreaterThan(0);
+            this.RuleForEach(x => x.TranslatedLabels).SetValidator(new LanguageLabelsValidator());
 
-    //    }
-    //}
+        }
+    }
 }

@@ -21,12 +21,12 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup.ViewModels
 
     public class LabelWithLanguage
     {
-        public int LanguageId { get; set; }
         public string LanguageName { get; set; }
         public int LabelId { get; set; }
         public string LabelName { get; set; }
         public int FK_LabelGroupId { get; set; }
         public int FK_LanguageId { get; set; }
+        public int? FK_BaseLabelId { get; set; }
         public string? LabelValue { get; set; }
         public string? MachineTranslation { get; set; }
         public TranslationStatus TranslationStatus { get; set; }
