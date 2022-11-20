@@ -106,22 +106,7 @@ namespace eios_tranlation.core.ResponseMiddleware
             return new List<string>
             {
                  MediaTypeNames.Application.Octet,
-                 "image/*",
-                 "video/*",
-                 "audio/*",
-                 "text/csv",
-                 "application/pdf",
                  "application/json",
-                 "application/xml",
-                 "application/msword",
-                 "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                 "application/vnd.ms-excel",
-                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                 "application/vnd.ms-powerpoint",
-                 "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-                 "application/vnd.ms-outlook",
-                 "application/x-zip-compressed",
-                 "text/xml"
             };
         }
     }

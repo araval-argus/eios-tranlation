@@ -78,7 +78,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     resourceid: request.ResourceId,
                     fk_labelgroupid: request.FK_LabelGroupId,
                     fk_languageid: baseLanguage.LanguageId,
-                    fK_BaseLabelId : null,
+                    fK_BaseLabelId: null,
                     labelvalue: request.LabelValue,
                     labeltype: LabelType.Normal,
                     labeldescription: null,
@@ -139,29 +139,93 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 throw new ApiException($"Something went wrong while updating the label: {ex.Message}");
             }
         }
-
-        public async Task<string> GetTranslatedStringAsync(string LabelValue, string SourceLanguage, string TargetLanguage, string key, string endpoint, string location)
+        public async Task<string> ExportLabelsByLanguageId(int languageId)
         {
-            //LanguageService languageService = new LanguageService(context, mapper);
-            string translation = await languageService.AzureTranslate(LabelValue, SourceLanguage, TargetLanguage);
-            JArray a = JArray.Parse(translation);
-            foreach (JObject o in a.Children<JObject>())
+            string exportPath = string.Empty;
+            try
             {
-                foreach (JProperty p in o.Properties())
+                var language = await this.context
+                    .Languages
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LanguageId == languageId);
+                if (language == null)
                 {
-                    foreach (JObject s in p.Value.Children<JObject>())
+                    throw new ApiException($"No Language Found by Id : {languageId}");
+                }
+
+                var allGroups = await this.context
+                    .LabelGroups
+                    .AsNoTracking()
+                    .ToListAsync();
+
+                var parentGroups = allGroups.Where(x => x.FK_ParentLableGroupId == null).ToList();
+
+                var childGroups = allGroups.Where(x => x.FK_ParentLableGroupId != null).ToList();
+
+                var allLabels = await this.context
+                    .Labels
+                    .AsNoTracking()
+                    .Where(x => x.FK_LanguageId == languageId)
+                    .ToListAsync();
+
+                ExportViewModel viewModel = new ExportViewModel();
+                foreach (var pGroup in parentGroups)
+                {
+                    // Current Group Labels.
+                    var groupSpecificLabels = allLabels.Where(x => x.FK_LabelGroupId == pGroup.LabelGroupId).ToList();
+                    var labelDict = new Dictionary<string, object>();
+                    foreach (var lbl in groupSpecificLabels)
                     {
-                        var RootObjects = JsonConvert.DeserializeObject<TranslatedText>(s.ToString());
-                        translation = RootObjects.Text;
+                        labelDict.Add(lbl.ResourceId, lbl.LabelValue ?? String.Empty);
                     }
+                    bool hasChild = childGroups.Any(x => x.FK_ParentLableGroupId == pGroup.LabelGroupId);
+                    if (hasChild)
+                    {
+                        BuildChildGroup(pGroup.LabelGroupId, childGroups, allLabels, labelDict);
+                    }
+                    viewModel.Model.Add(pGroup.GroupName, labelDict);
+
+                }
+
+
+                string jsonResult = JsonConvert.SerializeObject(viewModel.Model);
+                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
+                {
+                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
+                }
+                exportPath = $"{CommonSettings.AppSettings.ResoucePath}{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()}.json";
+                File.WriteAllText( exportPath, jsonResult);
+                if (!File.Exists(exportPath))
+                {
+                    throw new ApiException($"Unable to generate the file for the lanugage: {languageId}");
                 }
             }
-            return translation;
+            catch (Exception ex)
+            {
+                exportPath = string.Empty;
+            }
+            return exportPath;
         }
-    }
-    public class TranslatedText
-    {
-        public string? Text { get; set; }
-        public string? To { get; set; }
+
+        public void BuildChildGroup(int parentGroupId, List<LabelGroup> childGroups, List<Label> allLabels, Dictionary<string, object> node)
+        {
+            var childGrouups = childGroups.Where(x => x.FK_ParentLableGroupId == parentGroupId).ToList();
+            foreach (var cGroup in childGrouups)
+            {
+                // Current Group Labels.
+                var groupSpecificLabels = allLabels.Where(x => x.FK_LabelGroupId == cGroup.LabelGroupId).ToList();
+                var labelDict = new Dictionary<string, object>();
+                foreach (var lbl in groupSpecificLabels)
+                {
+                    labelDict.Add(lbl.ResourceId, lbl.LabelValue ?? String.Empty);
+                }
+                node.Add(cGroup.GroupName, labelDict);
+                bool hasChild = childGroups.Any(x => x.FK_ParentLableGroupId == cGroup.LabelGroupId);
+                if (hasChild)
+                {
+                    BuildChildGroup(cGroup.LabelGroupId, childGroups, allLabels, labelDict);
+                }
+            }
+        }
     }
 }

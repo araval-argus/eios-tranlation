@@ -11,5 +11,6 @@ namespace eios_tranlation.core.Constants
     /// </summary>
     public class ApplicationSettings
     {
+        public string ResoucePath { get; set; }
     }
 }

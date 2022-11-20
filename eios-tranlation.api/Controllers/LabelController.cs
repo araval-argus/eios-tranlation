@@ -1,6 +1,7 @@
 ﻿using eios_tranlation.businesslogic.Features.Label;
 using eios_tranlation.businesslogic.Features.LabelGroup;
 using eios_tranlation.businesslogic.Features.Language;
+using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_tranlation.core.Constants;
 using eios_tranlation.infrastructure.ServiceImplementation;
@@ -53,7 +54,7 @@ namespace eios_translation.api.Controllers
         [ProducesResponseType(typeof(ApiResponse<List<LabelViewModel>>), 200)]
         public async Task<IActionResult> GetAllLabels()
             => this.Ok(await this.mediator.Send(new GetAllLabelsCommand()));
-  
+
         /// <summary>
         /// Api to Get selected Language.
         /// </summary>
@@ -69,10 +70,15 @@ namespace eios_translation.api.Controllers
 
         [HttpPost("UpdateLabel")]
         [ProducesResponseType(typeof(LabelViewModel), 200)]
-        public async Task<IActionResult> UpdateLabel([FromQuery] int labelId, [FromBody]UpdateLabelCommand request)
+        public async Task<IActionResult> UpdateLabel([FromQuery] int labelId, [FromBody] UpdateLabelCommand request)
         {
             request.LabelId = labelId;
             return this.Ok(await this.mediator.Send(request));
         }
+
+        [HttpGet("ExportLabelsByLanguageId")]
+        [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
+        public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] int languageId)
+            => this.Ok(await this.mediator.Send( new ExportLabelsByLanguageIdCommand { LanguageId = languageId}));
     }
 }
