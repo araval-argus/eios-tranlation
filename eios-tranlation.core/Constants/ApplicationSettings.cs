@@ -12,5 +12,7 @@ namespace eios_tranlation.core.Constants
     public class ApplicationSettings
     {
         public string ResoucePath { get; set; }
+
+        public int MaxImportFileLength { get; set; }
     }
 }

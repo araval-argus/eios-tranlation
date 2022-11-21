@@ -3,6 +3,7 @@ using eios_tranlation.businesslogic.Features.Label;
 using eios_tranlation.businesslogic.Features.Label.ViewModels;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
+using eios_tranlation.core.Common;
 using eios_tranlation.core.Constants;
 using eios_tranlation.infrastructure.ServiceImplementation;
 using eios_translation.businesslogic.Features.Label.ViewModels;
@@ -11,6 +12,8 @@ using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using Google.Apis.Util;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -23,6 +26,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using Label = eios_translation.infrastructure.EntityClass.Label;
 
 namespace eios_translation.infrastructure.ServiceImplementation
@@ -194,7 +198,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
                 }
                 exportPath = $"{CommonSettings.AppSettings.ResoucePath}{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()}.json";
-                File.WriteAllText( exportPath, jsonResult);
+                File.WriteAllText(exportPath, jsonResult);
                 if (!File.Exists(exportPath))
                 {
                     throw new ApiException($"Unable to generate the file for the lanugage: {languageId}");
@@ -207,7 +211,54 @@ namespace eios_translation.infrastructure.ServiceImplementation
             return exportPath;
         }
 
-        public void BuildChildGroup(int parentGroupId, List<LabelGroup> childGroups, List<Label> allLabels, Dictionary<string, object> node)
+        public async Task<bool> ImportLabelsByLanguageId(ImportLabelsByLanguageIdCommand request)
+        {
+            bool importSuccess = false;
+            try
+            {
+                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
+                {
+                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
+                }
+                string filePath = Path.Combine(CommonSettings.AppSettings.ResoucePath, $"Import_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()}.json");
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await request.File.CopyToAsync(fileStream);
+                }
+
+                string viewModel = File.ReadAllText(filePath);
+                bool validJson = Convenience.IsValidJson(viewModel);
+                if (!validJson)
+                {
+                    throw new ApiException($"File does not contain valid json. Please upload the valid file.");
+                }
+                ImportViewModel importModel = new ImportViewModel();
+                JObject token = JObject.Parse(viewModel);
+                if (token != null && token.Type == JTokenType.Object)
+                {
+                    var childTokens = token.Values();
+                    foreach (var cToken in childTokens)
+                    {
+                        var parentGroup = new ImportLabelGroup
+                        {
+                            GroupName = cToken.Path
+                        };
+                        PopulateGroup(parentGroup, cToken);
+                        importModel.ImportLabelGroups.Add(parentGroup);
+                    }
+                }
+                string newJson = JsonConvert.SerializeObject(importModel);
+                importSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException($"Invalid Request: {ex.Message}.");
+
+            }
+            return importSuccess;
+        }
+
+        private void BuildChildGroup(int parentGroupId, List<LabelGroup> childGroups, List<Label> allLabels, Dictionary<string, object> node)
         {
             var childGrouups = childGroups.Where(x => x.FK_ParentLableGroupId == parentGroupId).ToList();
             foreach (var cGroup in childGrouups)
@@ -224,6 +275,26 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 if (hasChild)
                 {
                     BuildChildGroup(cGroup.LabelGroupId, childGroups, allLabels, labelDict);
+                }
+            }
+        }
+
+        private void PopulateGroup(ImportLabelGroup parentGroup, JToken? childToken)
+        {
+            if (childToken != null)
+            {
+                var childTokens = childToken.Children();
+                foreach (var cToken in childTokens)
+                {
+                    if (cToken.Type == JTokenType.Property)
+                    {
+                        var childGroup = new ImportLabelGroup
+                        {
+                            GroupName = cToken.Path
+                        };
+                        PopulateGroup(childGroup, cToken);
+                        parentGroup.ChildGroups.Add(childGroup);
+                    }
                 }
             }
         }

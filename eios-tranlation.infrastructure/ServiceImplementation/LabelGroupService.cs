@@ -53,7 +53,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             LabelGroupDetailViewModel response = new LabelGroupDetailViewModel();
             var dbGroup = await this.context.LabelGroups
                .AsNoTracking()
-               .Include(x => x.ParentGroup)
+               .Include(x => x.ParentGroup)               
                .FirstOrDefaultAsync(a => a.LabelGroupId == labelGroupId);
             if (dbGroup == null)
             {
@@ -69,6 +69,13 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
             if (dbGroup.ParentGroup != null)
             {
                 response.ParentGroup = this.mapper.Map<LabelGroupViewModel>(dbGroup.ParentGroup);
+                var siblings = await this.context.LabelGroups
+               .AsNoTracking()
+               .Where(a => a.FK_ParentLableGroupId == dbGroup.ParentGroup.LabelGroupId)
+               .ToListAsync();
+
+                response.SiblingGroups = this.mapper.Map<List<LabelGroupViewModel>>(siblings);
+
             }
 
             // Fill Child Group Details.

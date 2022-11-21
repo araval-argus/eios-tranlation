@@ -80,5 +80,10 @@ namespace eios_translation.api.Controllers
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
         public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] int languageId)
             => this.Ok(await this.mediator.Send( new ExportLabelsByLanguageIdCommand { LanguageId = languageId}));
+
+        [HttpPost("ImportLabelsByLanguageId")]
+        [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
+        public async Task<IActionResult> ImportLabelsByLanguageId([FromQuery] int languageId, IFormFile file)
+           => this.Ok(await this.mediator.Send(new ImportLabelsByLanguageIdCommand { LanguageId = languageId, File = file }));
     }
 }

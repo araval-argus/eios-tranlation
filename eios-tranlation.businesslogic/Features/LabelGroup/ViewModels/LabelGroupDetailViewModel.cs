@@ -14,6 +14,7 @@ namespace eios_tranlation.businesslogic.Features.LabelGroup.ViewModels
         public string GroupName { get; set; }
         public int? FK_ParentLableGroupId { get; set; }
         public LabelGroupViewModel? ParentGroup { get; set; }
+        public List<LabelGroupViewModel> SiblingGroups { get; set; } = new List<LabelGroupViewModel>();
         public List<LabelGroupViewModel> ChildGroups { get; set; } = new List<LabelGroupViewModel>();
         public List<LabelWithLanguage> Labels { get; set; } = new List<LabelWithLanguage>();
         public string BreadCrumb { get; set; }
