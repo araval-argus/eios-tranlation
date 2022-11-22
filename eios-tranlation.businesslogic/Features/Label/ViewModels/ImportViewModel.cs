@@ -12,6 +12,8 @@ namespace eios_tranlation.businesslogic.Features.Label.ViewModels
     }
     public class ImportLabelGroup
     {
+        public int LabelGroupId { get; set; }
+
         public string GroupName { get; set; }
 
         public List<ImportLabels> Labels { get; set; } = new List<ImportLabels>();
@@ -21,6 +23,7 @@ namespace eios_tranlation.businesslogic.Features.Label.ViewModels
     }
     public class ImportLabels
     {
+        public int LabelId { get; set; }
         public string LabelName { get; set; }
         public string LabelValue { get; set; }
     }
