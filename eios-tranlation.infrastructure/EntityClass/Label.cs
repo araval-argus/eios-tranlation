@@ -18,8 +18,16 @@ namespace eios_translation.infrastructure.EntityClass
 
         }
 
-        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, int? fK_BaseLabelId, string? labelvalue, LabelType labeltype,
-            string? labeldescription, string? labelsnapshotpath)
+        public Label(string resourceid, int fk_languageid, LabelGroup labelGroup, string? labelvalue = null)
+        {
+            ResourceId = resourceid;
+            FK_LanguageId = fk_languageid;
+            LabelGroup = labelGroup;
+            LabelValue = labelvalue;
+        }
+
+        public Label(string resourceid, int fk_labelgroupid, int fk_languageid, int? fK_BaseLabelId=null, string? labelvalue=null, LabelType labeltype = LabelType.Normal,
+            string? labeldescription = null, string? labelsnapshotpath = null)
         {
             ResourceId = resourceid;
             FK_LabelGroupId = fk_labelgroupid;
@@ -30,6 +38,8 @@ namespace eios_translation.infrastructure.EntityClass
             LabelDescription = labeldescription;
             LabelSnapshotPath = labelsnapshotpath;
         }
+
+        
 
         [Key]
         public int LabelId { get; protected set; }
@@ -52,8 +62,8 @@ namespace eios_translation.infrastructure.EntityClass
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
 
-        //[ForeignKey(nameof(FK_LabelGroupId))]
-        //public virtual  LabelGroup LabelGroup { get; protected set; }
+        [ForeignKey(nameof(FK_LabelGroupId))]
+        public virtual LabelGroup LabelGroup { get; protected set; }
 
         //[ForeignKey(nameof(FK_LanguageId))]
         //public virtual Language Language { get; protected set; }
@@ -84,8 +94,9 @@ namespace eios_translation.infrastructure.EntityClass
             this.FK_LanguageId = fk_languageId;
             this.MachineTranslation = machineTranslation;
         }
-        public void UpdateLabelValue(string labelValue)
+        public void UpdateLabelValueAndSetStatus(string labelValue, TranslationStatus status)
         {
+            this.TranslationStatus = status;
             this.LabelValue = labelValue;
         }
 

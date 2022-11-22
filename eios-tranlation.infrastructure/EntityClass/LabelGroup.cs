@@ -42,6 +42,8 @@ namespace eios_translation.infrastructure.EntityClass
         [ForeignKey(nameof(FK_ParentLableGroupId))]
         public virtual LabelGroup? ParentGroup { get; protected set; }
 
+        //public virtual ICollection<Label> AssociatedLabels { get; protected set; }
+
         public void UpdateLabelGroup(int labelGroupId, string groupName, int? parentLableGroupId)
         {
             LabelGroupId = labelGroupId;

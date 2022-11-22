@@ -4,6 +4,7 @@ using eios_tranlation.businesslogic.Features.LabelGroup.ViewModels;
 using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_translation.businesslogic.Features.Label.ViewModels;
+using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
@@ -163,7 +164,7 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                         var findDbLabel = dbLabels.FirstOrDefault(x => x.LabelId == transLabel.LabelId);
                         if (findDbLabel != null)
                         {
-                            findDbLabel.UpdateLabelValue(transLabel.LabelValue);
+                            findDbLabel.UpdateLabelValueAndSetStatus(transLabel.LabelValue, TranslationStatus.Started);
                         }
                     }
                     catch (Exception ex)
