@@ -1,32 +1,18 @@
 ﻿using AutoMapper;
 using eios_tranlation.businesslogic.Features.Label;
 using eios_tranlation.businesslogic.Features.Label.ViewModels;
-using eios_tranlation.businesslogic.MediatRPiplelineBehavior;
 using eios_tranlation.businesslogic.ServiceInterfaces;
 using eios_tranlation.core.Common;
 using eios_tranlation.core.Constants;
-using eios_tranlation.infrastructure.ServiceImplementation;
 using eios_translation.businesslogic.Features.Label.ViewModels;
 using eios_translation.businesslogic.ServiceInterfaces;
 using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
-using Google.Apis.Util;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Results;
 using Label = eios_translation.infrastructure.EntityClass.Label;
 
 namespace eios_translation.infrastructure.ServiceImplementation
@@ -233,21 +219,29 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     throw new ApiException($"File does not contain valid json. Please upload the valid file.");
                 }
                 ImportViewModel importModel = new ImportViewModel();
-                JObject token = JObject.Parse(viewModel);
-                if (token != null && token.Type == JTokenType.Object)
+                var dynamicDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(viewModel);
+                foreach (KeyValuePair<string, object> entry in dynamicDictionary)
                 {
-                    var childTokens = token.Values();
-                    foreach (var cToken in childTokens)
+                    // do something with entry.Value or entry.Key
+                    var parentGroup = new ImportLabelGroup
                     {
-                        var parentGroup = new ImportLabelGroup
-                        {
-                            GroupName = cToken.Path
-                        };
-                        PopulateGroup(parentGroup, cToken);
-                        importModel.ImportLabelGroups.Add(parentGroup);
-                    }
+                        GroupName = entry.Key,
+                    };
+                    var childDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(entry.Value?.ToString());
+                    PopulateGroup(parentGroup, childDictionary);
+                    importModel.ImportLabelGroups.Add(parentGroup);
                 }
-                string newJson = JsonConvert.SerializeObject(importModel);
+
+                var allDbGroups = await this.context.LabelGroups.ToListAsync();
+                var allLabels = await this.context.Labels
+                    .Where(x => x.FK_LanguageId == request.LanguageId)
+                    .ToListAsync();
+
+
+                foreach (var item in importModel.ImportLabelGroups)
+                {
+
+                }
                 importSuccess = true;
             }
             catch (Exception ex)
@@ -278,22 +272,26 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
-
-        private void PopulateGroup(ImportLabelGroup parentGroup, JToken? childToken)
+        private void PopulateGroup(ImportLabelGroup parentGroup, Dictionary<string, object> childValues)
         {
-            if (childToken != null)
+            if (childValues != null && childValues.Count > 0)
             {
-                var childTokens = childToken.Children();
-                foreach (var cToken in childTokens)
+                foreach (KeyValuePair<string, object> entry in childValues)
                 {
-                    if (cToken.Type == JTokenType.Property)
+                    string value = entry.Value.ToString();
+                    if (Convenience.IsValidJson(value))
                     {
                         var childGroup = new ImportLabelGroup
                         {
-                            GroupName = cToken.Path
+                            GroupName = entry.Key,
                         };
-                        PopulateGroup(childGroup, cToken);
+                        var childDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(entry.Value?.ToString());
+                        PopulateGroup(childGroup, childDictionary);
                         parentGroup.ChildGroups.Add(childGroup);
+                    }
+                    else
+                    {
+                        parentGroup.Labels.Add(new ImportLabels{ LabelName = entry.Key, LabelValue = entry.Value.ToString() });
                     }
                 }
             }

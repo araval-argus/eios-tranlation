@@ -75,7 +75,15 @@ namespace eios_tranlation.infrastructure.ServiceImplementation
                .ToListAsync();
 
                 response.SiblingGroups = this.mapper.Map<List<LabelGroupViewModel>>(siblings);
+            }
+            else
+            {
+                var siblings = await this.context.LabelGroups
+               .AsNoTracking()
+               .Where(a => a.FK_ParentLableGroupId == null)
+               .ToListAsync();
 
+                response.SiblingGroups = this.mapper.Map<List<LabelGroupViewModel>>(siblings);
             }
 
             // Fill Child Group Details.
