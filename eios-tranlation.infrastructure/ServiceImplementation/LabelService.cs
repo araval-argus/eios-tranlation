@@ -10,6 +10,7 @@ using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using Google.Api.Gax;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -220,7 +221,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
                 ImportViewModel importModel = new ImportViewModel();
                 var dynamicDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(viewModel);
-                
+
                 var allDbGroups = await this.context.LabelGroups.ToListAsync();
                 var allDbLabels = await this.context.Labels
                     .Where(x => x.FK_LanguageId == request.LanguageId)
@@ -234,7 +235,8 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         GroupName = entry.Key,
                     };
 
-                    var dbGroupexists = allDbGroups.FirstOrDefault(x => x.FK_ParentLableGroupId == null && x.GroupName.ToLower().Trim() == parentGroup.GroupName.ToLower().Trim());
+                    var dbGroupexists = allDbGroups
+                        .FirstOrDefault(x => x.FK_ParentLableGroupId == null && x.GroupName.ToLower().Trim() == parentGroup.GroupName.ToLower().Trim());
                     if (dbGroupexists != null)
                     {
                         parentGroup.LabelGroupId = dbGroupexists.LabelGroupId;
@@ -244,7 +246,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     if (Convenience.IsValidJson(value))
                     {
                         var childDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(entry.Value?.ToString());
-                        PopulateGroup(parentGroup, childDictionary, allDbGroups, allDbLabels);
+                        PopulateGroup(parentGroup, childDictionary, allDbGroups, allDbLabels, request.LanguageId);
                     }
                     else
                     {
@@ -252,8 +254,8 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         if (parentGroup.LabelGroupId > 0)
                         {
                             var dbLabelExists = allDbLabels
-                                .FirstOrDefault(x => x.FK_LabelGroupId == parentGroup.LabelGroupId 
-                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim());
+                                .FirstOrDefault(x => x.FK_LabelGroupId == parentGroup.LabelGroupId
+                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim() && x.FK_LanguageId == request.LanguageId);
                             if (dbLabelExists != null)
                             {
                                 impLabel.LabelId = dbLabelExists.LabelId;
@@ -263,7 +265,39 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     }
                     importModel.ImportLabelGroups.Add(parentGroup);
                 }
-                string finalJson = JsonConvert.SerializeObject(importModel);
+
+                //string finalJson = JsonConvert.SerializeObject(importModel);
+
+
+                // Remove Parent Group Case.
+                List<int> requestGroupIds = importModel.ImportLabelGroups.Where(x => x.LabelGroupId > 0).Select(x => x.LabelGroupId).ToList();
+                var tobeRemovedGroups = allDbGroups.Where(x => x.FK_ParentLableGroupId == null && !requestGroupIds.Any(y => y == x.LabelGroupId));
+                this.context.LabelGroups.RemoveRange(tobeRemovedGroups);
+
+                foreach (var parentGroup in importModel.ImportLabelGroups)
+                {
+                    var dbGroupExists = allDbGroups.FirstOrDefault(x => x.LabelGroupId == parentGroup.LabelGroupId);
+
+                    if (parentGroup.LabelGroupId > 0 && dbGroupExists != null)
+                    {
+                        // Update Parent Group Case. (Todo: This will never happen)
+                        dbGroupExists.SetGroupName(parentGroup.GroupName);
+                    }
+                    else
+                    {
+                        // Add Parent Group Case.
+                        dbGroupExists = new LabelGroup(groupname: parentGroup.GroupName, parentgroupid: null);
+                        this.context.LabelGroups.Add(dbGroupExists);
+                    }
+
+                    // Loop Through the child Groups.
+                    if (parentGroup.ChildGroups.Count > 0)
+                    {
+                        HandleChildGroup(allDbGroups, parentGroup, dbGroupExists);
+                    }
+
+                }
+                await this.context.SaveChangesAsync();
                 importSuccess = true;
             }
             catch (Exception ex)
@@ -272,6 +306,35 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
             }
             return importSuccess;
+        }
+
+        private async void HandleChildGroup(List<LabelGroup> allDbGroups, ImportLabelGroup parentGroup, LabelGroup dbParentGrpup)
+        {
+            foreach (var cGroup in parentGroup.ChildGroups)
+            {
+                var dbGroupExists = allDbGroups.FirstOrDefault(x =>
+                x.FK_ParentLableGroupId == parentGroup.LabelGroupId
+                && x.LabelGroupId == cGroup.LabelGroupId);
+
+                if (dbGroupExists != null)
+                {
+                    // Update Group Case.
+                    dbGroupExists.SetGroupName(cGroup.GroupName);
+                }
+                else
+                {
+                    // Add Group Case.
+                    
+                    dbGroupExists = new LabelGroup(cGroup.GroupName, dbParentGrpup);
+                    this.context.LabelGroups.Add(dbGroupExists);
+                }
+
+                // Loop Through the child Groups.
+                if (cGroup.ChildGroups.Count > 0)
+                {
+                    HandleChildGroup(allDbGroups, cGroup, dbGroupExists);
+                }
+            }
         }
 
         private void BuildChildGroup(int parentGroupId, List<LabelGroup> childGroups, List<Label> allLabels, Dictionary<string, object> node)
@@ -294,7 +357,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
-        private void PopulateGroup(ImportLabelGroup parentGroup, Dictionary<string, object> childValues, List<LabelGroup> allDbGroups, List<Label> allDbLabels)
+        private void PopulateGroup(ImportLabelGroup parentGroup, Dictionary<string, object> childValues, List<LabelGroup> allDbGroups, List<Label> allDbLabels, int languageId)
         {
             if (childValues != null && childValues.Count > 0)
             {
@@ -309,7 +372,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         };
                         if (parentGroup.LabelGroupId > 0)
                         {
-                            var dbGroupexists = allDbGroups.FirstOrDefault(x => x.FK_ParentLableGroupId == parentGroup.LabelGroupId 
+                            var dbGroupexists = allDbGroups.FirstOrDefault(x => x.FK_ParentLableGroupId == parentGroup.LabelGroupId
                             && x.GroupName.ToLower().Trim() == childGroup.GroupName.ToLower().Trim());
                             if (dbGroupexists != null)
                             {
@@ -317,7 +380,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                             }
                         }
                         var childDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(entry.Value?.ToString());
-                        PopulateGroup(childGroup, childDictionary, allDbGroups, allDbLabels);
+                        PopulateGroup(childGroup, childDictionary, allDbGroups, allDbLabels, languageId);
                         parentGroup.ChildGroups.Add(childGroup);
                     }
                     else
@@ -327,7 +390,8 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         {
                             var dbLabelExists = allDbLabels
                                 .FirstOrDefault(x => x.FK_LabelGroupId == parentGroup.LabelGroupId
-                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim());
+                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim()
+                                && x.FK_LanguageId == languageId);
                             if (dbLabelExists != null)
                             {
                                 impLabel.LabelId = dbLabelExists.LabelId;
@@ -338,5 +402,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
+
+
     }
 }

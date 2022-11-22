@@ -1,4 +1,5 @@
 ﻿using eios_tranlation.businesslogic.Features.LabelGroup;
+using eios_translation.core.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eios_translation.infrastructure.EntityClass
 {
-    public class LabelGroup
+    public class LabelGroup: ITrackable
     {
         public LabelGroup()
         {
@@ -19,6 +20,12 @@ namespace eios_translation.infrastructure.EntityClass
         {
             GroupName = groupname;
             FK_ParentLableGroupId = parentgroupid;
+        }
+
+        public LabelGroup(string groupname, LabelGroup parentgroup)
+        {
+            GroupName = groupname;
+            ParentGroup = parentgroup;
         }
 
         [Key]
@@ -40,6 +47,11 @@ namespace eios_translation.infrastructure.EntityClass
             LabelGroupId = labelGroupId;
             GroupName = groupName;
             FK_ParentLableGroupId = parentLableGroupId;
+        }
+
+        public void SetGroupName(string groupName)
+        {
+            GroupName = groupName;
         }
     }
 }
