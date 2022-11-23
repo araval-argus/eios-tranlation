@@ -374,10 +374,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
                             string autoTranslation = 
                                 $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
+                            // (Todo: enable translation)
                             //await this.languageService.AzureTranslate(defLabel.LabelValue, dbLanguage.LanguageCode, nonDefLanguage.LanguageCode);
                             if (!string.IsNullOrEmpty(autoTranslation))
                             {
-                                langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
+                                langaugeLabelExists.UpdateLabelValueAndSetStatus(autoTranslation, TranslationStatus.Started);
+                                //langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
                             }
                             context.Labels.Add(langaugeLabelExists);
                         }
@@ -386,10 +388,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
                             if (!string.IsNullOrWhiteSpace(langaugeLabelExists.MachineTranslation))
                             {
                                 string autoTranslation = $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
+                                // (Todo: enable translation)
                                 //await this.languageService.AzureTranslate(defLabel.LabelValue, nonDefLanguage.LanguageCode, nonDefLanguage.LanguageCode);
                                 if (!string.IsNullOrEmpty(autoTranslation))
                                 {
-                                    langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
+                                    langaugeLabelExists.UpdateLabelValueAndSetStatus(autoTranslation, TranslationStatus.Started);
+                                    //langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
                                 }
                             }
                         }
