@@ -11,6 +11,7 @@ using eios_translation.core.Common;
 using eios_translation.core.Wrappers;
 using eios_translation.infrastructure.DbContext;
 using eios_translation.infrastructure.EntityClass;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -231,7 +232,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 var allDbLabels = await this.context.Labels
                     .Where(x => x.FK_LanguageId == request.LanguageId)
                     .ToListAsync();
-                
+
                 // Create a list and map with existing database values out of uploaded json file.
                 foreach (KeyValuePair<string, object> entry in dynamicDictionary)
                 {
@@ -275,10 +276,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 // Database Operations Start.
 
                 // Remove Parent Group Case.
-                List<int> requestGroupIds = importModel.ImportLabelGroups.Where(x => x.LabelGroupId > 0).Select(x => x.LabelGroupId).ToList();
-                var tobeRemovedGroups = allDbGroups.Where(x => x.FK_ParentLableGroupId == null && !requestGroupIds.Any(y => y == x.LabelGroupId));
-                this.context.LabelGroups.RemoveRange(tobeRemovedGroups);
-
+                if (dbLanguage.IsDefault)
+                {
+                    List<int> requestGroupIds = importModel.ImportLabelGroups.Where(x => x.LabelGroupId > 0).Select(x => x.LabelGroupId).ToList();
+                    var tobeRemovedGroups = allDbGroups.Where(x => x.FK_ParentLableGroupId == null && !requestGroupIds.Any(y => y == x.LabelGroupId));
+                    this.context.LabelGroups.RemoveRange(tobeRemovedGroups);
+                }
                 foreach (var parentGroup in importModel.ImportLabelGroups)
                 {
                     var dbGroupExists = allDbGroups.FirstOrDefault(x => x.LabelGroupId == parentGroup.LabelGroupId);
@@ -286,13 +289,19 @@ namespace eios_translation.infrastructure.ServiceImplementation
                     if (parentGroup.LabelGroupId > 0 && dbGroupExists != null)
                     {
                         // Update Parent Group Case. (Todo: This will never happen)
-                        dbGroupExists.SetGroupName(parentGroup.GroupName);
+                        if (dbLanguage.IsDefault)
+                        {
+                            dbGroupExists.SetGroupName(parentGroup.GroupName);
+                        }
                     }
                     else
                     {
                         // Add Parent Group Case.
-                        dbGroupExists = new LabelGroup(groupname: parentGroup.GroupName, parentgroupid: null);
-                        this.context.LabelGroups.Add(dbGroupExists);
+                        if (dbLanguage.IsDefault)
+                        {
+                            dbGroupExists = new LabelGroup(groupname: parentGroup.GroupName, parentgroupid: null);
+                            this.context.LabelGroups.Add(dbGroupExists);
+                        }
                     }
 
                     // Handle Group Labels.
@@ -311,6 +320,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 // Database Operations End.
 
                 await this.context.SaveChangesAsync();
+
+                // Create/Update/Delete corresponding label languages.
+                if (dbLanguage.IsDefault)
+                {
+                    await HandleLangugaeLabels(dbLanguage);
+                }
                 importSuccess = true;
             }
             catch (Exception ex)
@@ -320,12 +335,83 @@ namespace eios_translation.infrastructure.ServiceImplementation
             }
             return importSuccess;
         }
+        private async Task HandleLangugaeLabels(Language dbLanguage)
+        {
+            try
+            {
+                var allLabels = await this.context.Labels.ToListAsync();
+                var allNonDefaultLanguages = await this.context.Languages
+                    .AsNoTracking()
+                    .Where(x => !x.IsDefault)
+                    .ToListAsync();
+
+                var defaultLabels = allLabels.Where(x => x.FK_LanguageId == dbLanguage.LanguageId).ToList();
+                List<int> baseLabeldIds = defaultLabels.Select(x => x.LabelId).ToList();
+                // Remove all language labels where corresponding default labels are removed.
+                var tobeRemovedLabels = allLabels.Where(x =>
+                x.FK_BaseLabelId != null
+                && x.FK_LanguageId != dbLanguage.LanguageId
+                && !baseLabeldIds.Any(y => y == x.FK_BaseLabelId)).ToList();
+
+                context.Labels.RemoveRange(tobeRemovedLabels);
+
+                foreach (var defLabel in defaultLabels)
+                {
+                    foreach (var nonDefLanguage in allNonDefaultLanguages)
+                    {
+                        var langaugeLabelExists = allLabels.FirstOrDefault(x => x.FK_BaseLabelId == defLabel.LabelId && x.FK_LanguageId == nonDefLanguage.LanguageId);
+                        if (langaugeLabelExists == null)
+                        {
+                            langaugeLabelExists = new Label(
+                            resourceid: defLabel.ResourceId,
+                            fk_labelgroupid: defLabel.FK_LabelGroupId,
+                            fk_languageid: nonDefLanguage.LanguageId,
+                            fK_BaseLabelId: defLabel.LabelId,
+                            labelvalue: null,
+                            labeltype: LabelType.Normal,
+                            labeldescription: null,
+                            labelsnapshotpath: null);
+
+                            string autoTranslation = 
+                                $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
+                            //await this.languageService.AzureTranslate(defLabel.LabelValue, dbLanguage.LanguageCode, nonDefLanguage.LanguageCode);
+                            if (!string.IsNullOrEmpty(autoTranslation))
+                            {
+                                langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
+                            }
+                            context.Labels.Add(langaugeLabelExists);
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrWhiteSpace(langaugeLabelExists.MachineTranslation))
+                            {
+                                string autoTranslation = $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
+                                //await this.languageService.AzureTranslate(defLabel.LabelValue, nonDefLanguage.LanguageCode, nonDefLanguage.LanguageCode);
+                                if (!string.IsNullOrEmpty(autoTranslation))
+                                {
+                                    langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            await this.context.SaveChangesAsync();
+        }
         private void HandleGroupLabels(List<Label> allDbLabels, ImportLabelGroup importLabelGroup, LabelGroup dbGroup, Language uploadLanguage)
         {
             // Remove label Case.
-            List<int> requestLabelIds = importLabelGroup.Labels.Where(x => x.LabelId > 0).Select(x => x.LabelId).ToList();
-            var tobeRemovedLabels = allDbLabels.Where(x => x.FK_LabelGroupId == importLabelGroup.LabelGroupId && !requestLabelIds.Any(y => y == x.LabelId));
-            this.context.Labels.RemoveRange(tobeRemovedLabels);
+            if (uploadLanguage.IsDefault)
+            {
+                List<int> requestLabelIds = importLabelGroup.Labels.Where(x => x.LabelId > 0).Select(x => x.LabelId).ToList();
+                var tobeRemovedLabels = allDbLabels.Where(x => x.FK_LabelGroupId == importLabelGroup.LabelGroupId && !requestLabelIds.Any(y => y == x.LabelId));
+                this.context.Labels.RemoveRange(tobeRemovedLabels);
+            }
 
             foreach (var lbl in importLabelGroup.Labels)
             {
@@ -341,13 +427,15 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 else
                 {
                     // Add label Case.
-                    
-                    dbLabelExists = new Label(
-                    resourceid: lbl.LabelName,
-                    fk_languageid: uploadLanguage.LanguageId,
-                    labelGroup: dbGroup,
-                    labelvalue: lbl.LabelValue);
-                    this.context.Labels.Add(dbLabelExists);
+                    if (uploadLanguage.IsDefault)
+                    {
+                        dbLabelExists = new Label(
+                        resourceid: lbl.LabelName,
+                        fk_languageid: uploadLanguage.LanguageId,
+                        labelGroup: dbGroup,
+                        labelvalue: lbl.LabelValue);
+                        this.context.Labels.Add(dbLabelExists);
+                    }
                 }
             }
 
@@ -355,10 +443,12 @@ namespace eios_translation.infrastructure.ServiceImplementation
         private void HandleChildGroup(List<LabelGroup> allDbGroups, List<Label> allDbLabels, ImportLabelGroup parentGroup, LabelGroup dbParentGrpup, Language uploadLanguage)
         {
             // Remove Group Case.
-            List<int> requestGroupIds = parentGroup.ChildGroups.Where(x => x.LabelGroupId > 0).Select(x => x.LabelGroupId).ToList();
-            var tobeRemovedGroups = allDbGroups.Where(x => x.FK_ParentLableGroupId == parentGroup.LabelGroupId && !requestGroupIds.Any(y => y == x.LabelGroupId));
-            this.context.LabelGroups.RemoveRange(tobeRemovedGroups);
-
+            if (uploadLanguage.IsDefault)
+            {
+                List<int> requestGroupIds = parentGroup.ChildGroups.Where(x => x.LabelGroupId > 0).Select(x => x.LabelGroupId).ToList();
+                var tobeRemovedGroups = allDbGroups.Where(x => x.FK_ParentLableGroupId == parentGroup.LabelGroupId && !requestGroupIds.Any(y => y == x.LabelGroupId));
+                this.context.LabelGroups.RemoveRange(tobeRemovedGroups);
+            }
 
             foreach (var cGroup in parentGroup.ChildGroups)
             {
@@ -374,11 +464,14 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 else
                 {
                     // Add Group Case.
-                    dbGroupExists = new LabelGroup(cGroup.GroupName, dbParentGrpup);
-                    this.context.LabelGroups.Add(dbGroupExists);
+                    if (uploadLanguage.IsDefault)
+                    {
+                        dbGroupExists = new LabelGroup(cGroup.GroupName, dbParentGrpup);
+                        this.context.LabelGroups.Add(dbGroupExists);
+                    }
                 }
                 // Handle Group Labels.
-                this.HandleGroupLabels(allDbLabels, parentGroup, dbGroupExists, uploadLanguage);
+                this.HandleGroupLabels(allDbLabels, cGroup, dbGroupExists, uploadLanguage);
 
                 // Loop Through the child Groups.
                 if (cGroup.ChildGroups.Count > 0)
