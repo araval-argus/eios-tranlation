@@ -323,7 +323,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
                 // Create/Update/Delete corresponding label languages.
                 if (dbLanguage.IsDefault)
-                {   
+                {
                     await HandleLangugaeLabels(dbLanguage);
                 }
                 importSuccess = true;
@@ -385,18 +385,15 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         }
                         else
                         {
-                            if (langaugeLabelExists.LabelValue != defLabel.LabelValue)
+                            if (!string.IsNullOrWhiteSpace(langaugeLabelExists.MachineTranslation))
                             {
-                                if (!string.IsNullOrWhiteSpace(langaugeLabelExists.MachineTranslation))
+                                string autoTranslation = $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
+                                // (Todo: enable translation)
+                                //await this.languageService.AzureTranslate(defLabel.LabelValue, nonDefLanguage.LanguageCode, nonDefLanguage.LanguageCode);
+                                if (!string.IsNullOrEmpty(autoTranslation))
                                 {
-                                    string autoTranslation = $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
-                                    // (Todo: enable translation)
-                                    //await this.languageService.AzureTranslate(defLabel.LabelValue, nonDefLanguage.LanguageCode, nonDefLanguage.LanguageCode);
-                                    if (!string.IsNullOrEmpty(autoTranslation))
-                                    {
-                                        langaugeLabelExists.UpdateLabelValueAndSetStatus(autoTranslation, TranslationStatus.Started);
-                                        //langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
-                                    }
+                                    langaugeLabelExists.UpdateLabelValueAndSetStatus(autoTranslation, TranslationStatus.Started);
+                                    //langaugeLabelExists.SetMachineTranslation(nonDefLanguage.LanguageId, autoTranslation);
                                 }
                             }
                         }
