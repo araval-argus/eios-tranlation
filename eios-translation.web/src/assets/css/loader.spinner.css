@@ -1,0 +1,66 @@
+.loaderSpinner {
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  
+    .paginationSpinner{
+      border: 3px solid rgb(226, 226, 226, 0.9);
+      border-top-color: #f9f9f9;
+      width: 24px;
+      height: 24px;
+    }
+
+    .lineChartSpinner{
+      top: 25%;
+      position: relative;
+      margin-top: 1px;
+      border: 3px solid rgb(226, 226, 226, 0.9);
+      border-top-color: #f9f9f9;
+      width: 26px;
+      height: 26px;
+      margin: 0 auto 0 auto;
+    }
+
+    .featureSpinner{
+      border: 5px solid rgb(226, 226, 226, 0.9);
+      border-top-color: #f9f9f9;
+      height: 80px;
+      width: 80px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin: -80px auto 0 auto;
+    }
+
+    .authSpinner{
+      border: 5px solid rgb(252, 192, 14, 0.5);
+      border-top-color: #f9fafb;
+      height: 100px;
+      width: 100px;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto 0 auto;
+    }
+
+
+/* Spinner Position */
+.loaderPosition{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

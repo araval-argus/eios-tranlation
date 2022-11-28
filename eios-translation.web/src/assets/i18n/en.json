@@ -1,0 +1,177 @@
+{
+    "header": {
+        "monitoring": "Monitoring",
+        "documents": "Documents",
+        "dashboards": "Dashboards",
+        "dashboardsSubMenu": {
+            "bigScreen" : "Big Screen Map",
+            "twitter": "Twitter Dashboard",
+            "covid": "COVID-19 Case Counts",
+            "inform": "INFORM COVID-19 Warning (external)",
+            "sprinklr": "Sprinklr Dashboard",
+            "admin": "Admin Dashboard"
+        },
+        "help": "Help and Feedback",
+        "helpSubMenu": {
+            "reference": "Reference Manual",
+            "feedback": "Feedback"
+        },
+        "userSubMenu": {
+            "account": "Account Details",
+            "logOut": "LogOut"
+        }
+    },
+    "navbar": {
+        "boards": "Boards",
+        "explore": "Explore",
+        "sources": "Sources",
+        "activities": "Last Activities"
+    },
+    "filter": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all"
+    },
+    "filtersBoard": {
+        "boardsSearch": "Search Boards",
+        "includeArchived": "Include Archived Boards",
+        "searchLabel": "Search Board Name",
+        "filtersCountriesName": "Countries",
+        "filtersCountriesLabel": "Search Country",
+        "filtersUserTagsName": "Users Tags",
+        "filtersUserTagsLabel": "Search User Tag"
+    },
+    "filtersActivities": {
+        "name": "Boards Activities",
+        "searchLabel": "Search Boards Activities",
+        "fromDate": "From Date",
+        "toDate": "To Date",
+        "labels": {
+            "createcommentactivity": "New Comment on Article",
+            "removecommentactivity": "Remove Comment on Article",
+            "createquerycommentactivity": "New Comment on Board",
+            "removequerycommentactivity": "Remove Comment on Board",
+            "createqueryactivity": "Create board",
+            "updatequeryactivity": "Update board",
+            "activatequeryactivity": "Select board",
+            "removequeryactivity": "Close board",
+            "restorequeryactivity": "Re-open board",
+            "pinitemtoqueryactivity": "Pin Article to Board",
+            "unpinitemtoqueryactivity": "Unpin Article from Board",
+            "itemreadpreviewactivity": "Read Article Preview",
+            "itemreaddetailactivity": "Examine Article Detail",
+            "itemflaggedactivity": "Flag for Follow-up",
+            "itemunflaggedactivity": "Remove Flag for Follow-up",
+            "exportitemsactivity": "Export Selected Articles",
+            "removechildtreenodeactivity": "Removed option in Category Tree",
+            "addchildtreenodeactivity": "New option in Category Tree",
+            "updatetreenodeactivity": "Updated option in Category Tree"
+        }
+    },
+    "filterTeams": {
+        "name": "Teams",
+        "searchLabel": "Search Team",
+        "labels": {
+            "createcommentactivity": "New Comment on Article",
+            "removecommentactivity": "Remove Comment on Article",
+            "createquerycommentactivity": "New Comment on Board",
+            "removequerycommentactivity": "Remove Comment on Board",
+            "createqueryactivity": "Create board",
+            "updatequeryactivity": "Update board",
+            "activatequeryactivity": "Select board",
+            "removequeryactivity": "Close board",
+            "restorequeryactivity": "Re-open board",
+            "pinitemtoqueryactivity": "Pin Article to Board",
+            "unpinitemtoqueryactivity": "Unpin Article from Board",
+            "itemreadpreviewactivity": "Read Article Preview",
+            "itemreaddetailactivity": "Examine Article Detail",
+            "itemflaggedactivity": "Flag for Follow-up",
+            "itemunflaggedactivity": "Remove Flag for Follow-up",
+            "exportitemsactivity": "Export Selected Articles",
+            "removechildtreenodeactivity": "Removed option in Category Tree",
+            "addchildtreenodeactivity": "New option in Category Tree",
+            "updatetreenodeactivity": "Updated option in Category Tree"
+        }
+    },
+    "filtersArchives": {
+        "name": "Boards Status",
+        "labels": {
+            "true": "Archived Boards",
+            "false": "Active Boards"
+        }
+    },
+    "boardsList": {
+        "boards": "Boards",
+        "title": "List of Boards",
+        "add": "Add New Board",
+        "archived": "Archived Boards",
+        "active": "Active Boards"
+    },
+    "board-list-item":{
+        "creator": "Creator",
+        "createdOn": "Created on",
+        "created": "Created",
+        "updated": "Updated",
+        "active": "Board is Active",
+        "riskAssesment": "Risk Assesment",
+        "rational": "Board Rational",
+        "boardetials": "Click to see Board Details",
+        "boardnodetails": "No Details Available",
+        "boardmenudetails": "View Details",
+        "boardmenuarchive": "Archive Board"
+    },
+    "modal-languages":{
+        "title": "Select Language",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "tooltip": "Click to change Language",
+        "options": {
+            "01-last-48-hours": "Last 48 Hours",
+            "02-last-4-weeks": "Last 4 Weeks",
+            "03-last-6-months": " Last 6 Months",
+            "04-last-year": "Last Year",
+            "05-last-2-years": "Last 2 Years",
+            "06-last-5-years": "Last 5 Years"
+        }
+    },
+    "modalTimeframe":{
+        "title": "Select TimeFrame",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "tooltip": "Click to change Charts TimeFrame",
+        "options": {
+            "01-last-48-hours": "Last 48 Hours",
+            "02-last-4-weeks": "Last 4 Weeks",
+            "03-last-6-months": " Last 6 Months",
+            "04-last-year": "Last Year",
+            "05-last-2-years": "Last 2 Years",
+            "06-last-5-years": "Last 5 Years"
+        }
+    },
+    "modalSorting":{
+        "title": "Sorting Boards",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "sorted": "Sorted  by",
+        "sort": "Sort",
+        "tooltip": "Click to change Boards Sorting",
+        "options": {
+            "01-creation-date": "Creation Date",
+            "02-last-update": "Last Update",
+            "03-name": "by Name"
+        }
+    },
+    "pagination":{
+        "showing": "Showing",
+        "of": "of",
+        "items": "Items per Page"
+    },
+    "inputFeeedback": {
+        "timeInput": {
+            "dateNoValid": "Date is Not Valid",
+            "dateFromError": "Date From cannot be greater than the Date To",
+            "dateToError": "Date To cannot be greater than the Date From"
+        }
+    }
+}

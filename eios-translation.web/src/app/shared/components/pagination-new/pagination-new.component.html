@@ -1,0 +1,63 @@
+<div id="newPaginationWrapper">
+    <div class="paginationLeft">
+      <select class="itemsSelect" (change)="itemsChange($event)">
+        <option value="10" [selected]="this.itemsPerPage === 10">10 {{ 'pagination.items' | transloco }}</option>
+        <option value="20" [selected]="this.itemsPerPage === 20">20 {{ 'pagination.items' | transloco }}</option>
+        <option value="30" [selected]="this.itemsPerPage === 30">30 {{ 'pagination.items' | transloco }}</option>
+        <option value="40" [selected]="this.itemsPerPage === 40">40 {{ 'pagination.items' | transloco }}</option>
+        <option value="50" [selected]="this.itemsPerPage === 50">50 {{ 'pagination.items' | transloco }}</option>
+      </select>
+    </div>
+    <div class="paginationRight">
+      <div class="loaderSpace">
+        <div class="loaderSpinner paginationSpinner" *ngIf="this.isLoading"></div>
+      </div>
+      <!-- First -->
+      <div 
+        (click)="this.firstHanlder($event)"
+        [ngClass]="this.currentPage > 1 ? 'paginationButton' : 'paginationButton noHover'">
+        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 0L4 4L7 8H9L6 4L9 0H7Z" [ngClass]="this.currentPage > 1 ? 'pagEnabled': 'pagDisabled'"></path>
+          <path d="M13 0L10 4L13 8H15L12 4L15 0H13Z" [ngClass]="this.currentPage > 1 ? 'pagEnabled': 'pagDisabled'"></path>
+          <rect width="2" height="8" [ngClass]="this.currentPage > 1 ? 'pagEnabled': 'pagDisabled'"></rect>
+        </svg>
+      </div>
+      <!-- Prev -->
+      <div 
+        (click)="this.prevHandler($event)"
+        [ngClass]="this.currentPage > 1 ? 'paginationButton' : 'paginationButton noHover'">
+        <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 0L0 4L3 8H5L2 4L5 0H3Z" [ngClass]="this.currentPage > 1 ? 'pagEnabled': 'pagDisabled'"></path>
+          <path d="M9 0L6 4L9 8H11L8 4L11 0H9Z" [ngClass]="this.currentPage > 1 ? 'pagEnabled': 'pagDisabled'"></path>
+        </svg>
+      </div>
+      <input class="txt-pagination" id="inputPage" value="{{ this.currentPage }}" />
+      <button 
+        (click)="this.reloadHandler($event)" 
+        class="btn-pagination">
+      </button>
+      <div class="pageCountWrapper">
+        of {{ this.totalPages }}
+      </div>
+      <!-- Next -->
+      <div
+        (click)="this.nextHandler($event)"  
+        [ngClass]="this.currentPage >= this.totalPages ? 'paginationButton noHover' : 'paginationButton'"
+        style="transform: rotate(180deg);">
+        <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 0L0 4L3 8H5L2 4L5 0H3Z" [ngClass]="this.currentPage >= this.totalPages ? 'pagDisabled': 'pagEnabled'"></path>
+          <path d="M9 0L6 4L9 8H11L8 4L11 0H9Z" [ngClass]="this.currentPage >= this.totalPages ? 'pagDisabled': 'pagEnabled'"></path>
+        </svg>
+      </div>
+      <div 
+        (click)="this.lastHandler($event)"  
+        [ngClass]="this.currentPage >= this.totalPages ? 'paginationButton noHover' : 'paginationButton'"
+        style="transform: rotate(180deg);">
+        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 0L4 4L7 8H9L6 4L9 0H7Z" [ngClass]="this.currentPage >= this.totalPages ? 'pagDisabled': 'pagEnabled'"></path>
+          <path d="M13 0L10 4L13 8H15L12 4L15 0H13Z" [ngClass]="this.currentPage >= this.totalPages ? 'pagDisabled': 'pagEnabled'"></path>
+          <rect width="2" height="8" [ngClass]="this.currentPage >= this.totalPages ? 'pagDisabled': 'pagEnabled'"></rect>
+        </svg>
+      </div>
+    </div>
+  </div>

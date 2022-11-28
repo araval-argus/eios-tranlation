@@ -1,0 +1,33 @@
+
+<div (clickOutside)="onClickedOutside($event)" class="clndWrapper" data-click="calendar">
+  <div class="clndLabel" data-click="calendar">
+    {{ placeHolder }}
+  </div>
+    <input 
+      [id]="inputName"
+      type="text" 
+      mask="00/00/0000"
+      value="{{ this.inputDateValue }}"
+      class="text-field-sidebar text-field-button"
+      [placeholder]='inputPlaceHolder'
+      data-click="calendar"
+      autocomplete="off"
+      />
+    <button 
+      [id]="'btn' + inputName"
+      [ngClass]="dateValid ? 'btn-calendar-find' : 'btn-calendar-find alert'"
+      data-click="calendar"
+      (click)="toggle()">
+    </button>
+  <div id="calendarWrapper" class="dp-popup" [ngStyle]="calendarPosition()" data-click="calendar">
+    <dp-day-calendar 
+      #datePicker
+      theme="dp-material"
+      data-click="calendar"
+      [config]="config"
+      (onSelect)="onDateChange($event)" >
+    </dp-day-calendar>
+  </div>
+</div>
+
+        

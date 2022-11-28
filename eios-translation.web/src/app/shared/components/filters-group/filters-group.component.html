@@ -1,0 +1,143 @@
+      <!-- filter-tag -->
+      <div class="filters-group" *ngIf="this.isLoading">
+        <!-- coll-head -->
+        <div class="filter-separator"></div>
+        <eios-filter-panel-head 
+          [panelHeadName]="panelHeadName"
+          [panelVisibility]="panelVisibility"
+          [groupHelpFeature]="groupHelpFeature"
+          (click)="toggleFilter()"
+        ></eios-filter-panel-head>
+
+        <!-- coll-card -->
+        <div class="filters-dd-card " 
+        [@panelVisibility]="panelVisibility" >
+          
+          <!-- search-label  -->
+          <div class="filter-areaLabel" *ngIf="searchLabel">
+            <div class="filter-labelIco align-center-horizontal"></div>
+            <div class="filter-labelTxt align-center-horizontal">
+              {{ searchLabel }}
+            </div>
+          </div>
+          
+          <!-- search-form -->
+          <div class="filter-areaSearch" *ngIf="searchFeature">
+            <form #f="ngForm" novalidate>
+              <input 
+                #searchInput 
+                type="text" 
+                name="text" 
+                class="text-field-sidebar text-field-button" 
+                placeholder="{{ searchPlaceHolder }}"
+                ngModel 
+                required
+                autocomplete="off">
+              <button 
+                class="btn-text-cross" 
+                [disabled]="f.invalid"
+                (click)="searchDelete(f)">
+              </button>
+            </form>
+          </div>
+
+          <!-- time-frame -->
+          <eios-filter-date-from-to 
+            *ngIf="timeFrameFeature"
+            [scrollEvent]="scrollEvent"
+            [dateFromToFeedback]="this.timeFrameFeatureFeedback"
+            (dateInputAction)="dateInputAction($event)"
+            >
+          </eios-filter-date-from-to>
+
+          <div class="filters-dd-group" *ngIf="itemsHeight" >
+
+            <div class="filters-dd-group-top">
+              <button (click)="selectAll($event)" [ngClass]="selectAllStyle()" >
+                <div class="icon-filter baseline">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8" style="enable-background:new 0 0 8 8;" >
+                    <path d="M3,7C2.7,7,2.5,6.9,2.3,6.7l-2-2c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0L3,4.6l3.3-3.3c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l-4,4C3.5,6.9,3.3,7,3,7z"/>
+                    </svg>              
+                </div>
+                {{ 'filter.selectAll' | transloco }}
+              </button>
+              <button (click)="deselectAl($event)" [ngClass]="deselectAllStyle()">
+                <div [ngClass]="itemsSteps <= 5 ? 'icon-filter icon-filter-disabled baseline' : 'icon-filter baseline' ">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8" style="enable-background:new 0 0 8 8;" >
+                  <path d="M5.4,4l2.3-2.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L4,2.6L1.7,0.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4L2.6,4
+                    L0.3,6.3c-0.4,0.4-0.4,1,0,1.4C0.5,7.9,0.7,8,1,8s0.5-0.1,0.7-0.3L4,5.4l2.3,2.3C6.5,7.9,6.7,8,7,8s0.5-0.1,0.7-0.3
+                    c0.4-0.4,0.4-1,0-1.4L5.4,4z"/>
+                  </svg>                   
+                </div>
+                {{ 'filter.deselectAll' | transloco }}
+              </button>
+            </div>
+            <div class="filter-separator"></div>
+
+            <div class="filter-dd-items-container" 
+                  [ngStyle]="{'height.px': itemsHeight}">
+              <eios-filter-item
+                *ngFor="let item of this.itemsList; trackBy: filtersTrack"
+                [item]="item"
+                [countMax]="itemsCount"
+                [isTranslationRequired]="this.filtersGroup.isTranslationRequired"
+                [isTranslationFrontend]="this.filtersGroup.isTranslationFrontend"
+                (filterClickItem)="itemClick($event)"
+                [showKeyBadge]="filterKeyBadge"
+                [showKeyRing]="filterKeyRing"
+                [showCountryFlag]="filterCountryFlag"
+                [showQuestionMark]="filterQuestionMark"
+                [showKeyBracket]="filterKeyBracket"
+              ></eios-filter-item>
+            </div>
+
+            <div class="filters-dd-group-bottom">
+              <div *ngIf="this.itemsList?.length > 5">
+                <button 
+                  *ngIf="lessMoreButtons()"
+                  (click)="showMore($event)" 
+                  [ngClass]="itemsSteps < itemsList.length && itemsList.length > 5 ? 'filters-btn' : 'filters-btn-disabled'">
+                  <div class="icon-filter baseline">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8">
+                      <rect x="3" y="0" width="2" height="8"/>
+                      <rect y="3" width="8" height="2"/>
+                    </svg>
+                  </div>
+                  {{ 'filter.showMore' | transloco }}
+                </button>
+                <button 
+                  *ngIf="lessMoreButtons()"
+                  (click)="showLess($event)" 
+                  [disabled]="itemsSteps <= 5" 
+                  [ngClass]="itemsSteps <= 5 ? 'filters-btn-disabled fr' : 'filters-btn fr'" >
+                  <div [ngClass]="itemsSteps <= 5 ? 'icon-filter icon-filter-disabled baseline' : 'icon-filter baseline' ">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8" >
+                      <rect y="3" width="8" height="2"/>
+                    </svg>                    
+                  </div>
+                  {{ 'filter.showLess' | transloco }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-separator" style="margin-bottom: 12px;"></div>
+      </div>
+
+      <!-- SKELETON -->
+      <div class="filters-group" *ngIf="!this.isLoading">
+
+
+        <div class="filter-separator"></div>
+        <div class="filters-skeleton-panel-head"></div>
+
+
+        <div class="filters-skeleton-text skeleton"></div>
+        <div class="filter-separator"></div>
+        <div class="filter-dd-items-container" 
+              [ngStyle]="{'height.px': itemsHeight}">
+          <eios-filter-item-skeleton 
+            *ngFor="let item of this.itemsList;"
+          ></eios-filter-item-skeleton>
+        </div>
+      </div>

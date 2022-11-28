@@ -1,0 +1,44 @@
+<p-card>
+    <h3 *ngIf="!languageId">Add New Language</h3>
+    <h3 *ngIf="languageId">Edit Language</h3>
+    <form [formGroup]="languageForm" (submit)="saveLanguage()">
+        <div class="grid">
+            <div class="col">
+                <h5>Name</h5>
+                <input type="text" class="w-full" formControlName="name" pInputText
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            </div>
+            <div class="col">
+                <h5>Code</h5>
+                <input type="text" class="w-full" formControlName="languageCode" pInputText
+                    [ngClass]="{ 'is-invalid': submitted && f.languageCode.errors }">
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col">
+                <h5>Tolerance Type</h5>
+                <p-selectButton [options]="typeOptions" formControlName="toleranceType" optionLabel="label"
+                    optionValue="value">
+                </p-selectButton>
+            </div>
+            <div class="col">
+                <h5>Tolerance</h5>
+                <input type="number" class="w-full" formControlName="tolerance" pInputText
+                    [ngClass]="{ 'is-invalid': submitted && f.tolerance.errors }">
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col">
+                <h5>Description</h5>
+                <textarea rows="3" class="w-full" formControlName="description" pInputTextarea></textarea>
+            </div>
+        </div>
+        <div class="flex justify-content-end flex-wrap">
+            <div class="flex align-items-center justify-content-center">
+                <button pButton pRipple type="button" label="Cancel" routerLink="/languages"
+                    class="p-button-secondary p-button-text mr-2"></button>
+                <button pButton pRipple type="submit" label="Save" class="p-button-raised p-button-success"></button>
+            </div>
+        </div>
+    </form>
+</p-card>

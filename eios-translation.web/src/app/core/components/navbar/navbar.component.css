@@ -1,0 +1,94 @@
+#navbar{
+    position: absolute;
+    left: 0;
+    width: 84px;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 880;
+    background-color: transparent;
+}
+
+@media all and (min-width: 992px) {
+    .navbar{
+        float: left;
+        visibility: visible;
+        transform: translateX(0px);
+    }
+}
+    .navbar-container{
+        float: left;
+        width: 64px;
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        gap: 92px;
+        grid-auto-flow: row;
+    }
+        .btnNav{
+            height: 32px;
+            width: 32px;
+            fill: #C4C4C4;
+            cursor: pointer;
+        }
+        .btnNav:hover{
+            fill: #FCC00E;
+        }
+        .btnNav:hover .tooltip{
+            visibility: visible;
+            opacity: 1;
+        }
+
+    .navbar-flap-space{
+        float: left;
+        width: 20px;
+        height: 100%;
+        color: white;
+        display: flex;
+        box-sizing: border-box;
+        padding: 32px 0 32px 0;
+        background-image: url('./../../../../assets/images/navbar-flap-bkg.svg');
+
+    }
+        .navbar-flap-space .navbar-flap-btn {
+            align-self: flex-end;
+            width: 20px;
+            height: 52px;
+            cursor: pointer;
+            box-sizing: border-box;
+            background-image: url('./../../../../assets/images/navbar-flap-btn.svg');
+            background-repeat: no-repeat;
+        }
+        .navbar-flap-space .navbar-flap-arrow{
+            height: 100%;
+            width: 8px;
+            margin: 0 0 0 4px;
+            background-image: url('./../../../../assets/images/flap-arrow.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: all 1.2s ease;
+        }
+
+    .tooltip {
+        display: inline-block;
+        position: absolute;
+        background-color: red;
+        padding: 8px 15px;
+        border-radius: 3px;
+        left: 90px;
+        opacity: 0;
+        visibility: hidden;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+    .tooltip:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 10px;
+        transform: rotate(45deg);
+        width: 10px;
+        height: 10px;
+        background-color: inherit;
+    }

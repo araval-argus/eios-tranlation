@@ -1,0 +1,177 @@
+{
+    "header": {
+        "monitoring": "Monitor",
+        "documents": "Documenti",
+        "dashboards": "Dashboards",
+        "dashboardsSubMenu": {
+            "bigScreen" : "Mappa",
+            "twitter": "Twitter Dashboard",
+            "covid": "COVID-19 Monitor Casi",
+            "inform": "INFORM COVID-19 Allerte (esterne)",
+            "sprinklr": "Sprinklr Dashboard",
+            "admin": "Admin Dashboard"
+        },
+        "help": "Help and Feedback",
+        "helpSubMenu": {
+            "reference": "Reference Manual",
+            "feedback": "Feedback"
+        },
+        "userSubMenu": {
+            "account": "Dettagli Account",
+            "logOut": "LogOut"
+        }
+    },
+    "navbar": {
+        "boards": "Boards",
+        "explore": "Esplora",
+        "sources": "Risorse",
+        "activities": "Ultime Attività"
+    },
+    "filter": {
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all"
+    },
+    "filtersBoard": {
+        "boardsSearch": "Search Boards",
+        "includeArchived": "Include Archived Boards",
+        "searchLabel": "Search Board Name",
+        "filtersCountriesName": "Countries",
+        "filtersCountriesLabel": "Search Country",
+        "filtersUserTagsName": "Users Tags",
+        "filtersUserTagsLabel": "Search User Tag"
+    },
+    "filtersActivities": {
+        "name": "Attività delle Boards",
+        "searchLabel": "Cerca Attività Boards",
+        "fromDate": "Datta Data",
+        "toDate": "Alla Data",
+        "labels": {
+            "createcommentactivity": "Articolo: Nuovo Commento",
+            "removecommentactivity": "Articolo: Commento Rimosso",
+            "createquerycommentactivity": "Board: Nuovo Commento",
+            "removequerycommentactivity": "Board: Commento Rimosso",
+            "createqueryactivity": "Board: Crea",
+            "updatequeryactivity": "Board: Aggiorna",
+            "activatequeryactivity": "Board: Seleziona",
+            "removequeryactivity": "Board: Chiudi",
+            "restorequeryactivity": "Board: Riapri",
+            "pinitemtoqueryactivity": "Board: Pin Articolo",
+            "unpinitemtoqueryactivity": "Unpin Article from Board",
+            "itemreadpreviewactivity": "Read Article Preview",
+            "itemreaddetailactivity": "Examine Article Detail",
+            "itemflaggedactivity": "Flag for Follow-up",
+            "itemunflaggedactivity": "Remove Flag for Follow-up",
+            "exportitemsactivity": "Export Selected Articles",
+            "removechildtreenodeactivity": "Removed option in Category Tree",
+            "addchildtreenodeactivity": "New option in Category Tree",
+            "updatetreenodeactivity": "Updated option in Category Tree"
+        }
+    },
+    "filterTeams": {
+        "name": "Teams",
+        "searchLabel": "Cerca Team",
+        "labels": {
+            "createcommentactivity": "Articolo: Nuovo Commento",
+            "removecommentactivity": "Articolo: Commento Rimosso",
+            "createquerycommentactivity": "Board: Nuovo Commento",
+            "removequerycommentactivity": "Board: Commento Rimosso",
+            "createqueryactivity": "Board: Crea",
+            "updatequeryactivity": "Board: Aggiorna",
+            "activatequeryactivity": "Board: Seleziona",
+            "removequeryactivity": "Board: Chiudi",
+            "restorequeryactivity": "Board: Riapri",
+            "pinitemtoqueryactivity": "Board: Pin Articolo",
+            "unpinitemtoqueryactivity": "Unpin Article from Board",
+            "itemreadpreviewactivity": "Read Article Preview",
+            "itemreaddetailactivity": "Examine Article Detail",
+            "itemflaggedactivity": "Flag for Follow-up",
+            "itemunflaggedactivity": "Remove Flag for Follow-up",
+            "exportitemsactivity": "Export Selected Articles",
+            "removechildtreenodeactivity": "Removed option in Category Tree",
+            "addchildtreenodeactivity": "New option in Category Tree",
+            "updatetreenodeactivity": "Updated option in Category Tree"
+        }
+    },
+    "filtersArchives": {
+        "name": "Boards Archiviate",
+        "labels": {
+            "true": "Boards Archiviate",
+            "false": "Boards Attive"
+        }
+    },
+    "boardsList": {
+        "boards": "Boards",
+        "title": "Elenco delle Boards",
+        "add": "Add New Board",
+        "archived": "Boards Status",
+        "active": "Active Boards"
+    },
+    "board-list-item":{
+        "creator": "Creator",
+        "createdOn": "Created on",
+        "created": "Created",
+        "updated": "Updated",
+        "active": "Board is Active",
+        "riskAssesment": "Risk Assesment",
+        "rational": "Board Rational",
+        "boardetials": "Click to see Board Details",
+        "boardnodetails": "No Details Available",
+        "boardmenudetails": "View Details",
+        "boardmenuarchive": "Archive Board"
+    },
+    "modal-languages":{
+        "title": "Select Language",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "tooltip": "Click to change Language",
+        "options": {
+            "01-last-48-hours": "Ultime 48 Ore",
+            "02-last-4-weeks": "Ultime 4 Settimane",
+            "03-last-6-months": "Ultimi 6 Mesi",
+            "04-last-year": "Ultimo Anno",
+            "05-last-2-years": "Ultimi 2 Anni",
+            "06-last-5-years": "Ultimi 5 Anni"
+        }
+    },
+    "modalTimeframe":{
+        "title": "Select TimeFrame",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "tooltip": "Click to change Charts TimeFrame",
+        "options": {
+            "01-last-48-hours": "Ultime 48 Ore",
+            "02-last-4-weeks": "Ultime 4 Settimane",
+            "03-last-6-months": "Ultimi 6 Mesi",
+            "04-last-year": "Ultimo Anno",
+            "05-last-2-years": "Ultimi 2 Anni",
+            "06-last-5-years": "Ultimi 5 Anni"
+        }
+    },
+    "modalSorting":{
+        "title": "Sorting Boards",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
+        "close": "Close Window",
+        "sorted": "Sorted  by",
+        "sort": "Ordina",
+        "tooltip": "Click to change Boards Sorting",
+        "options": {
+            "01-creation-date": "Creation Date",
+            "02-last-update": "Ultimo Aggiornamento",
+            "03-name": "by Name"
+        }
+    },
+    "pagination":{
+        "showing": "Showing",
+        "of": "of",
+        "items": "Items per Pagina"
+    },
+    "inputFeeedback": {
+        "timeInput": {
+            "dateNoValid": "Date is Not Valid",
+            "dateFromError": "Date From cannot be greater than the Date To",
+            "dateToError": "Date To cannot be greater than the Date From"
+        }
+    }
+}

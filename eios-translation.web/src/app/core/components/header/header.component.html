@@ -1,0 +1,268 @@
+<header id="header" class="header">
+  <div 
+    class="container"
+    [@collapsable]="headerState"
+  >
+    <div class="mobile-nav-btn" (click)="menuMobileToggle('visible')">
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 16 12">
+        <rect class="st0" width="16" height="2"/>
+        <rect y="10" class="st0" width="16" height="2"/>
+        <rect y="5" class="st0" width="16" height="2"/>
+        </svg>
+    </div>
+    <div class="eios-logo"></div>
+    <div class="eios-logo-text"></div>
+
+    <div class="btn-header-container">
+      <div class="btn-header">
+        <span class="ico-header">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+          <path d="M10,14c-4.1,0-7.8-2.4-9.8-6.6L0,7l0.2-0.4C2.2,2.4,5.9,0,10,0c4.1,0,7.8,2.4,9.8,6.6L20,7l-0.2,0.4
+            C17.8,11.6,14.1,14,10,14z M2.2,7c1.7,3.1,4.6,5,7.8,5c3.2,0,6.1-1.9,7.8-5c-1.7-3.1-4.6-5-7.8-5C6.8,2,3.9,3.9,2.2,7z"/>
+          <circle cx="10" cy="7" r="3"/>
+          </svg>
+        </span>
+        {{'header.monitoring' | transloco }}
+      </div>
+      <div class="btn-header">
+        <span class="ico-header">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+            <path d="M13.4,0H4C1.5,0,0,1.5,0,4v10h2V4c0-1.4,0.6-2,2-2h6v7h8v5h2V6.6L13.4,0z M12,2h0.6l5,5H12V2z"/>
+            <rect x="3" y="11" width="12" height="2"/>
+            <rect x="3" y="7" width="5" height="2"/>
+          </svg>
+        </span>
+        {{'header.documents' | transloco }}
+      </div>
+      <div class="btn-header btn-arrow" >
+        <span (click)="subMenuToggle('Dashboards')">
+          <span class="ico-header">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+            <path d="M14.5,14l-1-1.7L18,9.5C17.7,5.3,14.2,2,10,2S2.3,5.3,2,9.5l4.5,2.7l-1,1.7L0,10.7v-0.6C0,4.5,4.5,0,10,0
+              c5.5,0,10,4.5,10,10.1v0.6L14.5,14z"/>
+            <path d="M11.8,5.2c-0.5-0.1-1.1,0.2-1.2,0.7l-1.1,4.1c-0.7,0.2-1.2,0.7-1.4,1.4c-0.3,1.1,0.3,2.2,1.4,2.4
+              s2.2-0.3,2.4-1.4c0.2-0.7,0-1.4-0.5-1.9l1.1-4.1C12.7,5.9,12.3,5.4,11.8,5.2z"/>
+            </svg>
+          </span>
+        {{'header.dashboards' | transloco }}
+        </span>
+        <div class="dropdown-content dropdown-menu-content" [ngStyle]="{'display': this.subMenu === 'Dashboards' ? 'block' : 'none' }">
+          <div class="dropdown-item">
+            {{ 'header.dashboardsSubMenu.bigScreen' | transloco }}
+          </div>
+          <div class="dropdown-item dropdown-item-menu">
+            {{ 'header.dashboardsSubMenu.twitter' | transloco }}
+          </div>
+          <div class="dropdown-item dropdown-item-menu">
+            {{ 'header.dashboardsSubMenu.covid' | transloco }}
+          </div>
+          <div class="dropdown-item dropdown-item-menu">
+            {{ 'header.dashboardsSubMenu.inform' | transloco }}
+          </div>
+          <div class="dropdown-item dropdown-item-menu">
+            {{ 'header.dashboardsSubMenu.sprinklr' | transloco }}
+          </div>
+          <div class="dropdown-item dropdown-item-menu" style="border: none;">
+            {{ 'header.dashboardsSubMenu.admin' | transloco }}
+          </div>
+        </div>
+      </div>
+      <div class="btn-header btn-arrow" >
+        <span (click)="subMenuToggle('Helps')">
+          <span class="ico-header">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+            <path d="M15,14c-0.2,0-0.4,0-0.5-0.1L9.7,11H3c-1.7,0-3-1.3-3-3V3c0-1.7,1.3-3,3-3h14c1.7,0,3,1.3,3,3v5c0,1.7-1.3,3-3,3h-1v2
+              c0,0.4-0.2,0.7-0.5,0.9C15.3,14,15.2,14,15,14z M3,2C2.4,2,2,2.4,2,3v5c0,0.6,0.4,1,1,1h7c0.2,0,0.4,0,0.5,0.1l3.5,2.1V10
+              c0-0.6,0.4-1,1-1h2c0.6,0,1-0.4,1-1V3c0-0.6-0.4-1-1-1H3z"/>
+            <rect x="4" y="5" width="12" height="1"/>
+            </svg>
+          </span>
+          {{ 'header.help' | transloco }} 
+        </span>       
+        <div class="dropdown-content dropdown-menu-content" [ngStyle]="{'display': this.subMenu === 'Helps' ? 'block' : 'none' }">
+          <div class="dropdown-item dropdown-item-menu">
+            {{ 'header.helpSubMenu.reference' | transloco }} 
+          </div>
+          <div class="dropdown-item dropdown-item-menu" style="border: none;">
+            {{ 'header.helpSubMenu.feedback' | transloco }} 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-header btn-arrow" >
+      <span (click)="subMenuToggle('translate')">
+        Translations
+      </span>       
+      <div class="dropdown-content dropdown-menu-content" [ngStyle]="{'display': this.subMenu === 'translate' ? 'block' : 'none' }">
+        <div class="dropdown-item dropdown-item-menu" (click)="goToLanguage()">
+          Languages
+        </div>
+        <div class="dropdown-item dropdown-item-menu" (click)="goToGroups()">
+          Groups
+        </div>
+        <div class="dropdown-item dropdown-item-menu" style="border: none;" (click)="goToLabels()">
+          Labels
+        </div>
+      </div>
+    </div>
+
+    <div class="userBox">
+      <div class="userInfo" (click)="subMenuToggle('User')">
+        <div class="userName">
+          <div class="userArrow ">
+          </div>
+          <div class="userTxt">
+            John Doe
+          </div>
+        </div>
+        <div class="userOrganisation">
+          WHO
+        </div>
+      </div>
+      <div class="userIcon" (click)="subMenuToggle('User')"></div>
+
+      <div class="dropdown-content dropdown-user-content" [ngStyle]="{'display': this.subMenu === 'User' ? 'block' : 'none' }">
+        <div class="dropdown-item dropdown-item-user">
+          {{ 'header.userSubMenu.account' | transloco }} 
+        </div>
+        <div class="dropdown-item dropdown-item-user" style="border: none;">
+          {{ 'header.userSubMenu.logOut' | transloco }} 
+        </div>
+      </div>
+    </div>
+
+    <div class="infoBox">
+      <div class="infoIcoComm">
+        <div class="infoBadge">
+          3
+        </div>
+      </div>
+      <div class="infoIcoAlert">
+        <div class="infoBadge">
+          5
+        </div>
+      </div>
+      <div class="infoIcoLanguages" (click)="modalHandlerToggle($event, 'languages')">
+        <div class="infoBadgeSquare">
+          {{ languageCurrent }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-flap-space">
+    <div class="header-flap-btn" (click)="headerToggle()">
+      <div class="header-flap-arrow"
+        [ngClass]="{'rotate-180' : headerState === 'closed'}"
+      ></div>
+    </div>
+  </div>
+
+  <div class="menu-mobile-wrapper" [ngStyle]="{'visibility': this.menuMobileVisibilty === 'visible' ? 'visible' : 'hidden' }">
+    <div class="menu-mobile-container" [ngStyle]="{'transform': this.menuMobileVisibilty === 'visible' ? 'translateX(0px)' : 'translateX(-304px)' }">
+      <div class="menu-mobile-head">
+        <div class="eios-logo"></div>
+        <div class="menu-mobile-close" (click)="menuMobileToggle('hidden')">
+          <svg xmlns="http://www.w3.org/2000/svg" x="16px" y="16px" viewBox="0 0 16 16" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="3" x2="3" y2="13"/>
+            <line x1="3" y1="3" x2="13" y2="13"/>
+          </svg>
+        </div>
+      </div>
+
+
+      <div class="menu-mobile-items-container">
+        <div class="menu-mobile-item">
+          <div class="menu-mobile-btn" >
+            <div class="menu-mobile-ico">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+                <path d="M10,14c-4.1,0-7.8-2.4-9.8-6.6L0,7l0.2-0.4C2.2,2.4,5.9,0,10,0c4.1,0,7.8,2.4,9.8,6.6L20,7l-0.2,0.4
+                  C17.8,11.6,14.1,14,10,14z M2.2,7c1.7,3.1,4.6,5,7.8,5c3.2,0,6.1-1.9,7.8-5c-1.7-3.1-4.6-5-7.8-5C6.8,2,3.9,3.9,2.2,7z"/>
+                <circle cx="10" cy="7" r="3"/>
+                </svg>
+            </div>
+            {{'header.monitoring' | transloco }}
+          </div>
+        </div>
+
+        <div class="menu-mobile-item">
+          <div class="menu-mobile-btn" >
+            <div class="menu-mobile-ico">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+                <path d="M13.4,0H4C1.5,0,0,1.5,0,4v10h2V4c0-1.4,0.6-2,2-2h6v7h8v5h2V6.6L13.4,0z M12,2h0.6l5,5H12V2z"/>
+                <rect x="3" y="11" width="12" height="2"/>
+                <rect x="3" y="7" width="5" height="2"/>
+              </svg>
+            </div>
+            {{'header.documents' | transloco }}
+          </div>
+        </div>
+
+        <div class="menu-mobile-item">
+            <div class="menu-mobile-btn" (click)="subMenuToggle('Dashboards')" >
+              <div class="menu-mobile-ico">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14" >
+                <path d="M14.5,14l-1-1.7L18,9.5C17.7,5.3,14.2,2,10,2S2.3,5.3,2,9.5l4.5,2.7l-1,1.7L0,10.7v-0.6C0,4.5,4.5,0,10,0
+                  c5.5,0,10,4.5,10,10.1v0.6L14.5,14z"/>
+                <path d="M11.8,5.2c-0.5-0.1-1.1,0.2-1.2,0.7l-1.1,4.1c-0.7,0.2-1.2,0.7-1.4,1.4c-0.3,1.1,0.3,2.2,1.4,2.4
+                  s2.2-0.3,2.4-1.4c0.2-0.7,0-1.4-0.5-1.9l1.1-4.1C12.7,5.9,12.3,5.4,11.8,5.2z"/>
+                </svg>
+              </div>
+              {{'header.dashboards' | transloco }}
+              <div class="menu-mobile-arrow"></div>
+            </div>
+            <div class="menu-mobile-submenu" [ngStyle]="{'display': this.subMenu === 'Dashboards' ? 'inline-block' : 'none' }">
+              <div class="menu-mobile-submenu-item">
+                {{'header.dashboardsSubMenu.bigScreen' | transloco }}
+              </div>
+              <div class="menu-mobile-submenu-item">
+                {{ 'header.dashboardsSubMenu.twitter' | transloco }}
+              </div>
+              <div class="menu-mobile-submenu-item">
+                {{'header.dashboardsSubMenu.covid' | transloco }}
+              </div>
+              <div class="menu-mobile-submenu-item">
+                {{'header.dashboardsSubMenu.inform' | transloco }}
+              </div>
+              <div class="menu-mobile-submenu-item">
+                {{'header.dashboardsSubMenu.sprinklr' | transloco }}
+              </div>
+              <div class="menu-mobile-submenu-item" style="border-bottom: none;">
+                {{'header.dashboardsSubMenu.admin' | transloco }}
+              </div>
+            </div>
+        </div>
+
+        <div class="menu-mobile-item">
+          <div class="menu-mobile-btn" (click)="subMenuToggle('Helps')" >
+            <div class="menu-mobile-ico">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 20 14">
+                <path d="M15,14c-0.2,0-0.4,0-0.5-0.1L9.7,11H3c-1.7,0-3-1.3-3-3V3c0-1.7,1.3-3,3-3h14c1.7,0,3,1.3,3,3v5c0,1.7-1.3,3-3,3h-1v2
+                  c0,0.4-0.2,0.7-0.5,0.9C15.3,14,15.2,14,15,14z M3,2C2.4,2,2,2.4,2,3v5c0,0.6,0.4,1,1,1h7c0.2,0,0.4,0,0.5,0.1l3.5,2.1V10
+                  c0-0.6,0.4-1,1-1h2c0.6,0,1-0.4,1-1V3c0-0.6-0.4-1-1-1H3z"/>
+                <rect x="4" y="5" width="12" height="1"/>
+                </svg>
+            </div>
+            {{'header.help' | transloco }}
+            <div class="menu-mobile-arrow"></div>
+          </div>
+          <div class="menu-mobile-submenu" [ngStyle]="{'display': this.subMenu === 'Helps' ? 'inline-block' : 'none' }">
+            <div class="menu-mobile-submenu-item">
+              {{'header.helpSubMenu.reference' | transloco }}
+            </div>
+            <div class="menu-mobile-submenu-item" style="border-bottom: none;">
+              {{'header.helpSubMenu.feedback' | transloco }}
+            </div>
+          </div>
+      </div>
+
+
+      </div>
+    
+
+    </div>
+
+
+  </div>
+
+</header>

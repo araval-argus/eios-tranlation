@@ -1,0 +1,202 @@
+.filter-areaLabel{
+  float: left;
+  width: 100%;
+  height: 16px; 
+}
+.filter-areaHalfLabel{
+  float: left;
+  width: 50%;
+  height: 21px;
+}
+  .filter-areaLabel .filter-labelIco,
+  .filter-areaHalfLabel .filter-labelIco{
+          float: left;
+          width: 16px;
+          height: 16px;
+          margin-left: 6px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20id%3D%22f46d11a0bf04d04c269d067803484d32%22%3E%0A%20%20%20%20%3Ccircle%20id%3D%22dc38d0b60d3ee930ca8f124da26d1cf6%22%20cx%3D%227%22%20cy%3D%227%22%20r%3D%226.5%22%20stroke%3D%22%236C757D%22%3E%3C%2Fcircle%3E%0A%20%20%20%20%3Cpath%20id%3D%22c3c2906b97f1bfd003bac59f2781c105%22%20d%3D%22M5%206C5%204.9%205.9%204%207%204C8.1%204%209%204.9%209%206C9%207.1%208.1%208%207%208V11%22%20stroke%3D%22%236C757D%22%20stroke-width%3D%222%22%20stroke-miterlimit%3D%2210%22%3E%3C%2Fpath%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E);
+      }
+  .filter-areaLabel .filter-labelTxt,
+  .filter-areaHalfLabel .filter-labelTxt{
+          float: left;
+          color: #6C757D;
+          padding: 0 0 0 8px;
+          text-transform: uppercase;
+          font-size: 10px;
+          font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+      }
+
+
+  .filters-group{
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 0 24px 0 24px;
+    transition: all 1s ease-in-out;
+    box-sizing: border-box;
+  
+  }
+    .filters-group .filters-ctrlWrapper{
+        float: left;
+        height: auto;
+        width: 100%;
+    }
+    .filters-group .filter-areaSwitch{
+        float: left;
+        width: 100%;
+        height: 14px;
+    }
+  
+    .filters-dd-card{
+        float: left;
+        height: auto;
+        width: 100%;
+    }
+    .filters-dd-card {
+        float: left;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+    }
+    .filter-separator{
+        float: left;
+        height: 1px;
+        width: 100%;
+        background-color: #eaeaea;
+    }
+  
+  
+    .filters-dd-group{
+        float: left;
+        width: 100%;
+        height: auto;
+    }
+      .filters-dd-group .filter-dd-items-container{
+        float: left;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+      }
+      .filters-dd-group .filters-dd-group-head{
+          float: left;
+          width: 100%;
+          height: 21px;
+          color: #999999;
+          border-bottom: 1px solid #eaeaea;
+          line-height: 10px;
+          font-size: 11px;
+          letter-spacing: 0.3px;
+          padding: 0 8px 0 8px;          
+          font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+          text-rendering: optimizeLegibility;
+      }
+      .filters-dd-group .filters-dd-group-head-clean{
+          float: left;
+          width: 100%;
+          height: 1px;
+          color: #999999;
+          border-bottom: 1px solid #E2E2E2;
+      }
+      .filters-dd-group .filters-dd-group-top{
+        float: left;
+        width: 100%;
+        height: 28px;
+        color: #999999;
+        padding: 3px 8px 0 8px;
+        letter-spacing: 0.3px;
+        font-size: 11px;
+        font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+        text-rendering: optimizeLegibility;
+      }
+      .filters-dd-group .filters-dd-group-bottom{
+        float: left;
+        width: 100%;
+        height: 28px;
+        color: #999999;
+        padding: 5px 8px 2px 8px;
+        letter-spacing: 0.3px;
+        font-size: 11px;
+        font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+        text-rendering: optimizeLegibility;
+      }
+        .filters-dd-group .filters-dd-group-top .filters-btn,
+        .filters-dd-group .filters-dd-group-bottom .filters-btn{
+          float: left;
+          width: auto;
+          height:14px;
+          content:"";
+          color: #999999;
+          position: relative;
+          cursor: pointer;
+          border: none;
+          background-color: white;
+          padding: 0;
+          letter-spacing: 0.3px;
+          font-size: 11px;
+          font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+          text-rendering: optimizeLegibility;
+        }
+        .filters-dd-group .filters-dd-group-top .filters-btn:hover,
+        .filters-dd-group .filters-dd-group-bottom .filters-btn:hover{
+            color: #3E8AC8;
+        }
+        .filters-dd-group .filters-dd-group-top .filters-btn-disabled,
+        .filters-dd-group .filters-dd-group-bottom .filters-btn-disabled{
+          float: left;
+          width: auto;
+          height:14px;
+          content:"";
+          color: #d8d8d8;
+          cursor: default;
+          border: none;
+          background-color: white;
+          padding: 0;
+          letter-spacing: 0.3px;
+          font-size: 11px;
+          font-family: "font-Semibold", Arial, Helvetica, sans-serif;
+          text-rendering: optimizeLegibility;
+        }
+        .filters-dd-group .filters-dd-group-top .icon-filter,
+        .filters-dd-group .filters-dd-group-bottom .icon-filter {
+          margin-right: 8px;
+          float: left;
+          fill: #C4C4C4;
+          top: 50%;
+          position: relative;
+          transform: translateY(-50%);
+          height: 8px;
+          width: 8px;
+          display: inline-flex;
+          align-self: center;
+        }
+        .filters-dd-group .filters-dd-group-top .icon-filter-disabled,
+        .filters-dd-group .filters-dd-group-bottom .icon-filter-disabled {
+          fill: #d8d8d8!important;
+        }
+        .filters-dd-group .filters-dd-group-top .filters-btn:hover .icon-filter,
+        .filters-dd-group .filters-dd-group-bottom .filters-btn:hover .icon-filter
+        {
+          fill: #3E8AC8;
+        }
+  
+  .filters-skeleton-panel-head{
+    float: left;
+    width: 100%;
+    height: 40px;
+    padding: 0 8px 0 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .filters-skeleton-text{ 
+    float: left;
+    width: 100%;
+    height: 26px;
+    border-radius: 2px;
+    border: 1px solid #E8E8E8;
+    margin-bottom: 28px;
+  }
+

@@ -1,0 +1,22 @@
+
+	<div class="section" [ngStyle]="{'display': modalToDisplay === modalName ? 'block' : 'none'}">
+    <div [ngClass]="modalToDisplay === modalName ? 'modal opened' : 'modal' ">	
+      <div [ngClass]="modalToDisplay === modalName ? 'modal-wrap opened' : 'modal-wrap' ">
+        <div class="modal-title">
+          <ng-content select="[header]">
+          </ng-content>
+        </div>
+        <div class="modal-description" *ngIf="modalDescription">
+          {{ modalDescription }}
+        </div>
+        <div content class="modal-content">
+          <ng-content select="[content]">
+          </ng-content>
+        </div>
+        <div class="modal-footer">
+          <ng-content select="[footer]">
+          </ng-content>
+        </div>
+      </div>			          		
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+<div class="filter-areaSearch">
+    <div class="filter-halfArea" style="padding-right: 6px">
+      <eios-filter-date-picker 
+        [placeHolder]=" 'filtersActivities.fromDate' | transloco"
+        valueRange="dateFrom"
+        inputName="activitiesDateFrom"
+        [scrollEvent]="scrollEvent"
+        [alertFeedback]="alertFrom"
+        (dateInput)="dateInputChecker($event)"
+        (errorEmitter)="errorEmitterInput($event)">
+      </eios-filter-date-picker>
+    </div> 
+    <div class="filter-halfArea" style="padding-left: 6px">
+      <eios-filter-date-picker 
+        [placeHolder]=" 'filtersActivities.toDate' | transloco"
+        valueRange="dateTo"
+        inputName="activitiesDateTo"
+        [scrollEvent]="scrollEvent"
+        [alertFeedback]="alertTo"
+        (dateInput)="dateInputChecker($event)"
+        (errorEmitter)="errorEmitterInput($event)">
+      </eios-filter-date-picker>
+    </div> 
+  </div>

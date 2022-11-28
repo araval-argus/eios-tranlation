@@ -1,0 +1,26 @@
+<p-card>
+    <form [formGroup]="labelForm" (submit)="saveLabel()">
+        <div class="grid">
+            <h5>Label</h5>
+            <input type="text" class="w-full" formControlName="resourceId" pInputText
+                [ngClass]="{ 'is-invalid': submitted && f.resourceId.errors }">
+        </div>
+        <div class="grid">
+            <h5>English Translation</h5>
+            <input type="text" class="w-full" formControlName="labelValue" pInputText
+                [ngClass]="{ 'is-invalid': submitted && f.labelValue.errors }">
+        </div>
+        <div class="grid">
+            <h5>Label Group</h5>
+            <p-dropdown placeholder="Select Group" [options]="groups" [style]="{'width':'100%'}" class="w-full"
+                formControlName="fK_LabelGroupId" optionLabel="groupName" optionValue="labelGroupId" [showClear]="true"
+                [ngClass]="{ 'is-invalid': submitted && f.fK_LabelGroupId.errors }">
+            </p-dropdown>
+        </div>
+        <div class="flex justify-content-end flex-wrap">
+            <div class="flex align-items-center justify-content-center">
+                <button [disabled]="inProgress" pButton pRipple type="submit" label="Save" class="p-button-raised p-button-success"></button>
+            </div>
+        </div>
+    </form>
+</p-card>

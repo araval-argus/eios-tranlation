@@ -1,0 +1,114 @@
+<p-card>
+    <h3 class="flex justify-content-between flex-wrap">
+        Label Management
+        <div>
+            <p-button (click)="importLabel()" label="Import" icon="pi pi-download" styleClass="p-button-sm mr-2">
+            </p-button>
+            <p-button (click)="exportLabel()" label="Export" icon="pi pi-upload" styleClass="p-button-sm mr-2">
+            </p-button>
+            <p-button (click)="showAddLabel()" label="Add New Label" icon="pi pi-plus" styleClass="p-button-sm">
+            </p-button>
+        </div>
+    </h3>
+    <ng-container *ngIf="labelsMaster && labelsMaster['parentGroup'] && labelsMaster['parentGroup']">
+        <p-breadcrumb [model]="items" [home]="home" (onItemClick)="goToParent($event)"></p-breadcrumb>
+    </ng-container>
+    <p-tabView (onChange)="changeGroup($event)">
+        <p-tabPanel *ngFor="let group of groups" [header]="group.groupName"
+            [selected]="activeGroupId == group.labelGroupId">
+            <ng-container *ngIf="labelsMaster && labelsMaster['childGroups'] && labelsMaster['childGroups'].length">
+                <p-tabView (onChange)="changeChildGroup($event)">
+                    <p-tabPanel [header]="'Labels of ' + group.groupName" [disabled]="true">
+                    </p-tabPanel>
+                    <p-tabPanel *ngFor="let dd of labelsMaster['childGroups']" [header]="dd.groupName">
+                    </p-tabPanel>
+                </p-tabView>
+            </ng-container>
+            <p-table [value]="labels" #dt1 dataKey="id" styleClass="p-datatable-gridlines" [scrollable]="true"
+                [totalRecords]="totalRecords" [loading]="loading" [columns]="['labelName', 'labelValue']"
+                [columns]="selectedColumns" [reorderableColumns]=true [resizableColumns]="true">
+
+                <ng-template pTemplate="header" let-cols let-label>
+                    <tr>
+                        <th colspan="2">
+                            <p-multiSelect [options]="cols" appendTo="body" [(ngModel)]="selectedColumns"
+                                optionLabel="name" selectedItemsLabel="{0} columns selected"
+                                [style]="{'min-width': '200px'}" placeholder="Choose Columns"></p-multiSelect>
+                        </th>
+                        <th *ngFor="let col of cols" style="min-width: 200px;" pReorderableColumn>
+                            {{col.name}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="min-width: 200px;" pReorderableColumn pSortableColumn="labelName">Label ID<p-sortIcon
+                                field="label.labelName"> </p-sortIcon>
+                        </th>
+                        <th style="min-width: 200px;" pReorderableColumn pSortableColumn="labelValue">English
+                            translation
+                            <p-sortIcon field="label.labelValue" style="position:relative;float:right;">
+                            </p-sortIcon>
+                        </th>
+
+                        <ng-container *ngFor="let col of cols">
+                            <th style="min-width: 200px;">
+                                Machine translation <p-sortIcon style="position:relative;float:right;"></p-sortIcon>
+                            </th>
+                            <th style="min-width: 200px;">
+                                Manual translation <p-sortIcon style="position:relative;float:right;"></p-sortIcon>
+                            </th>
+                        </ng-container>
+
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <input pInputText type="text"
+                                (input)="dt1.filter(($any($event).target.value), 'labelName', 'contains')" />
+                        </th>
+                        <th>
+                            <input pInputText type="text"
+                                (input)="dt1.filter(($any($event).target.value), 'labelValue', 'contains')" />
+                        </th>
+                        <ng-container *ngFor="let newCols of cols">
+                            <th>
+                                <!-- <th>
+                                    <input pInputText type="text" (input)="dt1.filter(($any($event).target.value), label.translations[newCols.name]['machineTranslation'], newCols.filterMatchMode)" styleClass="ui-column-filter">
+                                </th>
+                                <p-columnFilter type="text" pInputText [field]="newCols.name" ></p-columnFilter> -->
+                                <input pInputText type="text"
+                                    (input)="dt1.filter(($any($event).target.value), label[newCols.name]['machineTranslation'], newCols.filterMatchMode)" />
+                            <th>
+                                <input pInputText type="text"
+                                    (input)="dt1.filter(($any($event).target.value), ('#abc'), newCols.filterMatchMode)" />
+                            </th>
+                        </ng-container>
+                    </tr>
+
+                </ng-template>
+                <ng-template pTemplate="body" let-label let-cols="columns">
+                    <tr>
+                        <td style="min-width: 200px;">{{label.labelName}}</td>
+                        <td style="min-width: 200px;">{{label.labelValue}}</td>
+
+                        <ng-container *ngFor="let col of cols">
+                            <td style="min-width: 200px; display: block;">
+                                {{label.translatedLabels[col.name]['machineTranslation']}}
+
+                                <i (click)="label.translatedLabels[col.name]['labelValue'] = label.translatedLabels[col.name]['machineTranslation']"
+                                    type="button" class="pi pi-forward" style="position: relative; float:right;"></i>
+                            </td>
+                            <td style="min-width: 200px;" id="abc">
+                                <input type="text" class="w-full"
+                                    [(ngModel)]="label.translatedLabels[col.name]['labelValue']" pInputText>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabPanel>
+    </p-tabView>
+    <div class="flex justify-content-end flex-wrap">
+        <button pButton pRipple type="submit" (click)="saveLabels()" label="Save"
+            class="p-button-raised p-button-success"></button>
+    </div>
+</p-card>

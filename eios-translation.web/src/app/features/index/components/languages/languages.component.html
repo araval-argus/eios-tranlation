@@ -1,0 +1,29 @@
+<p-card>
+    <h3 class="flex justify-content-between flex-wrap">
+        Language Management
+        <p-button routerLink="/languages/add" label="Add New Language" icon="pi pi-plus" styleClass="p-button-sm"></p-button>
+    </h3>
+    <p-table [value]="languages" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Tolerance Type</th>
+                <th>Tolerance</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-language>
+            <tr>
+                <td>{{language.name}}</td>
+                <td>{{language.languageCode}}</td>
+                <td>{{language.toleranceType == 0 ? 'Absolute' : 'Relative' }}</td>
+                <td>{{language.tolerance}}</td>
+                <td>
+                    <button *ngIf="!language.isDefault" routerLink="/languages/edit/{{language.languageId}}" pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-outlined"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>

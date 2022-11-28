@@ -1,0 +1,25 @@
+<p-card>
+    <h3 class="flex justify-content-between flex-wrap">
+        Group Management
+        <p-button routerLink="/groups/add" label="Add New Group" icon="pi pi-plus" styleClass="p-button-sm"></p-button>
+    </h3>
+    <p-table [value]="groups" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Parent Group</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-group>
+            <tr>
+                <td>{{group.groupName}}</td>
+                <td>{{group.parentGroup?.groupName}}</td>
+                <td>
+                    <button routerLink="/groups/edit/{{group.labelGroupId}}" pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-outlined"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>

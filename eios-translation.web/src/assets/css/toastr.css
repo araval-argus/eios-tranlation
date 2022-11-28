@@ -1,0 +1,203 @@
+/* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
+
+/* position */
+.toast-center-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .toast-top-center {
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .toast-bottom-center {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+  .toast-top-full-width {
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .toast-bottom-full-width {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+  .toast-top-left {
+    top: 12px;
+    left: 12px;
+  }
+  .toast-top-right {
+    top: 12px;
+    right: 12px;
+  }
+  .toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+  }
+  .toast-bottom-left {
+    bottom: 12px;
+    left: 12px;
+  }
+  
+  /* toast styles */
+  .toast-title {
+    font-weight: bold;
+  }
+  .toast-message {
+    word-wrap: break-word; 
+    font-size: 14px;
+    font-family: "font-Semibold";
+  }
+  .toast-message a,
+  .toast-message label {
+    color: #FFFFFF;
+  }
+  .toast-message a:hover {
+    color: #CCCCCC;
+    text-decoration: none;
+  }
+  .toast-close-button {
+    position: relative;
+    right: -0.3em;
+    top: -0.3em;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #727A82;
+    text-shadow: 0 1px 0 #ffffff;
+    /* opacity: 0.8; */
+  }
+  .toast-close-button:hover,
+  .toast-close-button:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.4;
+  }
+  /*Additional properties for button version
+   iOS requires the button element instead of an anchor tag.
+   If you want the anchor version, it requires `href="#"`.*/
+  button.toast-close-button {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+  }
+  .toast-container {
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999;
+  }
+  .toast-container * {
+    box-sizing: border-box;
+  }
+  .toast-container .ngx-toastr {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 6px;
+    padding: 15px 15px 15px 50px;
+    width: 300px;
+    border-radius: 3px 3px 3px 3px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    /*box-shadow: 0 0 3px #c2c2c2;*/
+    color: #FFFFFF;
+  }
+  .toast-container .ngx-toastr:hover {
+    /*box-shadow: 0 0 3px #8b8b8b;*/
+    opacity: 1;
+    cursor: pointer;
+  }
+  /* https://github.com/FortAwesome/Font-Awesome-Pro/blob/master/advanced-options/raw-svg/regular/info-circle.svg */
+  .toast-info {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDk2IiBoZWlnaHQ9IjQ5NiIgdmlld0JveD0iMCAwIDQ5NiA0OTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGcgaWQ9ImI1MDA5YjJiNThkMjRjZDUzOWNmZjA1NzdjOWQyMTg2IiBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTA0XzYpIj4KICAgIDxwYXRoIGlkPSI0Mjk2ZTFmMWJjZTQ2YmViYzEwNmFmNmUyYTBkYTNkZiIgZD0iTTI0OCAwQzExMS4wNCAwIDAgMTExLjA4IDAgMjQ4QzAgMzg0LjkyIDExMS4wNCA0OTYgMjQ4IDQ5NkMzODQuOTYgNDk2IDQ5NiAzODUgNDk2IDI0OEM0OTYgMTExIDM4NC45NiAwIDI0OCAwWk0yNDggMTEwQzI3MS4yIDExMCAyOTAgMTI4LjggMjkwIDE1MkMyOTAgMTc1LjIgMjcxLjIgMTk0IDI0OCAxOTRDMjI0LjggMTk0IDIwNiAxNzUuMiAyMDYgMTUyQzIwNiAxMjguOCAyMjQuOCAxMTAgMjQ4IDExMFpNMzA0IDM2NEMzMDQgMzcwLjYzIDI5OC42MyAzNzYgMjkyIDM3NkgyMDRDMTk3LjM3IDM3NiAxOTIgMzcwLjYzIDE5MiAzNjRWMzQwQzE5MiAzMzMuMzcgMTk3LjM3IDMyOCAyMDQgMzI4SDIxNlYyNjRIMjA0QzE5Ny4zNyAyNjQgMTkyIDI1OC42MyAxOTIgMjUyVjIyOEMxOTIgMjIxLjM3IDE5Ny4zNyAyMTYgMjA0IDIxNkgyNjhDMjc0LjYzIDIxNiAyODAgMjIxLjM3IDI4MCAyMjhWMzI4SDI5MkMyOTguNjMgMzI4IDMwNCAzMzMuMzcgMzA0IDM0MFYzNjRaIiBmaWxsPSIjNENCREUwIj48L3BhdGg+CiAgPC9nPgogIDxkZWZzPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwMF8xMDRfNiI+CiAgICAgIDxyZWN0IHdpZHRoPSI0OTYiIGhlaWdodD0iNDk2IiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PgogICAgPC9jbGlwUGF0aD4KICA8L2RlZnM+Cjwvc3ZnPg==);
+  }
+  /* https://github.com/FortAwesome/Font-Awesome-Pro/blob/master/advanced-options/raw-svg/regular/times-circle.svg */
+  .toast-error {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDk2IiBoZWlnaHQ9IjQ5NiIgdmlld0JveD0iMCAwIDQ5NiA0OTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGcgaWQ9IjIzMmI1NzEyM2ZhNGE3MTc0YjkwMTc1NGEwNTliOThhIiBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTA0XzE2KSI+CiAgICA8cGF0aCBpZD0iN2EzYjhjMjE5MzNmMmFhZDU3M2JlYTRkYzMwZjM0NzAiIGQ9Ik0yNDggMEMxMTEgMCAwIDExMSAwIDI0OEMwIDM4NSAxMTEgNDk2IDI0OCA0OTZDMzg1IDQ5NiA0OTYgMzg1IDQ5NiAyNDhDNDk2IDExMSAzODUgMCAyNDggMFpNMzY5LjYgMzEzLjFDMzc0LjMgMzE3LjggMzc0LjMgMzI1LjQgMzY5LjYgMzMwLjFMMzMwIDM2OS42QzMyNS4zIDM3NC4zIDMxNy43IDM3NC4zIDMxMyAzNjkuNkwyNDggMzA0TDE4Mi45IDM2OS42QzE3OC4yIDM3NC4zIDE3MC42IDM3NC4zIDE2NS45IDM2OS42TDEyNi40IDMzMEMxMjEuNyAzMjUuMyAxMjEuNyAzMTcuNyAxMjYuNCAzMTNMMTkyIDI0OEwxMjYuNCAxODIuOUMxMjEuNyAxNzguMiAxMjEuNyAxNzAuNiAxMjYuNCAxNjUuOUwxNjYgMTI2LjNDMTcwLjcgMTIxLjYgMTc4LjMgMTIxLjYgMTgzIDEyNi4zTDI0OCAxOTJMMzEzLjEgMTI2LjRDMzE3LjggMTIxLjcgMzI1LjQgMTIxLjcgMzMwLjEgMTI2LjRMMzY5LjcgMTY2QzM3NC40IDE3MC43IDM3NC40IDE3OC4zIDM2OS43IDE4M0wzMDQgMjQ4TDM2OS42IDMxMy4xWiIgZmlsbD0iI0YyNUQ1NSI+PC9wYXRoPgogIDwvZz4KICA8ZGVmcz4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcDBfMTA0XzE2Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjQ5NiIgaGVpZ2h0PSI0OTYiIGZpbGw9IndoaXRlIj48L3JlY3Q+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KPC9zdmc+);
+  }
+  /* https://github.com/FortAwesome/Font-Awesome-Pro/blob/master/advanced-options/raw-svg/regular/check.svg */
+  .toast-success {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjM4MiIgdmlld0JveD0iMCAwIDUxMiAzODIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGcgaWQ9IjcxZDkyMjhlM2QzOTZkZjIwMzJmYTRjNGY5Y2UxZDQwIiBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTA0XzgpIj4KICAgIDxwYXRoIGlkPSJjNGFlMWRmYTkyOTJiNTZjZjUzY2M3OTkwMDUzMjgyZiIgZD0iTTE3My45IDM3NC4zMUw3LjUgMjA3LjkxQy0yLjUgMTk3LjkxIC0yLjUgMTgxLjcgNy41IDE3MS43MUw0My43IDEzNS41MUM1My43IDEyNS41MSA2OS45MSAxMjUuNTEgNzkuOSAxMzUuNTFMMTkyIDI0Ny42TDQzMi4wOSA3LjVDNDQyLjA5IC0yLjUgNDU4LjMgLTIuNSA0NjguMjkgNy41TDUwNC40OSA0My43QzUxNC40OSA1My43IDUxNC40OSA2OS45MSA1MDQuNDkgNzkuOUwyMTAuMSAzNzQuMzFDMjAwLjEgMzg0LjMxIDE4My44OSAzODQuMzEgMTczLjkgMzc0LjMxVjM3NC4zMVoiIGZpbGw9IiM4MkM2NDciPjwvcGF0aD4KICA8L2c+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAwXzEwNF84Ij4KICAgICAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSIzODEuOCIgZmlsbD0id2hpdGUiPjwvcmVjdD4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgo8L3N2Zz4=);
+  }
+  /* https://github.com/FortAwesome/Font-Awesome-Pro/blob/master/advanced-options/raw-svg/regular/exclamation-triangle.svg */
+  .toast-warning {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTc2IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU3NiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGcgaWQ9ImMyMDY0NWExM2Y0M2Y2MGU1ODI4YjQ0MGQ3NWM3YzhhIiBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTA0XzE0KSI+CiAgICA8cGF0aCBpZD0iZTVkY2RlNjViODI4YmRlNjVhMTZiZjViZWJhNjRhMDMiIGQ9Ik01NjkuNTIgNDQwLjAxQzU4Ny45OCA0NzIgNTY0LjgxIDUxMiA1MjcuOTQgNTEySDQ4LjA1QzExLjExIDUxMiAtMTEuOTUgNDcxLjk1IDYuNDcgNDQwLjAxTDI0Ni40MiAyMy45OUMyNjQuODkgLTguMDIgMzExLjE0IC03Ljk2IDMyOS41NyAyMy45OUw1NjkuNTEgNDQwLjAyTDU2OS41MiA0NDAuMDFaTTI4OCAzNTRDMjYyLjYgMzU0IDI0MiAzNzQuNiAyNDIgNDAwQzI0MiA0MjUuNCAyNjIuNiA0NDYgMjg4IDQ0NkMzMTMuNCA0NDYgMzM0IDQyNS40IDMzNCA0MDBDMzM0IDM3NC42IDMxMy40IDM1NCAyODggMzU0Wk0yNDQuMzMgMTg4LjY1TDI1MS43NSAzMjQuNjVDMjUyLjEgMzMxLjAxIDI1Ny4zNiAzMzYgMjYzLjczIDMzNkgzMTIuMjhDMzE4LjY1IDMzNiAzMjMuOTIgMzMxLjAyIDMyNC4yNiAzMjQuNjVMMzMxLjY4IDE4OC42NUMzMzIuMDYgMTgxLjc4IDMyNi41OCAxNzYgMzE5LjcgMTc2SDI1Ni4zMkMyNDkuNDQgMTc2IDI0My45NiAxODEuNzggMjQ0LjM0IDE4OC42NUgyNDQuMzNaIiBmaWxsPSIjRkNDMDBFIj48L3BhdGg+CiAgPC9nPgogIDxkZWZzPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwMF8xMDRfMTQiPgogICAgICA8cmVjdCB3aWR0aD0iNTc2IiBoZWlnaHQ9IjUxMiIgZmlsbD0id2hpdGUiPjwvcmVjdD4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgo8L3N2Zz4=);
+  }
+  .toast-container.toast-top-center .ngx-toastr,
+  .toast-container.toast-bottom-center .ngx-toastr {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .toast-container.toast-top-full-width .ngx-toastr,
+  .toast-container.toast-bottom-full-width .ngx-toastr {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ngx-toastr {
+    background-color: #030303;
+    pointer-events: auto;
+  }
+  .toast-success {
+    color: #727A82!important;
+    border: 1px solid #a6ca8a;
+    background-color: #f1fce8;
+  }
+  .toast-error {
+    color: #727A82!important;
+    border: 1px solid #f5aca6;
+    background-color: #ffecec;
+  }
+  .toast-info {
+    color: #727A82!important;
+    border: 1px solid #8ed9f6;
+    background-color: #e3f7fc;
+  }
+  .toast-warning {
+    color: #727A82!important;
+    border: 1px solid #fcc00e;
+    background-color: #fff6e1;
+  }
+  .toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000000;
+    opacity: 0.4;
+  }
+  /* Responsive Design */
+  @media all and (max-width: 240px) {
+    .toast-container .ngx-toastr.div {
+      padding: 8px 8px 8px 50px;
+      width: 11em;
+    }
+    .toast-container .toast-close-button {
+      right: -0.2em;
+      top: -0.2em;
+    }
+  }
+  @media all and (min-width: 241px) and (max-width: 480px) {
+    .toast-container .ngx-toastr.div {
+      padding: 8px 8px 8px 50px;
+      width: 18em;
+    }
+    .toast-container .toast-close-button {
+      right: -0.2em;
+      top: -0.2em;
+    }
+  }
+  @media all and (min-width: 481px) and (max-width: 768px) {
+    .toast-container .ngx-toastr.div {
+      padding: 15px 15px 15px 50px;
+      width: 25em;
+    }
+  }
+  

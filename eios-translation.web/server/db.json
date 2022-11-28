@@ -1,0 +1,2934 @@
+{
+    "login": {
+      "name": "Mario Rossi",
+      "token": "123456"
+    },
+    "usertags": [
+      {
+        "label": "acute event",
+        "count": 3
+      },
+      {
+        "label": "credibility",
+        "count": 18
+      },
+      {
+        "label": "global",
+        "count": 87
+      },
+      {
+        "label": "minus coronavirus",
+        "count": 68
+      },
+      {
+        "label": "routine monitoring",
+        "count": 32
+      },
+      {
+        "label": "searo analysis",
+        "count": 9
+      },
+      {
+        "label": "signal",
+        "count": 93
+      },
+      {
+        "label": "trade restriction",
+        "count": 49
+      },
+      {
+        "label": "travel restriction",
+        "count": 56
+      },
+      {
+        "label": "action sand decisions",
+        "count": 34
+      },
+      {
+        "label": "afro",
+        "count": 76
+      },
+      {
+        "label": "trade restriction smeasles",
+        "count": 39
+      }
+    ],
+    "countries": [
+      {
+        "country":"US",
+        "count":46621,
+        "label":"United States of America"
+     },
+     {
+        "country":"IT",
+        "count":25528,
+        "label":"Italy"
+     },
+     {
+        "country":"CN",
+        "count":22282,
+        "label":"China",
+        "property":"affectedCountriesIso"
+     },
+     {
+        "country":"GB",
+        "count":21463,
+        "label":"United Kingdom"
+     },
+     {
+        "country":"BR",
+        "count":18596,
+        "label":"Brazil"
+     },
+     {
+        "country":"JP",
+        "count":18539,
+        "label":"Japan"
+     },
+     {
+        "country":"IN",
+        "count":16784,
+        "label":"India"
+     },
+     {
+        "country":"ES",
+        "count":15757,
+        "label":"Spain"
+     },
+     {
+        "country":"DE",
+        "count":12429,
+        "label":"Germany"
+     },
+     {
+        "country":"FR",
+        "count":12324,
+        "label":"France"
+     },
+     {
+        "country":"MX",
+        "count":12104,
+        "label":"Mexico"
+     },
+     {
+        "country":"AU",
+        "count":12012,
+        "label":"Australia"
+     },
+     {
+        "country":"CA",
+        "count":12005,
+        "label":"Canada"
+     },
+     {
+        "country":"AR",
+        "count":10597,
+        "label":"Argentina"
+     },
+     {
+        "country":"NG",
+        "count":10028,
+        "label":"Nigeria"
+     },
+     {
+        "country":"RU",
+        "count":10011,
+        "label":"Russia"
+     },
+     {
+        "country":"AF",
+        "count":8791,
+        "label":"Afghanistan"
+     },
+     {
+        "country":"VN",
+        "count":7488,
+        "label":"Viet Nam"
+     },
+     {
+        "country":"GR",
+        "count":7345,
+        "label":"Greece"
+     },
+     {
+        "country":"IR",
+        "count":6803,
+        "label":"Iran"
+     },
+     {
+        "country":"ID",
+        "count":6715,
+        "label":"Indonesia"
+     },
+     {
+        "country":"NP",
+        "count":6611,
+        "label":"Nepal"
+     },
+     {
+        "country":"PE",
+        "count":6016,
+        "label":"Peru"
+     },
+     {
+        "country":"IL",
+        "count":5683,
+        "label":"Israel"
+     },
+     {
+        "country":"CL",
+        "count":5677,
+        "label":"Chile"
+     },
+     {
+        "country":"PT",
+        "count":5161,
+        "label":"Portugal"
+     },
+     {
+        "country":"EG",
+        "count":5065,
+        "label":"Egypt"
+     },
+     {
+        "country":"TR",
+        "count":5038,
+        "label":"Turkey"
+     },
+     {
+        "country":"CH",
+        "count":5014,
+        "label":"Switzerland"
+     },
+     {
+        "country":"UA",
+        "count":4839,
+        "label":"Ukraine"
+     },
+     {
+        "country":"SE",
+        "count":4822,
+        "label":"Sweden"
+     },
+     {
+        "country":"CO",
+        "count":4746,
+        "label":"Colombia"
+     },
+     {
+        "country":"BE",
+        "count":4672,
+        "label":"Belgium"
+     },
+     {
+        "country":"HU",
+        "count":4669,
+        "label":"Hungary"
+     },
+     {
+        "country":"IE",
+        "count":4532,
+        "label":"Ireland"
+     },
+     {
+        "country":"RO",
+        "count":4505,
+        "label":"Romania"
+     },
+     {
+        "country":"PH",
+        "count":4337,
+        "label":"Philippines"
+     },
+     {
+        "country":"BG",
+        "count":4334,
+        "label":"Bulgaria"
+     },
+     {
+        "country":"KR",
+        "count":4077,
+        "label":"Republic of Korea"
+     },
+     {
+        "country":"MA",
+        "count":4005,
+        "label":"Morocco"
+     },
+     {
+        "country":"DO",
+        "count":3835,
+        "label":"Dominican Republic"
+     },
+     {
+        "country":"TH",
+        "count":3698,
+        "label":"Thailand"
+     },
+     {
+        "country":"NZ",
+        "count":3676,
+        "label":"New Zealand"
+     },
+     {
+        "country":"SG",
+        "count":3575,
+        "label":"Singapore"
+     },
+     {
+        "country":"MY",
+        "count":3520,
+        "label":"Malaysia"
+     },
+     {
+        "country":"PL",
+        "count":3421,
+        "label":"Poland"
+     },
+     {
+        "country":"PK",
+        "count":3386,
+        "label":"Pakistan"
+     },
+     {
+        "country":"AL",
+        "count":3296,
+        "label":"Albania"
+     },
+     {
+        "country":"AT",
+        "count":3290,
+        "label":"Austria"
+     },
+     {
+        "country":"IQ",
+        "count":3142,
+        "label":"Iraq"
+     },
+     {
+        "country":"VE",
+        "count":3035,
+        "label":"Venezuela"
+     },
+     {
+        "country":"HK",
+        "count":2852,
+        "label":"Hong Kong Special Administrative Region"
+     },
+     {
+        "country":"NL",
+        "count":2652,
+        "label":"Netherlands"
+     },
+     {
+        "country":"DK",
+        "count":2586,
+        "label":"Denmark"
+     },
+     {
+        "country":"UY",
+        "count":2544,
+        "label":"Uruguay"
+     },
+     {
+        "country":"TW",
+        "count":2540,
+        "label":"Taiwan, China"
+     },
+     {
+        "country":"BO",
+        "count":2529,
+        "label":"Bolivia"
+     },
+     {
+        "country":"QA",
+        "count":2524,
+        "label":"Qatar"
+     },
+     {
+        "country":"CU",
+        "count":2514,
+        "label":"Cuba"
+     },
+     {
+        "country":"SA",
+        "count":2415,
+        "label":"Saudi Arabia"
+     },
+     {
+        "country":"MK",
+        "count":2348,
+        "label":"North Macedonia"
+     },
+     {
+        "country":"ZA",
+        "count":2333,
+        "label":"South Africa"
+     },
+     {
+        "country":"SK",
+        "count":2257,
+        "label":"Slovakia"
+     },
+     {
+        "country":"JO",
+        "count":2255,
+        "label":"Jordan"
+     },
+     {
+        "country":"AE",
+        "count":2133,
+        "label":"United Arab Emirates"
+     },
+     {
+        "country":"SV",
+        "count":2079,
+        "label":"El Salvador"
+     },
+     {
+        "country":"SY",
+        "count":1964,
+        "label":"Syria"
+     },
+     {
+        "country":"LV",
+        "count":1915,
+        "label":"Latvia"
+     },
+     {
+        "country":"BD",
+        "count":1914,
+        "label":"Bangladesh"
+     },
+     {
+        "country":"SI",
+        "count":1911,
+        "label":"Slovenia"
+     },
+     {
+        "country":"CZ",
+        "count":1885,
+        "label":"Czechia"
+     },
+     {
+        "country":"KZ",
+        "count":1722,
+        "label":"Kazakhstan"
+     },
+     {
+        "country":"LB",
+        "count":1716,
+        "label":"Lebanon"
+     },
+     {
+        "country":"CM",
+        "count":1709,
+        "label":"Cameroon"
+     }
+    ],
+    "regions": [
+      {
+         "label": "Europe",
+         "count": 149507,
+         "key": "EUR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+            "subAreaCodes": [
+               "TM",
+               "TJ",
+               "CY",
+               "UZ",
+               "KZ",
+               "KG",
+               "AM",
+               "RU",
+               "PT",
+               "GI",
+               "ES",
+               "MT",
+               "FO",
+               "DK",
+               "IS",
+               "GB",
+               "CH",
+               "SE",
+               "NL",
+               "AT",
+               "BE",
+               "DE",
+               "IL",
+               "LU",
+               "IE",
+               "TR",
+               "MC",
+               "FR",
+               "AD",
+               "LI",
+               "JE",
+               "IM",
+               "GG",
+               "SK",
+               "CZ",
+               "NO",
+               "VA",
+               "SM",
+               "IT",
+               "SI",
+               "ME",
+               "HR",
+               "BA",
+               "GL",
+               "GR",
+               "EE",
+               "LV",
+               "AZ",
+               "LT",
+               "SJ",
+               "GE",
+               "MD",
+               "RS",
+               "BY",
+               "FI",
+               "AX",
+               "UA",
+               "MK",
+               "HU",
+               "BG",
+               "AL",
+               "PL",
+               "RO",
+               "XK"
+            ],
+            "label": "Europe",
+            "icon": "eur"
+          }
+      },
+      {
+         "label": "Americas",
+         "count": 113436,
+         "key": "AMR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+            "subAreaCodes": [
+               "BB",
+               "GY",
+               "GF",
+               "SR",
+               "PM",
+               "PY",
+               "UY",
+               "BR",
+               "FK",
+               "JM",
+               "DO",
+               "CU",
+               "MQ",
+               "BS",
+               "BM",
+               "AI",
+               "TT",
+               "KN",
+               "DM",
+               "AG",
+               "LC",
+               "TC",
+               "AW",
+               "VG",
+               "VC",
+               "MS",
+               "GP",
+               "GD",
+               "KY",
+               "BZ",
+               "SV",
+               "GT",
+               "HN",
+               "NI",
+               "CR",
+               "VE",
+               "EC",
+               "CO",
+               "PA",
+               "HT",
+               "AR",
+               "CL",
+               "BO",
+               "PE",
+               "MX",
+               "PR",
+               "VI",
+               "UM",
+               "CA",
+               "US",
+               "SX",
+               "CW",
+               "BL",
+               "BQ",
+               "MF"
+            ],
+            "label": "Americas",
+            "icon": "amr"
+          }
+      },
+      {
+         "label": "Western Pacific",
+         "count": 64353,
+         "key": "WPR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+            "subAreaCodes": [
+                  "CC",
+                  "PW",
+                  "VN",
+                  "LA",
+                  "TW",
+                  "PH",
+                  "MY",
+                  "CN",
+                  "HK",
+                  "BN",
+                  "MO",
+                  "KH",
+                  "KR",
+                  "JP",
+                  "SG",
+                  "CK",
+                  "MN",
+                  "AU",
+                  "CX",
+                  "MH",
+                  "FM",
+                  "PG",
+                  "SB",
+                  "TV",
+                  "NR",
+                  "VU",
+                  "NC",
+                  "NF",
+                  "NZ",
+                  "FJ",
+                  "GS",
+                  "PF",
+                  "PN",
+                  "KI",
+                  "TK",
+                  "TO",
+                  "WF",
+                  "WS",
+                  "NU",
+                  "MP",
+                  "GU",
+                  "AS",
+                  "HM"
+              ],
+            "label": "Western Pacific",
+            "icon": "wpr"
+          }
+      },
+      {
+         "label": "Eastern Mediterranean",
+         "count": 36314,
+         "key": "EMR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+               "subAreaCodes": [
+                  "SA",
+                  "AF",
+                  "PK",
+                  "IR",
+                  "SY",
+                  "LY",
+                  "DJ",
+                  "TN",
+                  "JO",
+                  "MA",
+                  "LB",
+                  "KW",
+                  "OM",
+                  "QA",
+                  "BH",
+                  "AE",
+                  "EG",
+                  "SD",
+                  "SO",
+                  "PS",
+                  "YE",
+                  "IQ"
+               ],
+              "label": "Eastern Mediterranean",
+              "icon": "emr"
+          }
+      },
+      {
+         "label": "South-East Asia",
+         "count": 35891,
+         "key": "SEAR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+            "subAreaCodes": [
+               "BD",
+               "LK",
+               "BT",
+               "IN",
+               "MV",
+               "NP",
+               "MM",
+               "TH",
+               "ID",
+               "KP",
+               "TL"
+            ],
+            "label": "South-East Asia",
+            "icon": "sear"
+          }
+      },
+      {
+         "label": "Africa",
+         "count": 24231,
+         "key": "AFR",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+            "iso": null,
+               "subAreaCodes": [
+                  "YT",
+                  "MZ",
+                  "MG",
+                  "TZ",
+                  "KE",
+                  "CD",
+                  "CM",
+                  "SN",
+                  "CG",
+                  "UG",
+                  "LR",
+                  "CI",
+                  "GH",
+                  "GQ",
+                  "NG",
+                  "BF",
+                  "TG",
+                  "GW",
+                  "MR",
+                  "BJ",
+                  "CF",
+                  "GA",
+                  "SL",
+                  "ST",
+                  "SC",
+                  "GM",
+                  "GN",
+                  "TD",
+                  "NE",
+                  "ML",
+                  "EH",
+                  "DZ",
+                  "AO",
+                  "NA",
+                  "SH",
+                  "CV",
+                  "ET",
+                  "ER",
+                  "BI",
+                  "RW",
+                  "SS",
+                  "ZW",
+                  "ZM",
+                  "KM",
+                  "MW",
+                  "LS",
+                  "BW",
+                  "MU",
+                  "SZ",
+                  "RE",
+                  "ZA",
+                  "IO",
+                  "TF"
+              ],
+              "label": "Africa",
+              "icon": "afr"
+          }
+      },
+      {
+         "label": "not assigned",
+         "count": 14,
+         "key": "NA",
+         "property": "whoRegionCodes",
+         "extraInfo": {
+            "level": 0,
+            "areaType": null,
+               "iso": null,
+               "subAreaCodes": [
+                  "BV",
+                  "AQ"
+              ],
+              "label": "not assigned",
+              "icon": "na"
+          }
+      }
+  
+    ],
+    "sources": [
+      {
+          "key": "General News",
+          "count": 292252,
+          "label": "General News",
+          "property": "source.subject"
+      },
+      {
+          "key": "Medical",
+          "count": 18907,
+          "label": "Medical",
+          "property": "source.subject"
+      },
+      {
+          "key": "European News",
+          "count": 8501,
+          "label": "European News",
+          "property": "source.subject"
+      },
+      {
+          "key": "Medical Official",
+          "count": 8427,
+          "label": "Medical Official",
+          "property": "source.subject"
+      },
+      {
+          "key": "Financial News",
+          "count": 3697,
+          "label": "Financial News",
+          "property": "source.subject"
+      },
+      {
+          "key": "Science",
+          "count": 1791,
+          "label": "Science",
+          "property": "source.subject"
+      },
+      {
+          "key": "Official",
+          "count": 586,
+          "label": "Official",
+          "property": "source.subject"
+      },
+      {
+          "key": "NGO",
+          "count": 481,
+          "label": "NGO",
+          "property": "source.subject"
+      },
+      {
+          "key": "Agriculture",
+          "count": 415,
+          "label": "Agriculture",
+          "property": "source.subject"
+      },
+      {
+          "key": "Technology",
+          "count": 284,
+          "label": "Technology",
+          "property": "source.subject"
+      },
+      {
+          "key": "REC",
+          "count": 92,
+          "label": "REC",
+          "property": "source.subject"
+      },
+      {
+          "key": "Environment",
+          "count": 18,
+          "label": "Environment",
+          "property": "source.subject"
+      },
+      {
+          "key": "undefined",
+          "count": 9,
+          "label": "undefined",
+          "property": "source.subject"
+      },
+      {
+          "key": "EU Institutions",
+          "count": 2,
+          "label": "EU Institutions",
+          "property": "source.subject"
+      },
+      {
+          "key": "Nuclear",
+          "count": 1,
+          "label": "Nuclear",
+          "property": "source.subject"
+      }
+    ],
+    "languages": [
+      {
+          "key": "en",
+          "count": 115447,
+          "label": "English",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "English",
+              "Icon": "en"
+          }
+      },
+      {
+          "key": "es",
+          "count": 48494,
+          "label": "Spanish; Castilian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Spanish; Castilian",
+              "Icon": "es"
+          }
+      },
+      {
+          "key": "pt",
+          "count": 25426,
+          "label": "Portuguese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Portuguese",
+              "Icon": "pt"
+          }
+      },
+      {
+          "key": "it",
+          "count": 21474,
+          "label": "Italian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Italian",
+              "Icon": "it"
+          }
+      },
+      {
+          "key": "ar",
+          "count": 17510,
+          "label": "Arabic",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Arabic",
+              "Icon": "ar"
+          }
+      },
+      {
+          "key": "fr",
+          "count": 14155,
+          "label": "French",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "French",
+              "Icon": "fr"
+          }
+      },
+      {
+          "key": "ru",
+          "count": 14062,
+          "label": "Russian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Russian",
+              "Icon": "ru"
+          }
+      },
+      {
+          "key": "ja",
+          "count": 8931,
+          "label": "Japanese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Japanese",
+              "Icon": "ja"
+          }
+      },
+      {
+          "key": "ro",
+          "count": 7914,
+          "label": "Romanian; Moldavian; Moldovan",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Romanian; Moldavian; Moldovan",
+              "Icon": "ro"
+          }
+      },
+      {
+          "key": "de",
+          "count": 7884,
+          "label": "German",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "German",
+              "Icon": "de"
+          }
+      },
+      {
+          "key": "el",
+          "count": 6845,
+          "label": "Greek",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Greek",
+              "Icon": "el"
+          }
+      },
+      {
+          "key": "hi",
+          "count": 6728,
+          "label": "Hindi",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Hindi",
+              "Icon": "hi"
+          }
+      },
+      {
+          "key": "zh",
+          "count": 6627,
+          "label": "Chinese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Chinese",
+              "Icon": "zh"
+          }
+      },
+      {
+          "key": "fa",
+          "count": 6002,
+          "label": "Persian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Persian",
+              "Icon": "fa"
+          }
+      },
+      {
+          "key": "id",
+          "count": 4856,
+          "label": "Indonesian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Indonesian",
+              "Icon": "id"
+          }
+      },
+      {
+          "key": "bg",
+          "count": 4666,
+          "label": "Bulgarian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Bulgarian",
+              "Icon": "bg"
+          }
+      },
+      {
+          "key": "vi",
+          "count": 4364,
+          "label": "Vietnamese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Vietnamese",
+              "Icon": "vi"
+          }
+      },
+      {
+          "key": "sq",
+          "count": 3931,
+          "label": "Albanian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Albanian",
+              "Icon": "sq"
+          }
+      },
+      {
+          "key": "nl",
+          "count": 2416,
+          "label": "Dutch; Flemish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Dutch; Flemish",
+              "Icon": "nl"
+          }
+      },
+      {
+          "key": "hu",
+          "count": 2205,
+          "label": "Hungarian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Hungarian",
+              "Icon": "hu"
+          }
+      },
+      {
+          "key": "pl",
+          "count": 2198,
+          "label": "Polish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Polish",
+              "Icon": "pl"
+          }
+      },
+      {
+          "key": "tr",
+          "count": 2065,
+          "label": "Turkish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Turkish",
+              "Icon": "tr"
+          }
+      },
+      {
+          "key": "sv",
+          "count": 1762,
+          "label": "Swedish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Swedish",
+              "Icon": "sv"
+          }
+      },
+      {
+          "key": "hr",
+          "count": 1580,
+          "label": "Croatian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Croatian",
+              "Icon": "hr"
+          }
+      },
+      {
+          "key": "sk",
+          "count": 1303,
+          "label": "Slovak",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Slovak",
+              "Icon": "sk"
+          }
+      },
+      {
+          "key": "uk",
+          "count": 1193,
+          "label": "Ukrainian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Ukrainian",
+              "Icon": "uk"
+          }
+      },
+      {
+          "key": "lv",
+          "count": 1048,
+          "label": "Latvian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Latvian",
+              "Icon": "lv"
+          }
+      },
+      {
+          "key": "lt",
+          "count": 943,
+          "label": "Lithuanian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Lithuanian",
+              "Icon": "lt"
+          }
+      },
+      {
+          "key": "sl",
+          "count": 754,
+          "label": "Slovenian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Slovenian",
+              "Icon": "sl"
+          }
+      },
+      {
+          "key": "mk",
+          "count": 690,
+          "label": "Macedonian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Macedonian",
+              "Icon": "mk"
+          }
+      },
+      {
+          "key": "cs",
+          "count": 686,
+          "label": "Czech",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Czech",
+              "Icon": "cs"
+          }
+      },
+      {
+          "key": "bs",
+          "count": 592,
+          "label": "Bosnian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Bosnian",
+              "Icon": "bs"
+          }
+      },
+      {
+          "key": "az",
+          "count": 533,
+          "label": "Azerbaijani",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Azerbaijani",
+              "Icon": "az"
+          }
+      },
+      {
+          "key": "da",
+          "count": 527,
+          "label": "Danish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Danish",
+              "Icon": "da"
+          }
+      },
+      {
+          "key": "th",
+          "count": 457,
+          "label": "Thai",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Thai",
+              "Icon": "th"
+          }
+      },
+      {
+          "key": "sr",
+          "count": 352,
+          "label": "Serbian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Serbian",
+              "Icon": "sr"
+          }
+      },
+      {
+          "key": "ka",
+          "count": 298,
+          "label": "Georgian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Georgian",
+              "Icon": "ka"
+          }
+      },
+      {
+          "key": "ca",
+          "count": 264,
+          "label": "Catalan; Valencian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Catalan; Valencian",
+              "Icon": "ca"
+          }
+      },
+      {
+          "key": "rw",
+          "count": 242,
+          "label": "Kinyarwanda",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Kinyarwanda",
+              "Icon": "rw"
+          }
+      },
+      {
+          "key": "et",
+          "count": 235,
+          "label": "Estonian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Estonian",
+              "Icon": "et"
+          }
+      },
+      {
+          "key": "ko",
+          "count": 229,
+          "label": "Korean",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Korean",
+              "Icon": "ko"
+          }
+      },
+      {
+          "key": "fi",
+          "count": 217,
+          "label": "Finnish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Finnish",
+              "Icon": "fi"
+          }
+      },
+      {
+          "key": "no",
+          "count": 166,
+          "label": "Norwegian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Norwegian",
+              "Icon": "no"
+          }
+      },
+      {
+          "key": "sw",
+          "count": 109,
+          "label": "Swahili",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Swahili",
+              "Icon": "sw"
+          }
+      },
+      {
+          "key": "ur",
+          "count": 97,
+          "label": "Urdu",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Urdu",
+              "Icon": "ur"
+          }
+      },
+      {
+          "key": "be",
+          "count": 84,
+          "label": "Belarusian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Belarusian",
+              "Icon": "be"
+          }
+      },
+      {
+          "key": "hy",
+          "count": 79,
+          "label": "Armenian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Armenian",
+              "Icon": "hy"
+          }
+      },
+      {
+          "key": "mn",
+          "count": 69,
+          "label": "Mongolian",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Mongolian",
+              "Icon": "mn"
+          }
+      },
+      {
+          "key": "pap",
+          "count": 68,
+          "label": "Papiamento",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Papiamento",
+              "Icon": "pap"
+          }
+      },
+      {
+          "key": "ky",
+          "count": 63,
+          "label": "Kirghiz; Kyrgyz",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Kirghiz; Kyrgyz",
+              "Icon": "ky"
+          }
+      },
+      {
+          "key": "ha",
+          "count": 57,
+          "label": "Hausa",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Hausa",
+              "Icon": "ha"
+          }
+      },
+      {
+          "key": "ms",
+          "count": 57,
+          "label": "Malay",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Malay",
+              "Icon": "ms"
+          }
+      },
+      {
+          "key": "my",
+          "count": 43,
+          "label": "Burmese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Burmese",
+              "Icon": "my"
+          }
+      },
+      {
+          "key": "ne",
+          "count": 40,
+          "label": "Nepali",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Nepali",
+              "Icon": "ne"
+          }
+      },
+      {
+          "key": "sn",
+          "count": 40,
+          "label": "Shona",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Shona",
+              "Icon": "sn"
+          }
+      },
+      {
+          "key": "km",
+          "count": 38,
+          "label": "Central Khmer",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Central Khmer",
+              "Icon": "km"
+          }
+      },
+      {
+          "key": "gl",
+          "count": 32,
+          "label": "Galician",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Galician",
+              "Icon": "gl"
+          }
+      },
+      {
+          "key": "und",
+          "count": 31,
+          "label": "Undetermined",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Undetermined",
+              "Icon": "und"
+          }
+      },
+      {
+          "key": "ps",
+          "count": 30,
+          "label": "Pushto; Pashto",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Pushto; Pashto",
+              "Icon": "ps"
+          }
+      },
+      {
+          "key": "ga",
+          "count": 28,
+          "label": "Irish",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Irish",
+              "Icon": "ga"
+          }
+      },
+      {
+          "key": "tl",
+          "count": 28,
+          "label": "Tagalog",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Tagalog",
+              "Icon": "tl"
+          }
+      },
+      {
+          "key": "lb",
+          "count": 18,
+          "label": "Luxembourgish; Letzeburgesch",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Luxembourgish; Letzeburgesch",
+              "Icon": "lb"
+          }
+      },
+      {
+          "key": "mt",
+          "count": 18,
+          "label": "Maltese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Maltese",
+              "Icon": "mt"
+          }
+      },
+      {
+          "key": "tg",
+          "count": 18,
+          "label": "Tajik",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Tajik",
+              "Icon": "tg"
+          }
+      },
+      {
+          "key": "eu",
+          "count": 16,
+          "label": "Basque",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Basque",
+              "Icon": "eu"
+          }
+      },
+      {
+          "key": "is",
+          "count": 13,
+          "label": "Icelandic",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Icelandic",
+              "Icon": "is"
+          }
+      },
+      {
+          "key": "pe",
+          "count": 12,
+          "label": "Pe",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Pe",
+              "Icon": "pe"
+          }
+      },
+      {
+          "key": "ig",
+          "count": 9,
+          "label": "Igbo",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Igbo",
+              "Icon": "ig"
+          }
+      },
+      {
+          "key": "rm",
+          "count": 9,
+          "label": "Romansh",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Romansh",
+              "Icon": "rm"
+          }
+      },
+      {
+          "key": "ht",
+          "count": 8,
+          "label": "Haitian; Haitian Creole",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Haitian; Haitian Creole",
+              "Icon": "ht"
+          }
+      },
+      {
+          "key": "so",
+          "count": 7,
+          "label": "Somali",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Somali",
+              "Icon": "so"
+          }
+      },
+      {
+          "key": "he",
+          "count": 6,
+          "label": "Hebrew",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Hebrew",
+              "Icon": "he"
+          }
+      },
+      {
+          "key": "bn",
+          "count": 5,
+          "label": "Bengali",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Bengali",
+              "Icon": "bn"
+          }
+      },
+      {
+          "key": "si",
+          "count": 5,
+          "label": "Sinhala; Sinhalese",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Sinhala; Sinhalese",
+              "Icon": "si"
+          }
+      },
+      {
+          "key": "am",
+          "count": 3,
+          "label": "Amharic",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Amharic",
+              "Icon": "am"
+          }
+      },
+      {
+          "key": "gu",
+          "count": 3,
+          "label": "Gujarati",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Gujarati",
+              "Icon": "gu"
+          }
+      },
+      {
+          "key": "xx",
+          "count": 2,
+          "label": "Undetermined",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Undetermined",
+              "Icon": "xx"
+          }
+      },
+      {
+          "key": "cy",
+          "count": 1,
+          "label": "Welsh",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Welsh",
+              "Icon": "cy"
+          }
+      },
+      {
+          "key": "eo",
+          "count": 1,
+          "label": "Esperanto",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Esperanto",
+              "Icon": "eo"
+          }
+      },
+      {
+          "key": "kn",
+          "count": 1,
+          "label": "Kannada",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Kannada",
+              "Icon": "kn"
+          }
+      },
+      {
+          "key": "lo",
+          "count": 1,
+          "label": "Lao",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Lao",
+              "Icon": "lo"
+          }
+      },
+      {
+          "key": "ml",
+          "count": 1,
+          "label": "Malayalam",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Malayalam",
+              "Icon": "ml"
+          }
+      },
+      {
+          "key": "mr",
+          "count": 1,
+          "label": "Marathi",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Marathi",
+              "Icon": "mr"
+          }
+      },
+      {
+          "key": "ta",
+          "count": 1,
+          "label": "Tamil",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Tamil",
+              "Icon": "ta"
+          }
+      },
+      {
+          "key": "te",
+          "count": 1,
+          "label": "Telugu",
+          "property": "languageCode",
+          "extraInfo": {
+              "label": "Telugu",
+              "Icon": "te"
+          }
+      }
+    ],
+    "boards": {
+        "result": [
+            {
+                "id": 368,
+                "name": "WPRO - Disease 2",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"affectedCountriesIso\",\"Value\":\"AS,AU,BN,CK,CN,FJ,FM,GU,HK,JP,KH,KI,KR,LA,MH,MN,MO,MP,MY,NC,NR,NU,NZ,PF,PG,PH,PN,PW,SB,SG,TK,TO,TV,VN,VU,WF,WS\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:gphin,l:gphinmail,l:healthmap,l:promed,l:AndesVirus,l:Anthrax,l:Antimicrobialresist,l:Arbovirus,l:Arenavirus,l:Argentinehemorrhagicfever,l:Avianflu,l:Babesiosis,l:BarmahForestVirus,l:BartonellaHenselae,l:BartonellaBacilliformis,l:BatLyssavirus,l:Bolivianhemorrhagicfever,l:BoronTrichloride,l:Brucellosis,l:Buruliulcer,l:CampylobacterInfection,l:Chagasdisease,l:Chikungunya,l:CholeraInfection,l:Botulism,l:Coccidioidomycosis,l:CoronavirusInfection,l:Cough,l:Cowpox,l:CoxsackieInfection,l:CreutzfeldtJakobDisease,l:Congo-CrimeanHF,l:Cryptococcosis,l:Cryptosporidiosis,l:DengueFever,l:Diarrhoea,l:Diphtheria,l:Chickenpox,l:EbolaHemorrhagicFever,l:Emergingdisease,l:Encephalitis,l:Enteritis,l:Enterobiasis,l:Enterohaemorrhagic,l:Enterotoxin,l:EpsteinBarrVirus,l:Equineencephalitis,l:EscherichiacoliInfection,l:Fasciolopsiasis,l:Fever,l:Filariasis,l:Filovirus,l:GastroentericSyndrome,l:Gastroenteritis,l:Giardiasis,l:Gonococcal,l:Gonorrhea,l:GuillainBarre,l:H10N7,l:H10N8,l:H1N1,l:H1N1v,l:H1N2,l:H1N2v,l:H2N1,l:H2N2,l:H3N2,l:H3N2v,l:H5N1,l:H5N6,l:H6N1,l:H7N2,l:H7N3,l:H7N4,l:H7N7,l:H7N9,l:H9N2,l:HaemophilusinfluenzaeInfection,l:HaemophilusDucreyi,l:HaemorrhagicSyndrome,l:Hajj_DiseasesSyndrome,l:Hajj_Pilgrimage,l:HantaFever,l:HealthcareAssociatedInfections,l:HemorrhagicFever,l:HendraVirus,l:Hepatitis,l:HepatitisA,l:HepatitisB,l:HepatitisC,l:HepatitisE,l:Herpes,l:HerpesSimplexVirus,l:HFMD,l:Hookworm,l:Huanglongbing,l:Importeddisease,l:InfluenzaHXNXAnimal,l:Influenza,l:JapaneseEncephalitis,l:KunjinVirus,l:KyasanurForestDisease,l:LaCrosseEncephalitis,l:LassaFever,l:Legionellosis,l:Leishmaniasis,l:Leprosy,l:Leptospirosis,l:Listeriosis,l:Loaiasis,l:Lujo,l:Lymedisease,l:LymphocyticChoriomeningitis,l:Malaria,l:MarburgHemorrhagicFever,l:Measles,l:Melioidosis,l:MERSCoV,l:Microcephaly,l:MokolaVirus,l:Monkeypox,l:MRSA,l:Mumps,l:MurrayValleyEncephalitisVirus,l:NDM-1,l:NecrotizingFasciitis,l:NipahVirus,l:NoddingDisease,l:Norovirus,l:Nosocomial,l:Onchocerciasis,l:OropoucheFever,l:PappataciFever,l:ParalyticSyndrome,l:PneumococcalInfection,l:Pneumonia,l:PogostaDisease,l:Poliomyelitis,l:Pox,l:PseudomonasAeruginosa,l:Psittacosis,l:QFever,l:Meningitis,l:Pertussis,l:VisceralLeishmaniasis,l:Rabies,l:RashSyndrome,l:RespiratorySyncytialVirusInfection,l:Rickettsiosis,l:RiftValleyFever,l:RockyMountainSpottedFever,l:Roseolovirus,l:RossRiverVirus,l:Rotavirus,l:Rubella,l:Salmonellosis,l:SARS,l:SaxitoxinPoisoning,l:Schistosomiasis,l:SchmallenbergVirus,l:ScrubTyphus,l:SFTSV,l:Shigellosis,l:SindbisVirus,l:SleepingSickness,l:Smallpox,l:StaphInfection,l:StLouisEncephalitis,l:StrepAInfection,l:StreptococcusSuis,l:Strongyloidiasis,l:Syphilis,l:Tetanus,l:Tick-borneEncephalitis,l:TravelHealth,l:Tuberculosis,l:TyphoidFever,l:Typhus,l:UnknownDisease,l:UsutuVirus,l:Viralhepatitis,l:VZV,l:WestNileDisease,l:YellowFever,l:YersiniaPestis,l:Zika,l:Zoonoses,l:Travel,l:TravelHealth\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"now-1d/d\"}}],\"Groups\":[{\"Rules\":[],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.languageCode\",\"Value\":\"en,fr,ja,ko,lo,vi,zh\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.subject\",\"Value\":\"General News,Medical,Medical Official\"}],\"Groups\":[],\"Name\":\"sourceRules\",\"MetaData\":{},\"Operator\":\"and\"}],\"Name\":\"sourceFilters\",\"MetaData\":{},\"Operator\":\"or\"}],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO WPRO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1419,
+                    "userName": "clowbridge@who.int",
+                    "displayName": "LOWBRIDGE, Christopher",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1419",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1419&h=32&w=32"
+                },
+                "createdOnDate": "2018-10-19T12:13:44.63Z",
+                "lastModifiedByUser": {
+                    "userId": 1385,
+                    "userName": "belll@who.int",
+                    "displayName": "BELL, Leila",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1385",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1385&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2019-07-24T00:55:39.763Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 96,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/368//sidebar:show)"
+            },
+            {
+                "id": 367,
+                "name": "WPRO - Disease 2",
+                "query": "{\"Rules\":[{\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"}],\"Groups\":[],\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"pubDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO WPRO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1419,
+                    "userName": "clowbridge@who.int",
+                    "displayName": "LOWBRIDGE, Christopher",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1419",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1419&h=32&w=32"
+                },
+                "createdOnDate": "2018-10-19T10:58:06.143",
+                "lastModifiedByUser": {
+                    "userId": 1419,
+                    "userName": "clowbridge@who.int",
+                    "displayName": "LOWBRIDGE, Christopher",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1419",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1419&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2018-10-19T10:58:06.143",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 96,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/367//sidebar:show)"
+            },
+            {
+                "id": 257,
+                "name": "HIM EMRO daily",
+                "query": "{\"Rules\":[{\"Operator\":\"greaterOrEqual\",\"Label\":null,\"Property\":\"pubDate\",\"Value\":\"now-24h/h\"},{\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:Alerts,f:1:Animal Related,f:1:Warfare/Riot_control_agent,f:1:Diseases From A-D,f:1:Diseases From E-I,f:1:Diseases From J-Q,f:1:Diseases From R-Z,f:1:Food Related,f:1:Mass Gathering,f:1:Measures,f:1:Product Safety\"},{\"Operator\":\"in\",\"Label\":null,\"Property\":\"affectedCountriesIso\",\"Value\":\"AE,AF,BH,DJ,EG,IQ,IR,JO,KW,LB,LY,MA,OM,PK,PS,QA,SA,SD,SO,SY,TN,YE\"}],\"Groups\":[{\"Rules\":[],\"Groups\":[{\"Rules\":[{\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.subject\",\"Value\":\"General News,Medical,Medical Official,Science,Technology\"}],\"Groups\":[],\"Name\":\"sourceRules\",\"Operator\":\"and\"}],\"Name\":\"sourceFilters\",\"Operator\":\"or\"}],\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"_score\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO WHO EMRO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1365,
+                    "userName": "clane@who.int",
+                    "displayName": "LANE, Christopher Roderick Lumley",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1365",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1365&h=32&w=32"
+                },
+                "createdOnDate": "2018-05-02T12:08:06.273",
+                "lastModifiedByUser": {
+                    "userId": 1365,
+                    "userName": "clane@who.int",
+                    "displayName": "LANE, Christopher Roderick Lumley",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1365",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1365&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2018-05-11T17:30:08.823",
+                "isShared": true,
+                "description": "Board for daily signal search at EMRO.",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 102,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/257//sidebar:show)"
+            },
+            {
+                "id": 1409,
+                "name": "Low Model A - High Model B",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"numericRange\",\"Label\":null,\"Property\":\"binaryCredibility.labels.Credible.probability\",\"Value\":{\"gte\":0,\"lte\":0.49}},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"emmMisInfo.label\",\"Value\":\"reliable\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2021-09-15T12:24:34.397Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-09-15T12:24:34.397Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1409//sidebar:show)"
+            },
+            {
+                "id": 1408,
+                "name": "High Model A - Low Model B",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"numericRange\",\"Label\":null,\"Property\":\"binaryCredibility.labels.Credible.probability\",\"Value\":{\"gte\":0.51,\"lte\":1}},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"emmMisInfo.label\",\"Value\":\"unverified\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2021-09-15T12:23:26.76Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-09-15T12:23:26.76Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1408//sidebar:show)"
+            },
+            {
+                "id": 1402,
+                "name": "Credibility comparison of models",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"numericRange\",\"Label\":null,\"Property\":\"binaryCredibility.labels.Credible.probability\",\"Value\":{\"gte\":0,\"lte\":1}},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"emmMisInfo.label\",\"Value\":\"reliable,unverified\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2021-08-09T13:14:13.367Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-08-09T13:14:13.367Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1402//sidebar:show)"
+            },
+            {
+                "id": 1345,
+                "name": "A test board 20200624",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:Development,l:CholeraInfection,l:Diarrhoea\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"now-14d/d\"}},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"affectedCountriesIso\",\"Value\":\"CN,US\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.optimaSourceId.keyword\",\"Value\":\"GPHIN\"}],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.subject\",\"Value\":\"Medical Official\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.countryIso\",\"Value\":\"ca\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"Name\":\"sourceRules\",\"MetaData\":{},\"Operator\":\"and\"}],\"Name\":\"sourceFilters\",\"MetaData\":{},\"Operator\":\"or\"}],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-06-24T12:27:52.687Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-06-24T12:33:27.78Z",
+                "isShared": true,
+                "description": "A test board 20200624",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1345//sidebar:show)"
+            },
+            {
+                "id": 1343,
+                "name": "Test signals to follow up. ",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"simplequerystring\",\"Label\":null,\"Property\":\"title,translatedTitle,description,translatedDescription,fullText,translatedText,rssItemId\",\"Value\":\"\\\"1234565\\\"\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-06-24T07:19:05.817Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-06-24T07:22:03.027Z",
+                "isShared": true,
+                "description": "Test signals to follow up. ",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1343//sidebar:show)"
+            },
+            {
+                "id": 1339,
+                "name": "Thailand Rabies Example",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"simplequerystring\",\"Label\":null,\"Property\":\"title,translatedTitle,description,translatedDescription,fullText,translatedText,rssItemId\",\"Value\":\"\\\"chiangraitimes-3aa92b8953547275b6970bfcb586e5eb\\\" | \\\"promed-9ad37bbf27df4c21427d3ba2a579e67c\\\"  | \\\"Empres-c641b3f2563cc30f684a351b2be1151e\\\"\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"affectedCountriesIso\",\"Value\":\"TH\"}],\"Groups\":[{\"Rules\":[],\"Groups\":[],\"Name\":\"sourceFilters\",\"MetaData\":{},\"Operator\":\"or\"}],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\",\"ITEMS_VIEW_MODE\":\"list+map\",\"ONLY_MATCHED_LOCATIONS\":true},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Test JS Team Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-06-05T08:52:35.643Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-06-05T08:52:35.643Z",
+                "isShared": true,
+                "description": "Thailand Rabies Example",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 90,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1339//sidebar:show)"
+            },
+            {
+                "id": 1383,
+                "name": "SignalBoard1TeamLevel",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CoronavirusvariantB11316\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO SignalTeam Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-05-13T14:16:01.103Z",
+                "lastModifiedByUser": {
+                    "userId": 2,
+                    "userName": "luigi.spagnolo@ec.europa.eu",
+                    "displayName": "Spagnolo, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/2",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=2&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-07T12:17:52.147Z",
+                "isShared": true,
+                "description": "SignalBoard1TeamLevel",
+                "tags": [
+                    {
+                        "name": "signal",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 305,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1383//sidebar:show)"
+            },
+            {
+                "id": 1415,
+                "name": "Health workforce categories testing",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:HealthEducationDisruptions_DEV_081121,l:HealthWorkforceCoronaVaccination_DEV_081121,l:HealthWorkforceIndustrialAction_DEV081121,l:HealthWorkforceInfectionDeath_DEV_081121,l:HealthWorkforceMentalHealthImpact_DEV_081121,l:HealthWorkforcePolicyManagement_DEV_081121\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1490,
+                    "userName": "donachiea@who.int",
+                    "displayName": "DONACHIE, Alastair",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1490",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1490&h=32&w=32"
+                },
+                "createdOnDate": "2021-10-29T15:46:07.897Z",
+                "lastModifiedByUser": {
+                    "userId": 1490,
+                    "userName": "donachiea@who.int",
+                    "displayName": "DONACHIE, Alastair",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1490",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1490&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-11-08T09:25:46.91Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1415//sidebar:show)"
+            },
+            {
+                "id": 1414,
+                "name": "GOARN Response",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1490,
+                    "userName": "donachiea@who.int",
+                    "displayName": "DONACHIE, Alastair",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1490",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1490&h=32&w=32"
+                },
+                "createdOnDate": "2021-10-15T10:55:40.55Z",
+                "lastModifiedByUser": {
+                    "userId": 1490,
+                    "userName": "donachiea@who.int",
+                    "displayName": "DONACHIE, Alastair",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1490",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1490&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-10-15T10:55:40.55Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1414//sidebar:show)"
+            },
+            {
+                "id": 1413,
+                "name": "TestRSS",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"2020-01-12T00:00:00.000Z\",\"lt\":\"2020-01-12T00:00:00.000Z||+1d\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-10-14T22:13:49.04Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-10-14T22:14:42.363Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1413//sidebar:show)"
+            },
+            {
+                "id": 1395,
+                "name": "attacks on HC Test",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:Societal,f:1:TestJS1,f:1:TestJS2\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"2021-06-29T17:00:00.000Z\",\"lte\":\"2021-07-01T23:59:59.000Z\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "createdOnDate": "2021-06-24T19:26:44.74Z",
+                "lastModifiedByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-29T18:32:52.237Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1395//sidebar:show)"
+            },
+            {
+                "id": 1393,
+                "name": "Word Weight List Testing",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:TestJS1,f:1:TestJS2,l:AIDS-HIV,l:AIDS-HIV_TEST_180621,l:Anthrax,l:Anthrax_TEST_180621,l:Brucellosis,l:Brucellosis_TEST_180621,l:Crimean-CongoHF,l:Crimean-CongoHF_TEST_180621,l:DengueFever,l:DengueFever_TEST_180621,l:EbolaHemorrhagicFever,l:EbolaHemorrhagicFever_TEST_180621,l:Malaria,l:Malaria_TEST_180621\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"2021-06-18T17:00:00.000Z\",\"lte\":\"2021-06-26T23:59:59.000Z\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "createdOnDate": "2021-06-18T15:59:22.747Z",
+                "lastModifiedByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-18T18:15:26.317Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1393//sidebar:show)"
+            },
+            {
+                "id": 1382,
+                "name": "SignalBoard1CommunityLevel",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CoronavirusvariantB11316\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-05-13T13:50:31.73Z",
+                "lastModifiedByUser": {
+                    "userId": 2,
+                    "userName": "luigi.spagnolo@ec.europa.eu",
+                    "displayName": "Spagnolo, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/2",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=2&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-07T12:20:29.667Z",
+                "isShared": true,
+                "description": "SignalBoard1WithPins for the signal app to connect to EIOS\nBoard created on Community Level",
+                "tags": [
+                    {
+                        "name": "signal",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 1,
+                "roleId": 8,
+                "comments": [
+                    {
+                        "date": "2021-06-09T15:21:41.8296792Z",
+                        "userName": "luigi.spagnolo@ec.europa.eu",
+                        "text": "TEST board comment on SignalBoard1CommunityLevel",
+                        "organisationId": 1,
+                        "displayName": "Spagnolo, Luigi"
+                    }
+                ],
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1382//sidebar:show)"
+            },
+            {
+                "id": 1390,
+                "name": "New variant names test",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:TestJS1,f:1:TestJS2,l:CoronavirusvariantB117,l:CoronavirusvariantB1351,l:CoronavirusvariantB1429,l:CoronavirusvariantB1525,l:CoronavirusvariantB1526,l:CoronavirusvariantDelta,l:CoronavirusvariantKappa,l:CoronavirusvariantP1,l:CoronavirusvariantP3,l:Coronavirusvariantp2\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"now-1h/h\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "createdOnDate": "2021-06-01T21:34:44.633Z",
+                "lastModifiedByUser": {
+                    "userId": 1858,
+                    "userName": "schillberge@who.int",
+                    "displayName": "Erin Lee SCHILLBERG",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1858",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1858&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-01T21:34:44.633Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1390//sidebar:show)"
+            },
+            {
+                "id": 1389,
+                "name": "SprSources",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-06-01T15:05:36.57Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-06-01T15:05:36.57Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1389//sidebar:show)"
+            },
+            {
+                "id": 1385,
+                "name": "ATest RSS1",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CholeraInfection\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"2021-04-25T00:00:00.000Z\",\"lte\":\"2021-04-30T23:59:59.000Z\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-05-27T05:49:56.237Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-05-27T05:58:14.767Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1385//sidebar:show)"
+            },
+            {
+                "id": 1384,
+                "name": "testRSSDuplicates",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"pubDate\",\"Value\":{\"gte\":\"2021-03-26T16:39:04.186Z\",\"lte\":\"2021-05-17T00:00:00.000Z\"}}],\"Groups\":[{\"Rules\":[],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.optimaSourceId.keyword\",\"Value\":\"sante-gouv-ci\"}],\"Groups\":[],\"Name\":\"includeSources\",\"MetaData\":{},\"Operator\":\"or\"}],\"Name\":\"sourceFilters\",\"MetaData\":{},\"Operator\":\"and\"}],\"MetaData\":{\"DateSelectionProperty\":\"FETCH\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"pubDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2021-05-18T06:29:09.807Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2021-05-18T06:57:59.05Z",
+                "isShared": true,
+                "description": "testRSSDuplicates",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1384//sidebar:show)"
+            },
+            {
+                "id": 1371,
+                "name": "Not Credible",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-09T10:07:58.163Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-09T10:07:58.163Z",
+                "isShared": true,
+                "description": "",
+                "tags": [
+                    {
+                        "name": "credibility",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1371//sidebar:show)"
+            },
+            {
+                "id": 1370,
+                "name": "False Credible - Binary",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"},{\"MetaData\":{},\"Operator\":\"simplequerystring\",\"Label\":null,\"Property\":\"title,translatedTitle,description,translatedDescription,fullText,translatedText,rssItemId\",\"Value\":\"\\\"gphin-0a79fd6a81fec84d650982f0b1d41e10\\\"\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-09T10:05:34.653Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-09T10:06:27.153Z",
+                "isShared": true,
+                "description": "",
+                "tags": [
+                    {
+                        "name": "credibility",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1370//sidebar:show)"
+            },
+            {
+                "id": 1369,
+                "name": "True Not Credible - Binary",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-03T15:48:11.18Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-03T15:48:22.32Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1369//sidebar:show)"
+            },
+            {
+                "id": 1368,
+                "name": "True Credible - Binary",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-03T15:46:47.117Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-03T15:47:21.98Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1368//sidebar:show)"
+            },
+            {
+                "id": 1367,
+                "name": "False Credible - Binary",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-03T15:42:12.25Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-03T15:42:37.463Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1367//sidebar:show)"
+            },
+            {
+                "id": 1366,
+                "name": "False Not Credible - Binary",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"languageCode\",\"Value\":\"en\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-03T15:32:41.107Z",
+                "lastModifiedByUser": {
+                    "userId": 1842,
+                    "userName": "spagnolol@who.int",
+                    "displayName": "SPAGNOLO, Luigi",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1842",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1842&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-03T15:33:42.737Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1366//sidebar:show)"
+            },
+            {
+                "id": 1365,
+                "name": "COVID-Special-Population-Settings",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"simplequerystring\",\"Label\":null,\"Property\":\"title,translatedTitle,description,translatedDescription,fullText,translatedText,rssItemId\",\"Value\":\"COVID + ((\\\"tested positive\\\"~1 | outbreak | cluster | case* | \\\"confirmed case\\\"~1 | \\\"confirmed infection\\\"~1 | \\\"new case\\\"~1 | \\\"new cases\\\"~1 | \\\"close contact\\\"~1 | \\\"high number of new infections\\\"~1 | \\\"local flare-ups\\\"~1)) + ((school* | \\\"high school\\\"~1 | \\\"high schools\\\"~1 | university | \\\"day care\\\"~1 | institution | children | class* | teacher* | student* | faculty) | (slaughterhouse | \\\"meat processing\\\"~1 | meat | \\\"food processing\\\"~1 | factory) | (elderly | \\\"nursing home\\\"~1 | \\\"nursing homes\\\"~1 | \\\"home care\\\"~1 | disabled | \\\"care home\\\"~1 | \\\"care worker\\\"~1 | \\\"care workers\\\"~1 | \\\"retirement home\\\"~1 | \\\"long term care\\\"~1 | \\\"longterm care\\\"~1 | \\\"long-term care\\\"~1) | (\\\"coal mine\\\"~1 | \\\"mining company\\\"~1 | mining) | (\\\"postal service\\\"~1 | \\\"postal employee\\\"~1 | \\\"postal worker\\\"~1) | (prison | incarcerated | inmate* | penitentiary) | (ethnic | minorit* | \\\"ethnic minority\\\"~1 | Roma | \\\"Roma settlement\\\"~1 | refugee | refugee* | migrant | \\\"migrant camp\\\"~1 | asylum | \\\"asylum seeker\\\"~1 | \\\"asylum seekers\\\"~1 | \\\"shared housing\\\"~1 | \\\"informal camp\\\"~1 | \\\"informal camps\\\"~1 | homeless | vulnerable | \\\"high risk\\\"~1) | (\\\"taxi driver\\\"~1 | taxi | \\\"private-hire drivers\\\"~1 | industry | frontline | \\\"frontline worker\\\"~1 | \\\"self-employed\\\" | \\\"self employed\\\"~1 | \\\"foreign worker\\\"~1 | \\\"foreign workers\\\"~1 | \\\"seasonal worker\\\"~1 | \\\"seasonal workers\\\"~1 | \\\"migrant worker\\\"~1 | worker | workforce | employee) | (\\\"infection hub\\\"~1 | hotspot* | community))\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-12-02T07:04:26.943Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-12-02T07:05:28.357Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1365//sidebar:show)"
+            },
+            {
+                "id": 1351,
+                "name": "Symptoms board test",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:Cough,l:Fever,f:1:Symptoms\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1420,
+                    "userName": "briodyc@who.int",
+                    "displayName": "BRIODY, Carolyn",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1420",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1420&h=32&w=32"
+                },
+                "createdOnDate": "2020-08-31T08:50:22Z",
+                "lastModifiedByUser": {
+                    "userId": 1420,
+                    "userName": "briodyc@who.int",
+                    "displayName": "BRIODY, Carolyn",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1420",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1420&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-08-31T08:50:22Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1351//sidebar:show)"
+            },
+            {
+                "id": 1348,
+                "name": "Eye Health test",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:Cataract_DEV_020720,l:Glaucoma_DEV_020720,l:MacularDegeneration_DEV_020720,l:Myopia_DEV_020720\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1420,
+                    "userName": "briodyc@who.int",
+                    "displayName": "BRIODY, Carolyn",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1420",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1420&h=32&w=32"
+                },
+                "createdOnDate": "2020-07-03T08:32:44.223Z",
+                "lastModifiedByUser": {
+                    "userId": 1420,
+                    "userName": "briodyc@who.int",
+                    "displayName": "BRIODY, Carolyn",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1420",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1420&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-07-03T08:33:27.05Z",
+                "isShared": true,
+                "description": "",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1348//sidebar:show)"
+            },
+            {
+                "id": 1346,
+                "name": "A2 Test board to follow up",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"simplequerystring\",\"Label\":null,\"Property\":\"title,translatedTitle,description,translatedDescription,fullText,translatedText,rssItemId\",\"Value\":\"\\\"12345678xcv\\\"\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-06-24T14:15:41.357Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-06-24T14:16:05.383Z",
+                "isShared": true,
+                "description": "A2 Test board to follow up",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1346//sidebar:show)"
+            },
+            {
+                "id": 1327,
+                "name": "Priority diseases Global - not including coronavirus category definition",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:Anthrax,l:Arenavirus,l:Argentinehemorrhagicfever,l:Avianflu,l:Bolivianhemorrhagicfever,l:CholeraInfection,l:Botulism,l:Crimean-CongoHF,l:DengueFever,l:Diphtheria,l:EbolaHemorrhagicFever,l:Emergingdisease,l:Encephalitis,l:Enterohaemorrhagic,l:GuillainBarre,l:H10N7,l:H10N8,l:H1N1,l:H1N1v,l:H1N2,l:H1N2v,l:H2N1,l:H2N2,l:H3N2,l:H3N2v,l:H5N1,l:H5N6,l:H6N1,l:H7N2,l:H7N3,l:H7N4,l:H7N7,l:H7N9,l:H9N2,l:Haemorrhage,l:HaemorrhagicSyndrome,l:HemorrhagicFever,l:HendraVirus,l:Hepatitis,l:HepatitisA,l:HepatitisB,l:HepatitisC,l:HepatitisD,l:HepatitisE,l:InfluenzaHXNXAnimal,l:KyasanurForestDisease,l:LassaFever,l:MarburgHemorrhagicFever,l:Measles,l:Meningitis,l:MERSCoV,l:Monkeypox,l:NipahVirus,l:Poliomyelitis,l:RiftValleyFever,l:SARS,l:SFTSV,l:Smallpox,l:Tetanus,l:UnknownDisease,l:WestNileDisease,l:YellowFever,l:YersiniaPestis,l:Zika,f:1:Mass Gathering\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"processedOnDate\",\"Value\":{\"gte\":\"now-72h/h\"}}],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CoronavirusInfection\"}],\"Groups\":[],\"Name\":\"excluded\",\"MetaData\":{},\"Operator\":\"not\"}],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2020-04-08T14:48:56.267Z",
+                "lastModifiedByUser": {
+                    "userId": 244,
+                    "userName": "who.admin@who.int",
+                    "displayName": "Admin, WHO",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/244",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=244&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-04-14T05:42:12.31Z",
+                "isShared": true,
+                "description": "Board created for monitoring during nCoV outbreak",
+                "tags": [
+                    {
+                        "name": "default",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "global",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "minuscoronavirus",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "prioritydiseases",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1327//sidebar:show)"
+            },
+            {
+                "id": 1328,
+                "name": "Priority sources - not including coronavirus category definition",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"f:1:All Hazards\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"pubDate\",\"Value\":{\"gte\":\"now-1d/d\"}}],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.optimaSourceId.keyword\",\"Value\":\"GPHIN,blog_crofsblogs,cidrap,gphinmail,healthmap,healthmapofficial,promed,promed-ahead,promed-eafr,promed-edr,promed-esp,promed-fra,promed-mbds,promed-mena,promed-port,promed-rus,promed-soas,promed_es,promed_fr,promed_mekong,promed_pt,promed_ru,reliefWeb,rsoemail\"}],\"Groups\":[{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"source.subject\",\"Value\":\"Medical Official,NGO\"}],\"Groups\":[],\"Name\":\"sourceRules\",\"MetaData\":{},\"Operator\":\"and\"}],\"Name\":\"sourceFilters\",\"MetaData\":{},\"Operator\":\"or\"},{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CoronavirusInfection\"}],\"Groups\":[],\"Name\":\"excluded\",\"MetaData\":{},\"Operator\":\"not\"}],\"MetaData\":{\"DateSelectionProperty\":\"FETCH\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"pubDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 244,
+                    "userName": "who.admin@who.int",
+                    "displayName": "Admin, WHO",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/244",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=244&h=32&w=32"
+                },
+                "createdOnDate": "2020-04-09T14:42:14.377Z",
+                "lastModifiedByUser": {
+                    "userId": 244,
+                    "userName": "who.admin@who.int",
+                    "displayName": "Admin, WHO",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/244",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=244&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-04-14T05:36:54.953Z",
+                "isShared": true,
+                "description": "riority sources - not including coronavirus category definition",
+                "tags": [
+                    {
+                        "name": "global",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "default",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "minuscoronavirus",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "prioritysources",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1328//sidebar:show)"
+            },
+            {
+                "id": 1325,
+                "name": "COVID-19",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:CoronavirusInfection,l:Pneumonia,l:RespiratorySyndrome,l:SARS,l:UnknownDisease\"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\",\"SELECTED_CONTEXT_INFO_INDICATOR\":null,\"ITEMS_VIEW_MODE\":\"combined\",\"DISPLAYED_LAYERS\":\"items-at-location-markers+heatmap\",\"ONLY_MATCHED_LOCATIONS\":false},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 1256,
+                    "userName": "abdelmalikp@who.int",
+                    "displayName": "ABDELMALIK, Philip",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1256",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1256&h=32&w=32"
+                },
+                "createdOnDate": "2020-03-20T12:01:50.007Z",
+                "lastModifiedByUser": {
+                    "userId": 1256,
+                    "userName": "abdelmalikp@who.int",
+                    "displayName": "ABDELMALIK, Philip",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/1256",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=1256&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2020-03-20T12:02:55.9Z",
+                "isShared": true,
+                "description": "Update",
+                "tags": [],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1325//sidebar:show)"
+            },
+            {
+                "id": 265,
+                "name": "Ebola DRC",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:EbolaHemorrhagicFever,l:Haemorrhage,l:HaemorrhagicSyndrome,l:HemorrhagicFever,l:MarburgHemorrhagicFever,l:UnknownDisease\"},{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"affectedCountriesIso\",\"Value\":\"CD\"},{\"MetaData\":{},\"Operator\":\"dateRange\",\"Label\":null,\"Property\":\"pubDate\",\"Value\":{\"gte\":\"now-24h/h\"}}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"FETCH\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"pubDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "createdOnDate": "2018-05-08T07:40:56.56Z",
+                "lastModifiedByUser": {
+                    "userId": 6,
+                    "userName": "schnitzlerj@who.int",
+                    "displayName": "SCHNITZLER, Johannes Christof",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/6",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=6&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2019-12-04T07:25:27.543Z",
+                "isShared": true,
+                "description": "Ebola DRC",
+                "tags": [
+                    {
+                        "name": "acuteevent",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/265//sidebar:show)"
+            },
+            {
+                "id": 1121,
+                "name": "Travel and Trade Restrictions Measles",
+                "query": "{\"Rules\":[{\"MetaData\":{},\"Operator\":\"in\",\"Label\":null,\"Property\":\"tags\",\"Value\":\"l:TradeRestrictionsMeasles ,l:TravelRestrictionsMeasles \"}],\"Groups\":[],\"MetaData\":{\"DateSelectionProperty\":\"IMPORT\"},\"Operator\":\"and\",\"Start\":0,\"Limit\":50,\"Sorts\":[{\"Property\":\"processedOnDate\",\"Direction\":\"desc\"}]}",
+                "roleName": "WHO Members",
+                "communityName": "WHO",
+                "createdByUser": {
+                    "userId": 244,
+                    "userName": "who.admin@who.int",
+                    "displayName": "Admin, WHO",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/244",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=244&h=32&w=32"
+                },
+                "createdOnDate": "2019-11-27T09:37:43.533Z",
+                "lastModifiedByUser": {
+                    "userId": 244,
+                    "userName": "who.admin@who.int",
+                    "displayName": "Admin, WHO",
+                    "email": null,
+                    "profileUrl": "https://portal-test.who.int/eios/UserProfile/userId/244",
+                    "profilePictureUrl": "/eios/DnnImageHandler.ashx?mode=profilepic&userId=244&h=32&w=32"
+                },
+                "lastModifiedOnDate": "2019-11-27T09:59:48.373Z",
+                "isShared": true,
+                "description": "Request from Senior Management at the AEM meeting",
+                "tags": [
+                    {
+                        "name": "travelrestriction",
+                        "isPrivate": false
+                    },
+                    {
+                        "name": "traderestriction",
+                        "isPrivate": false
+                    }
+                ],
+                "commentsCount": 0,
+                "roleId": 8,
+                "comments": null,
+                "eiosUrl": "https://portal-test.who.int/eios#/explore/(WHO/1121//sidebar:show)"
+            }
+        ],
+        "count": 35,
+        "aggregations": {},
+        "isCountAccurate": true
+    }
+}

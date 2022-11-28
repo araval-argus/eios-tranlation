@@ -1,0 +1,13 @@
+{
+    "/Service": {
+      "target": "https://portal-test.who.int/eios/API/News",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "headers": {
+        "Connection": "keep-alive",
+        "Host": "portal-test.who.int"
+      },
+      "pathRewrite": { "^/*": "" }
+    }
+  }
