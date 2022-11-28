@@ -372,7 +372,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                             labeldescription: null,
                             labelsnapshotpath: null);
 
-                            string autoTranslation = 
+                            string autoTranslation =
                                 $"{nonDefLanguage.Name}_{defLabel.LabelValue}";
                             // (Todo: enable translation)
                             //await this.languageService.AzureTranslate(defLabel.LabelValue, dbLanguage.LanguageCode, nonDefLanguage.LanguageCode);
@@ -550,7 +550,78 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
+        public async Task<string> ExportLabelsByGroupId(int languageId, int groupId)
+        {
+            string exportPath = string.Empty;
+            try
+            {
+                var language = await this.context
+                    .Languages
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LanguageId == languageId);
+                if (language == null)
+                {
+                    throw new ApiException($"No Language Found by Id : {languageId}");
+                }
+                var group = await this.context
+                    .LabelGroups
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LabelGroupId == groupId);
+                if (group == null)
+                {
+                    throw new ApiException($"No Label Group Found by Id : {groupId}");
+                }
+                var allGroups = await this.context
+                    .LabelGroups
+                    .AsNoTracking()
+                    .ToListAsync();
 
+                var parentGroups = allGroups.Where(x => x.FK_ParentLableGroupId == null && x.LabelGroupId == groupId).ToList();
+
+                var childGroups = allGroups.Where(x => x.FK_ParentLableGroupId != null).ToList();
+
+                var allLabels = await this.context
+                    .Labels
+                    .AsNoTracking()
+                    .Where(x => x.FK_LanguageId == languageId)
+                    .ToListAsync();
+
+                ExportViewModel viewModel = new ExportViewModel();
+                foreach (var pGroup in parentGroups)
+                {
+                    // Current Group Labels.
+                    var groupSpecificLabels = allLabels.Where(x => x.FK_LabelGroupId == pGroup.LabelGroupId).ToList();
+                    var labelDict = new Dictionary<string, object>();
+                    foreach (var lbl in groupSpecificLabels)
+                    {
+                        labelDict.Add(lbl.ResourceId, lbl.LabelValue ?? String.Empty);
+                    }
+                    bool hasChild = childGroups.Any(x => x.FK_ParentLableGroupId == pGroup.LabelGroupId);
+                    if (hasChild)
+                    {
+                        BuildChildGroup(groupId, childGroups, allLabels, labelDict);
+                    }
+                    viewModel.Model.Add(pGroup.GroupName, labelDict);
+                }
+
+                string jsonResult = JsonConvert.SerializeObject(viewModel.Model);
+                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
+                {
+                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
+                }
+                exportPath = $"{CommonSettings.AppSettings.ResoucePath}{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString() + "_" + languageId.ToString() + "_" + groupId.ToString()}.json";
+                File.WriteAllText(exportPath, jsonResult);
+                if (!File.Exists(exportPath))
+                {
+                    throw new ApiException($"Unable to generate the file for the lanugage: {languageId} and group: {groupId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                exportPath = string.Empty;
+            }
+            return exportPath;
+        }
 
     }
 }
