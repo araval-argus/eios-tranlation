@@ -17,7 +17,7 @@
     /// </summary>
     public class ImportLabelsByLanguageIdCommand : Request<bool>, IGetEntityCommand<bool>
     {
-        public int LanguageId { get; set; }
+        public string LanguageCode { get; set; }
         public IFormFile File{ get; set; }
     }
 
@@ -31,7 +31,7 @@
         /// </summary>
         public ImportLabelsByLanguageIdCommandValidator()
         {
-            this.RuleFor(x => x.LanguageId).GreaterThan(0);
+            this.RuleFor(x => x.LanguageCode).NotNull().NotEmpty();
             this.RuleFor(x => x.File).NotNull().WithMessage("No file found. File must not be empty");
             this.RuleFor(x => x.File).Custom((file, context) =>
             {
