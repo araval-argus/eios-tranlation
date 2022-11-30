@@ -339,8 +339,6 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
         public async Task<bool> ImportLabelsByLanguageAndGroup(ImportLabelsByLanguageAndGroupCommand request)
         {
-            throw new ApiException($"Under Construction...");
-
             bool importSuccess = false;
             try
             {
