@@ -7,8 +7,8 @@ export const environment = {
   clientId: '8992bd37-eea9-4d9e-9bb7-ca311c811418',
   tenantName: 'f610c0b7-bd24-4b39-810b-3dc280afb590',
   redirectUrl: 'http://localhost:4200/login',
-  apiPrefix: 'http://localhost:8080/api',
-  backendURL: 'http://localhost:8080/'
+  apiPrefix: 'https://localhost:7124/api',
+  backendURL: 'https://localhost:7124/'
 };
 
 /*

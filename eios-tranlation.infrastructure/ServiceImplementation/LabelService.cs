@@ -337,6 +337,148 @@ namespace eios_translation.infrastructure.ServiceImplementation
             return importSuccess;
         }
 
+        public async Task<bool> ImportLabelsByLanguageAndGroup(ImportLabelsByLanguageAndGroupCommand request)
+        {
+            throw new ApiException($"Under Construction...");
+
+            bool importSuccess = false;
+            try
+            {
+                var dbLanguage = await this.context
+                    .Languages
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LanguageCode.ToLower().Trim() == request.LanguageCode.ToLower().Trim());
+                if (dbLanguage == null)
+                {
+                    throw new ApiException($"No language by code:{request.LanguageCode} exists.");
+                }
+
+                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
+                {
+                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
+                }
+                string filePath = Path.Combine(CommonSettings.AppSettings.ResoucePath, $"Import_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()}.json");
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await request.File.CopyToAsync(fileStream);
+                }
+
+                string viewModel = File.ReadAllText(filePath);
+                bool validJson = Convenience.IsValidJson(viewModel);
+                if (!validJson)
+                {
+                    throw new ApiException($"File does not contain valid json. Please upload the valid file.");
+                }
+
+                ImportViewModel importModel = new ImportViewModel();
+                var dynamicDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(viewModel);
+
+                var allDbGroups = await this.context.LabelGroups.ToListAsync();
+                var allDbLabels = await this.context.Labels
+                    .Where(x => x.FK_LanguageId == dbLanguage.LanguageId)
+                    .ToListAsync();
+
+                // Create a list and map with existing database values out of uploaded json file.
+                foreach (KeyValuePair<string, object> entry in dynamicDictionary)
+                {
+                    var currGroup = new ImportLabelGroup
+                    {
+                        GroupName = entry.Key,
+                    };
+
+                    var dbGroupexists = allDbGroups
+                        .FirstOrDefault(x => x.GroupName.ToLower().Trim() == currGroup.GroupName.ToLower().Trim());
+                    if (dbGroupexists != null)
+                    {
+                        currGroup.LabelGroupId = dbGroupexists.LabelGroupId;
+                    }
+                    string value = entry.Value.ToString();
+
+                    if (Convenience.IsValidJson(value))
+                    {
+                        var childDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(entry.Value?.ToString());
+                        PopulateGroup(currGroup, childDictionary, allDbGroups, allDbLabels, dbLanguage);
+                    }
+                    else
+                    {
+                        ImportLabels impLabel = new ImportLabels { LabelName = entry.Key, LabelValue = entry.Value.ToString() };
+                        if (currGroup.LabelGroupId > 0)
+                        {
+                            var dbLabelExists = allDbLabels
+                                .FirstOrDefault(x => x.FK_LabelGroupId == currGroup.LabelGroupId
+                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim() && x.FK_LanguageId == dbLanguage.LanguageId);
+                            if (dbLabelExists != null)
+                            {
+                                impLabel.LabelId = dbLabelExists.LabelId;
+                            }
+                        }
+                        currGroup.Labels.Add(impLabel);
+                    }
+                    importModel.ImportLabelGroups.Add(currGroup);
+                }
+
+                //string json = JsonConvert.SerializeObject(importModel);
+
+                // Database Operations Start.
+
+                //foreach (var parentGroup in importModel.ImportLabelGroups)
+                //{
+                var parentGroup = importModel.ImportLabelGroups.FirstOrDefault();
+                if (parentGroup != null)
+                {
+                    var dbGroupExists = allDbGroups.FirstOrDefault(x => x.LabelGroupId == parentGroup.LabelGroupId);
+
+                    if (parentGroup.LabelGroupId > 0 && dbGroupExists != null)
+                    {
+                        // Update Parent Group Case. (Todo: This will never happen)
+                        if (dbLanguage.IsDefault)
+                        {
+                            dbGroupExists.SetGroupName(parentGroup.GroupName);
+                        }
+                    }
+                    else
+                    {
+                        // Add Parent Group Case.
+                        if (dbLanguage.IsDefault)
+                        {
+                            dbGroupExists = new LabelGroup(groupname: parentGroup.GroupName, parentgroupid: null);
+                            this.context.LabelGroups.Add(dbGroupExists);
+                        }
+                    }
+
+                    // Handle Group Labels.
+                    this.HandleGroupLabels(allDbLabels, parentGroup, dbGroupExists, dbLanguage);
+
+                    // Loop Through the child Groups.
+                    if (parentGroup.ChildGroups.Count > 0)
+                    {
+                        HandleChildGroup(allDbGroups, allDbLabels, parentGroup, dbGroupExists, dbLanguage);
+                    }
+
+
+
+                    
+
+                    // Database Operations End.
+
+                    await this.context.SaveChangesAsync();
+
+                    // Create / Update / Delete corresponding label languages.
+                    if (dbLanguage.IsDefault)
+                    {
+                        //await HandleLangugaeLabels(dbLanguage);
+                    }
+                }
+                importSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                throw new ApiException($"Invalid Request: {ex.Message}.");
+
+            }
+            return importSuccess;
+        }
+
         public async Task<string> ExportLabelsByLanguageAndGroup(string languageCode, int labelGroupId)
         {
             string exportPath = string.Empty;
@@ -621,78 +763,5 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
-        public async Task<string> ExportLabelsByGroupId(int languageId, int groupId)
-        {
-            string exportPath = string.Empty;
-            try
-            {
-                var language = await this.context
-                    .Languages
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(x => x.LanguageId == languageId);
-                if (language == null)
-                {
-                    throw new ApiException($"No Language Found by Id : {languageId}");
-                }
-                var group = await this.context
-                    .LabelGroups
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(x => x.LabelGroupId == groupId);
-                if (group == null)
-                {
-                    throw new ApiException($"No Label Group Found by Id : {groupId}");
-                }
-                var allGroups = await this.context
-                    .LabelGroups
-                    .AsNoTracking()
-                    .ToListAsync();
-
-                var parentGroups = allGroups.Where(x => x.FK_ParentLableGroupId == null && x.LabelGroupId == groupId).ToList();
-
-                var childGroups = allGroups.Where(x => x.FK_ParentLableGroupId != null).ToList();
-
-                var allLabels = await this.context
-                    .Labels
-                    .AsNoTracking()
-                    .Where(x => x.FK_LanguageId == languageId)
-                    .ToListAsync();
-
-                ExportViewModel viewModel = new ExportViewModel();
-                foreach (var pGroup in parentGroups)
-                {
-                    // Current Group Labels.
-                    var groupSpecificLabels = allLabels.Where(x => x.FK_LabelGroupId == pGroup.LabelGroupId).ToList();
-                    var labelDict = new Dictionary<string, object>();
-                    foreach (var lbl in groupSpecificLabels)
-                    {
-                        labelDict.Add(lbl.ResourceId, lbl.LabelValue ?? String.Empty);
-                    }
-                    bool hasChild = childGroups.Any(x => x.FK_ParentLableGroupId == pGroup.LabelGroupId);
-                    if (hasChild)
-                    {
-                        BuildChildGroup(groupId, childGroups, allLabels, labelDict);
-                    }
-                    viewModel.Model.Add(pGroup.GroupName, labelDict);
-                }
-
-                string jsonResult = JsonConvert.SerializeObject(viewModel.Model);
-                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
-                {
-                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
-                }
-                exportPath = $"{CommonSettings.AppSettings.ResoucePath}{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString() + "_" + languageId.ToString() + "_" + groupId.ToString()}.json";
-                File.WriteAllText(exportPath, jsonResult);
-                if (!File.Exists(exportPath))
-                {
-                    throw new ApiException($"Unable to generate the file for the lanugage: {languageId} and group: {groupId}");
-                }
-            }
-            catch (Exception ex)
-            {
-                exportPath = string.Empty;
-            }
-            return exportPath;
-        }
-
     }
 }

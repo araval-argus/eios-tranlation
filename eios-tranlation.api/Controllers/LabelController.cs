@@ -78,25 +78,31 @@ namespace eios_translation.api.Controllers
 
         [HttpGet("ExportLabelsByLanguageId")]
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] string languageCode)
-            => this.Ok(await this.mediator.Send( new ExportLabelsByLanguageIdCommand { LanguageCode = languageCode }));
-
-        [HttpGet("ExportLabelsByLanguageAndGroup")]
-        [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> ExportLabelsByLanguageAndGroup([FromQuery] string languageCode, [FromQuery] int labelGroupId)
-            => this.Ok(await this.mediator.Send(new ExportLabelsByLanguageAndGroupCommand { LanguageCode = languageCode, LabelGroupId = labelGroupId }));
+        public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] string languageCode, [FromQuery] int? labelGroupId = 0)
+        {
+            if (labelGroupId.GetValueOrDefault() > 0)
+            {
+                return this.Ok(await this.mediator.Send(new ExportLabelsByLanguageAndGroupCommand { LanguageCode = languageCode, LabelGroupId = labelGroupId.Value }));
+            }
+            else
+            {
+                return this.Ok(await this.mediator.Send(new ExportLabelsByLanguageIdCommand { LanguageCode = languageCode }));
+            }
+        }
 
         [HttpPost("ImportLabelsByLanguageId")]
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> ImportLabelsByLanguageId([FromQuery] int languageId, IFormFile file)
-           => this.Ok(await this.mediator.Send(new ImportLabelsByLanguageIdCommand { LanguageId = languageId, File = file }));
-
-        [HttpGet("ExportLabelsByGroupId")]
-        [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> ExportLabelsByGroupId([FromQuery] int languageId, [FromQuery] int groupId)
-            => this.Ok(await this.mediator.Send(new ExportLabelsByGroupIdCommand { LanguageId = languageId, GroupId = groupId }));
-
-        public async Task<IActionResult> ImportLabelsByLanguageId([FromQuery] string languageCode, IFormFile file)
-           => this.Ok(await this.mediator.Send(new ImportLabelsByLanguageIdCommand { LanguageCode = languageCode, File = file }));
+        public async Task<IActionResult> ImportLabelsByLanguageId([FromQuery] string languageCode, IFormFile file, [FromQuery] int? labelGroupId = 0)
+        {
+            if (labelGroupId.GetValueOrDefault() > 0)
+            {
+                return this.Ok(await this.mediator.Send(new ImportLabelsByLanguageAndGroupCommand { LanguageCode = languageCode, LabelGroupId = labelGroupId.Value, File = file }));
+            }
+            else
+            {
+                return this.Ok(await this.mediator.Send(new ImportLabelsByLanguageIdCommand { LanguageCode = languageCode, File = file }));
+            }
+        }
+        
     }
 }
