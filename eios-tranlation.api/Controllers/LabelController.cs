@@ -78,8 +78,13 @@ namespace eios_translation.api.Controllers
 
         [HttpGet("ExportLabelsByLanguageId")]
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
-        public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] int languageId)
-            => this.Ok(await this.mediator.Send( new ExportLabelsByLanguageIdCommand { LanguageId = languageId}));
+        public async Task<IActionResult> ExportLabelsByLanguageId([FromQuery] string languageCode)
+            => this.Ok(await this.mediator.Send( new ExportLabelsByLanguageIdCommand { LanguageCode = languageCode }));
+
+        [HttpGet("ExportLabelsByLanguageAndGroup")]
+        [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
+        public async Task<IActionResult> ExportLabelsByLanguageAndGroup([FromQuery] string languageCode, [FromQuery] int labelGroupId)
+            => this.Ok(await this.mediator.Send(new ExportLabelsByLanguageAndGroupCommand { LanguageCode = languageCode, LabelGroupId = labelGroupId }));
 
         [HttpPost("ImportLabelsByLanguageId")]
         [ProducesResponseType(typeof(ApiResponse<LabelViewModel>), 200)]
@@ -91,5 +96,7 @@ namespace eios_translation.api.Controllers
         public async Task<IActionResult> ExportLabelsByGroupId([FromQuery] int languageId, [FromQuery] int groupId)
             => this.Ok(await this.mediator.Send(new ExportLabelsByGroupIdCommand { LanguageId = languageId, GroupId = groupId }));
 
+        public async Task<IActionResult> ImportLabelsByLanguageId([FromQuery] string languageCode, IFormFile file)
+           => this.Ok(await this.mediator.Send(new ImportLabelsByLanguageIdCommand { LanguageCode = languageCode, File = file }));
     }
 }

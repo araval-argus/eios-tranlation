@@ -15,6 +15,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace eios_translation.infrastructure.ServiceImplementation
 {
@@ -130,7 +131,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 throw new ApiException($"Something went wrong while updating the label: {ex.Message}");
             }
         }
-        public async Task<string> ExportLabelsByLanguageId(int languageId)
+        public async Task<string> ExportLabelsByLanguageId(string languageCode)
         {
             string exportPath = string.Empty;
             try
@@ -138,10 +139,10 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 var language = await this.context
                     .Languages
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(x => x.LanguageId == languageId);
+                    .FirstOrDefaultAsync(x => x.LanguageCode.ToLower().Trim() == languageCode.ToLower().Trim());
                 if (language == null)
                 {
-                    throw new ApiException($"No Language Found by Id : {languageId}");
+                    throw new ApiException($"No Language Found by Lang Code : {languageCode}");
                 }
 
                 var allGroups = await this.context
@@ -156,7 +157,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 var allLabels = await this.context
                     .Labels
                     .AsNoTracking()
-                    .Where(x => x.FK_LanguageId == languageId)
+                    .Where(x => x.FK_LanguageId == language.LanguageId)
                     .ToListAsync();
 
                 ExportViewModel viewModel = new ExportViewModel();
@@ -188,7 +189,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 File.WriteAllText(exportPath, jsonResult);
                 if (!File.Exists(exportPath))
                 {
-                    throw new ApiException($"Unable to generate the file for the lanugage: {languageId}");
+                    throw new ApiException($"Unable to generate the file for the lanugage: {language.LanguageId}");
                 }
             }
             catch (Exception ex)
@@ -203,10 +204,10 @@ namespace eios_translation.infrastructure.ServiceImplementation
             bool importSuccess = false;
             try
             {
-                var dbLanguage = await this.context.Languages.FirstOrDefaultAsync(x => x.LanguageId == request.LanguageId);
+                var dbLanguage = await this.context.Languages.FirstOrDefaultAsync(x => x.LanguageCode.ToLower().Trim() == request.LanguageCode.ToLower().Trim());
                 if (dbLanguage == null)
                 {
-                    throw new ApiException($"No language by Id :{request.LanguageId} exists.");
+                    throw new ApiException($"No language by code:{request.LanguageCode} exists.");
                 }
 
                 if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
@@ -230,7 +231,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
 
                 var allDbGroups = await this.context.LabelGroups.ToListAsync();
                 var allDbLabels = await this.context.Labels
-                    .Where(x => x.FK_LanguageId == request.LanguageId)
+                    .Where(x => x.FK_LanguageId == dbLanguage.LanguageId)
                     .ToListAsync();
 
                 // Create a list and map with existing database values out of uploaded json file.
@@ -261,7 +262,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                         {
                             var dbLabelExists = allDbLabels
                                 .FirstOrDefault(x => x.FK_LabelGroupId == parentGroup.LabelGroupId
-                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim() && x.FK_LanguageId == request.LanguageId);
+                                && x.ResourceId.ToLower().Trim() == entry.Key.ToString().ToLower().Trim() && x.FK_LanguageId == dbLanguage.LanguageId);
                             if (dbLabelExists != null)
                             {
                                 impLabel.LabelId = dbLabelExists.LabelId;
@@ -335,6 +336,75 @@ namespace eios_translation.infrastructure.ServiceImplementation
             }
             return importSuccess;
         }
+
+        public async Task<string> ExportLabelsByLanguageAndGroup(string languageCode, int labelGroupId)
+        {
+            string exportPath = string.Empty;
+            try
+            {
+                var language = await this.context
+                    .Languages
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LanguageCode.ToLower().Trim() == languageCode.ToLower().Trim());
+                if (language == null)
+                {
+                    throw new ApiException($"No Language Found by Lang Code : {languageCode}");
+                }
+
+                var specificGroup = await this.context
+                    .LabelGroups
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.LabelGroupId == labelGroupId);
+                if (specificGroup == null)
+                {
+                    throw new ApiException($"No Group Found by Id : {labelGroupId}");
+                }
+                var childGroups = this.context.LabelGroups.AsNoTracking()
+                    .Where(x => x.FK_ParentLableGroupId != null).ToList();
+
+                var allLabels = await this.context
+                    .Labels
+                    .AsNoTracking()
+                    .Where(x => x.FK_LanguageId == language.LanguageId)
+                    .ToListAsync();
+
+                ExportViewModel viewModel = new ExportViewModel();
+                // Current Group Labels.
+
+                var groupSpecificLabels = allLabels.Where(x => x.FK_LabelGroupId == specificGroup.LabelGroupId).ToList();
+                var labelDict = new Dictionary<string, object>();
+                foreach (var lbl in groupSpecificLabels)
+                {
+                    labelDict.Add(lbl.ResourceId, lbl.LabelValue ?? String.Empty);
+                }
+                bool hasChild = childGroups.Count > 0;
+                if (hasChild)
+                {
+                    BuildChildGroup(specificGroup.LabelGroupId, childGroups, allLabels, labelDict);
+                }
+                viewModel.Model.Add(specificGroup.GroupName, labelDict);
+                
+
+
+                string jsonResult = JsonConvert.SerializeObject(viewModel.Model);
+                if (!Directory.Exists(CommonSettings.AppSettings.ResoucePath))
+                {
+                    Directory.CreateDirectory(CommonSettings.AppSettings.ResoucePath);
+                }
+                exportPath = $"{CommonSettings.AppSettings.ResoucePath}{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()}.json";
+                File.WriteAllText(exportPath, jsonResult);
+                if (!File.Exists(exportPath))
+                {
+                    throw new ApiException($"Unable to generate the file for the lanugage: {language.LanguageId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                exportPath = string.Empty;
+            }
+            return exportPath;
+        }
+
         private async Task HandleLangugaeLabels(Language dbLanguage)
         {
             try
@@ -505,6 +575,7 @@ namespace eios_translation.infrastructure.ServiceImplementation
                 }
             }
         }
+
         private void PopulateGroup(ImportLabelGroup parentGroup, Dictionary<string, object> childValues, List<LabelGroup> allDbGroups, List<Label> allDbLabels, Language uploadLanguage)
         {
             if (childValues != null && childValues.Count > 0)

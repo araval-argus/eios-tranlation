@@ -15,7 +15,7 @@
     /// </summary>
     public class ExportLabelsByLanguageIdCommand : Request<string>, IGetEntityCommand<string>
     {
-        public int LanguageId { get; set; }
+        public string LanguageCode { get; set; }
     }
 
     /// <summary>
@@ -28,6 +28,7 @@
         /// </summary>
         public ExportLabelsByLanguageIdCommandValidator()
         {
+            this.RuleFor(x => x.LanguageCode).NotNull().NotEmpty();
         }
     }
 
@@ -70,7 +71,7 @@
         /// <inheritdoc/>
         public async Task<string> Handle(ExportLabelsByLanguageIdCommand request, CancellationToken cancellationToken)
         {
-            return await this.service.ExportLabelsByLanguageId(request.LanguageId);
+            return await this.service.ExportLabelsByLanguageId(request.LanguageCode);
         }
     }
 }
